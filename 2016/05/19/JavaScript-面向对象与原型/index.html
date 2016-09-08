@@ -1,0 +1,733 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="原型,面向对象," />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x521B;&amp;#x5EFA;&amp;#x5BF9;&amp;#x8C61; 2.&amp;#x539F;&amp;#x578B; 3.&amp;#x7EE7;&amp;#x627F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript面向对象与原型">
+<meta property="og:url" content="http://zhangkaihongzkh.github.io/2016/05/19/JavaScript-面向对象与原型/index.html">
+<meta property="og:site_name" content="zkhzz 's blog">
+<meta property="og:description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x521B;&amp;#x5EFA;&amp;#x5BF9;&amp;#x8C61; 2.&amp;#x539F;&amp;#x578B; 3.&amp;#x7EE7;&amp;#x627F;">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/05/19/JavaScript-面向对象与原型/pic_001.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/05/19/JavaScript-面向对象与原型/pic_002.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/05/19/JavaScript-面向对象与原型/pic_003.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/05/19/JavaScript-面向对象与原型/pic_002.png">
+<meta property="og:updated_time" content="2016-07-22T13:13:06.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript面向对象与原型">
+<meta name="twitter:description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x521B;&amp;#x5EFA;&amp;#x5BF9;&amp;#x8C61; 2.&amp;#x539F;&amp;#x578B; 3.&amp;#x7EE7;&amp;#x627F;">
+<meta name="twitter:image" content="http://zhangkaihongzkh.github.io/2016/05/19/JavaScript-面向对象与原型/pic_001.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaScript面向对象与原型 | zkhzz 's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zkhzz 's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript面向对象与原型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-19T20:15:33+08:00" content="2016-05-19">
+              2016-05-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript基础篇/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript基础篇</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/19/JavaScript-面向对象与原型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/19/JavaScript-面向对象与原型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          <span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+        
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x6458;&#x8981;:1.&#x521B;&#x5EFA;&#x5BF9;&#x8C61; 2.&#x539F;&#x578B; 3.&#x7EE7;&#x627F;<br><a id="more"></a><br>&#x8981;&#x70B9;:<br>1.&#x521B;&#x5EFA;&#x5BF9;&#x8C61;<br>    1.1&#x57FA;&#x672C;&#x6A21;&#x5F0F;<br>    1.2&#x5DE5;&#x5382;&#x6A21;&#x5F0F;<br>    1.3&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;<br>2.&#x539F;&#x578B;<br>    2.1&#x57FA;&#x672C;&#x521B;&#x5EFA;<br>    2.2&#x539F;&#x578B;&#x7684;&#x7EC4;&#x6210;<br>    2.3&#x4EE5;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x5F62;&#x5F0F;&#x521B;&#x5EFA;&#x539F;&#x578B;<br>        2.3.1&#x57FA;&#x672C;&#x7684;&#x521B;&#x5EFA;&#x65B9;&#x6CD5;<br>        2.3.2&#x539F;&#x578B;&#x6A21;&#x5F0F;&#x7684;&#x4F18;&#x7F3A;&#x70B9;<br>        2.3.3&#x7EC4;&#x5408;&#x6784;&#x9020;&#x51FD;&#x6570;+&#x539F;&#x578B;&#x6A21;&#x5F0F;<br>        2.3.4&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;<br>        2.3.5&#x5BC4;&#x751F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;<br>        2.3.6&#x7A33;&#x59A5;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;<br>3.&#x7EE7;&#x627F;<br>    3.1. ECMAScript&#x7EE7;&#x627F;&#x7684;&#x5B9E;&#x73B0;<br>    3.2. &#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;(&#x5BF9;&#x8C61;&#x5192;&#x5145;)<br>    3.3. &#x7EC4;&#x5408;&#x7EE7;&#x627F;(&#x539F;&#x578B;&#x94FE; + &#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;)<br>    3.4. &#x539F;&#x578B;&#x5F0F;&#x7EE7;&#x627F;<br>    3.5. &#x5BC4;&#x751F;&#x5F0F;&#x7EE7;&#x627F;<br>    3.6. &#x5BC4;&#x751F;&#x7EC4;&#x5408;&#x7EE7;&#x627F;<br>&#x6B63;&#x6587;:</p>
+<h2 id="&#x521B;&#x5EFA;&#x5BF9;&#x8C61;"><a href="#&#x521B;&#x5EFA;&#x5BF9;&#x8C61;" class="headerlink" title="&#x521B;&#x5EFA;&#x5BF9;&#x8C61;"></a>&#x521B;&#x5EFA;&#x5BF9;&#x8C61;</h2><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;,&#x7ED9;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x65B0;&#x5EFA;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;</p>
+<h3 id="&#x57FA;&#x672C;&#x6A21;&#x5F0F;"><a href="#&#x57FA;&#x672C;&#x6A21;&#x5F0F;" class="headerlink" title="&#x57FA;&#x672C;&#x6A21;&#x5F0F;"></a>&#x57FA;&#x672C;&#x6A21;&#x5F0F;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">box.name = <span class="string">&apos;zkh&apos;</span>;</div><div class="line">box.age = <span class="number">21</span>;</div><div class="line">box.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age +<span class="string">&apos;&#x8FD0;&#x884C;&#x4E2D;...&apos;</span>;</div><div class="line">};</div><div class="line">alert(box.run());</div></pre></td></tr></table></figure>
+<p>&#x4E0D;&#x96BE;&#x53D1;&#x73B0;,&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x662F;&#x6709;&#x4E00;&#x4E9B;&#x5F0A;&#x7AEF;&#x7684;,&#x5982;:</p>
+<ul>
+<li>&#x591A;&#x4E2A;&#x7C7B;&#x4F3C;&#x5BF9;&#x8C61;&#x7684;&#x58F0;&#x660E;&#x662F;&#x5F88;&#x590D;&#x6742;&#x7684;</li>
+<li>&#x6CA1;&#x6709;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x6982;&#x5FF5;,&#x5BF9;&#x8C61;&#x6CA1;&#x6709;&#x88AB;&#x5C01;&#x88C5;&#x8D77;&#x6765;</li>
+</ul>
+<h3 id="&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"><a href="#&#x5DE5;&#x5382;&#x6A21;&#x5F0F;" class="headerlink" title="&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"></a>&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</h3><p>&#x9488;&#x5BF9;&#x4E00;&#x822C;&#x521B;&#x5EFA;&#x51FD;&#x6570;&#x7684;&#x65B9;&#x5F0F;&#x7684;&#x4E00;&#x4E9B;&#x5F0A;&#x7AEF;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x79CD;&#x53EB;&#x505A;<strong>&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</strong>&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x89E3;&#x51B3;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;&#x5927;&#x91CF;&#x91CD;&#x590D;&#x7684;&#x95EE;&#x9898;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createObject</span>(<span class="params">name,age</span>)</span>{<span class="comment">//&#x96C6;&#x4E2D;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;</span></div><div class="line">	<span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">	obj.name = name;</div><div class="line">	obj.age = age;</div><div class="line">	obj.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age + <span class="string">&apos;&#x8FD0;&#x884C;&#x4E2D;...&apos;</span>;</div><div class="line">	}</div><div class="line">	<span class="keyword">return</span> obj;</div><div class="line">}</div><div class="line"><span class="keyword">var</span> box1 = createObject(<span class="string">&apos;zkh&apos;</span>,<span class="number">21</span>);	<span class="comment">//&#x7B2C;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;</span></div><div class="line"><span class="keyword">var</span> box2 = createObject(<span class="string">&apos;zzz&apos;</span>,<span class="number">22</span>);	<span class="comment">//&#x7B2C;&#x4E8C;&#x4E2A;&#x5B9E;&#x4F8B;</span></div><div class="line"></div><div class="line">alert(box1.run());</div><div class="line">alert(box2.run());	<span class="comment">//&#x4FDD;&#x6301;&#x72EC;&#x7ACB;</span></div></pre></td></tr></table></figure>
+<p>&#x867D;&#x7136;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x89E3;&#x51B3;&#x4E86;&#x91CD;&#x590D;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x95EE;&#x9898;,&#x4F46;&#x662F;&#x6709;&#x4E00;&#x4E2A;&#x660E;&#x663E;&#x7684;&#x95EE;&#x9898;&#x5C31;&#x662F;&#x65E0;&#x6CD5;&#x8BC6;&#x522B;&#x65B0;&#x5EFA;&#x7684;&#x5B9E;&#x4F8B;&#x5230;&#x5E95;&#x662F;&#x54EA;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x4F8B;.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(<span class="keyword">typeof</span> box1);							<span class="comment">//Object</span></div><div class="line">alert(box1 <span class="keyword">instanceof</span> <span class="built_in">Object</span>);				<span class="comment">//true</span></div></pre></td></tr></table></figure>
+<h3 id="&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;"><a href="#&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;" class="headerlink" title="&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;"></a>&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;</h3><p>EAMAScript&#x4E2D;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<strong>&#x6784;&#x9020;&#x51FD;&#x6570;</strong>&#x6765;&#x521B;&#x5EFA;&#x7279;&#x5B9A;&#x7684;&#x5BF9;&#x8C61;(&#x7C7B;&#x4F3C;Object&#x5BF9;&#x8C61;)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name,age</span>)</span>{</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="keyword">this</span>.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age + <span class="string">&apos;&#x8FD0;&#x884C;&#x4E2D;...&apos;</span>; </div><div class="line">	}</div><div class="line">}</div><div class="line"><span class="keyword">var</span> box1 = <span class="keyword">new</span> Box(<span class="string">&apos;zkh&apos;</span>,<span class="number">21</span>);</div><div class="line"><span class="keyword">var</span> box2 = <span class="keyword">new</span> Box(<span class="string">&apos;zzz&apos;</span>,<span class="number">22</span>);		<span class="comment">//&#x76F4;&#x63A5;new&#x5BF9;&#x8C61;&#x5373;&#x53EF;</span></div><div class="line">alert(box1 <span class="keyword">instanceof</span> Box);			<span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>&#x4F7F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x65B9;&#x6CD5;&#x548C;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x6709;&#x660E;&#x663E;&#x7684;&#x4E0D;&#x540C;,&#x5728;&#x4E8E;:</p>
+<ul>
+<li>&#x6784;&#x9020;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x663E;&#x5F0F;&#x7684;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;(new Object())</li>
+<li>&#x76F4;&#x63A5;&#x5C06;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x8D4B;&#x503C;&#x7ED9;this&#x5BF9;&#x8C61;</li>
+<li>&#x6CA1;&#x6709;return&#x8BED;&#x53E5;</li>
+</ul>
+<p>&#x6784;&#x9020;&#x51FD;&#x6570;&#x65B9;&#x6CD5;&#x7684;&#x4E00;&#x4E9B;&#x89C4;&#x8303;</p>
+<ul>
+<li>&#x51FD;&#x6570;&#x540D;&#x548C;&#x5B9E;&#x4F8B;&#x5316;&#x6784;&#x9020;&#x540D;&#x5FC5;&#x987B;&#x5927;&#x5199; &#x6709;&#x5229;&#x4E8E;&#x533A;&#x5206;</li>
+<li>&#x901A;&#x8FC7;&#x6784;&#x9020;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#xFF0C;&#x5FC5;&#x987B;&#x4F7F;&#x7528;new&#x8FD0;&#x7B97;&#x7B26;</li>
+</ul>
+<p>&#x5173;&#x4E8E; <strong>this</strong> &#x7684;&#x4F7F;&#x7528;</p>
+<ul>
+<li>&#x5728;&#x5168;&#x5C40;&#x8303;&#x56F4;&#x65F6;this&#x5C31;&#x4EE3;&#x8868;window&#x5BF9;&#x8C61;</li>
+<li>&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x5C31;&#x4EE3;&#x8868;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6240;&#x58F0;&#x660E;&#x7684;&#x5BF9;&#x8C61;</li>
+</ul>
+<p>&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E0E;&#x666E;&#x901A;&#x51FD;&#x6570;&#x7684;&#x552F;&#x4E00;&#x533A;&#x522B;&#x5C31;&#x662F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5FC5;&#x987B; <strong>new</strong> &#x51FA;&#x6765;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name,age</span>)</span>{</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="keyword">this</span>.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age + <span class="string">&apos;&#x8FD0;&#x884C;&#x4E2D;...&apos;</span>; </div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> box = <span class="keyword">new</span> Box(<span class="string">&apos;zkh&apos;</span>,<span class="number">21</span>);</div><div class="line">alert(box.run());			<span class="comment">//&#x6784;&#x9020;&#x51FD;&#x6570;&#x65B9;&#x6CD5;&#x8C03;&#x7528;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> box = Box(<span class="string">&apos;zkh&apos;</span>,<span class="number">21</span>);</div><div class="line">alert(box.run());			<span class="comment">//&#x666E;&#x901A;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#xFF0C;&#x65E0;&#x6548;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">Box.call(o,<span class="string">&apos;zkh&apos;</span>,<span class="number">21</span>);</div><div class="line">alert(o.run());				<span class="comment">//&#x5BF9;&#x8C61;&#x5192;&#x5145;&#xFF0C;&#x6709;&#x6548;</span></div></pre></td></tr></table></figure></p>
+<h2 id="&#x539F;&#x578B;"><a href="#&#x539F;&#x578B;" class="headerlink" title="&#x539F;&#x578B;"></a>&#x539F;&#x578B;</h2><p>&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x90FD;&#x6709;&#x4E00;&#x4E2A; <strong>prototype</strong> &#x5C5E;&#x6027; &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x7528;&#x9014;&#x662F;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x6240;&#x6709;&#x5B9E;&#x4F8B;&#x5171;&#x4EAB;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;&#x4F7F;&#x7528;&#x539F;&#x578B;&#x7684;&#x597D;&#x5904;&#x5728;&#x4E8E;&#x53EF;&#x4EE5;&#x8BA9;&#x6240;&#x6709;&#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;&#x5171;&#x4EAB;&#x5C5E;&#x6027;&#x65B9;&#x6CD5;&#xFF0C;&#x65E0;&#x9700;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x6DFB;&#x52A0;<br>&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x4E2D;,&#x6211;&#x4EEC;&#x6BCF;new&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;,&#x5C31;&#x4F1A;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x5F00;&#x8F9F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x533A;&#x57DF;&#x7528;&#x6765;&#x5B58;&#x653E;&#x5C5E;&#x6027;&#x4E0E;&#x65B9;&#x6CD5;.<br>&#x5B9E;&#x9645;&#x4E0A;&#x6709;&#x4E9B;&#x5C5E;&#x6027;&#x65B9;&#x6CD5;&#x662F;&#x5171;&#x6709;&#x7684;,&#x8FD9;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F15;&#x5165;<strong>prototype</strong>&#x4E86;</p>
+<h3 id="&#x539F;&#x578B;&#x7684;&#x57FA;&#x672C;&#x521B;&#x5EFA;"><a href="#&#x539F;&#x578B;&#x7684;&#x57FA;&#x672C;&#x521B;&#x5EFA;" class="headerlink" title="&#x539F;&#x578B;&#x7684;&#x57FA;&#x672C;&#x521B;&#x5EFA;"></a>&#x539F;&#x578B;&#x7684;&#x57FA;&#x672C;&#x521B;&#x5EFA;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params"></span>)</span>{}</div><div class="line">Box.prototype.name = <span class="string">&apos;zkh&apos;</span>;</div><div class="line">Box.prototype.age = <span class="string">&apos;21&apos;</span>;</div><div class="line">Box.prototype.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age + <span class="string">&apos;&#x8FD0;&#x884C;&#x4E2D;...&apos;</span>;</div><div class="line">};</div></pre></td></tr></table></figure>
+<p>&#x6BD4;&#x8F83;&#x539F;&#x578B;&#x5185;&#x7684;&#x5730;&#x5740;&#x662F;&#x5426;&#x76F8;&#x540C;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box1 = <span class="keyword">new</span> Box();</div><div class="line"><span class="keyword">var</span> box2 = <span class="keyword">new</span> Box();</div><div class="line">alert(box1.run == box2.run);		<span class="comment">//true &#x65B9;&#x6CD5;&#x7684;&#x5F15;&#x7528;&#x5730;&#x5740;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</span></div></pre></td></tr></table></figure>
+<p><img src="/2016/05/19/JavaScript-&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x4E0E;&#x539F;&#x578B;/pic_001.png" alt="&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;" title="&#x6784;&#x9020;&#x51FD;&#x6570;&#x65B9;&#x5F0F;"><br><img src="/2016/05/19/JavaScript-&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x4E0E;&#x539F;&#x578B;/pic_002.png" alt="&#x539F;&#x578B;&#x6A21;&#x5F0F;&#x65B9;&#x6CD5;" title="&#x539F;&#x578B;&#x6A21;&#x5F0F;&#x65B9;&#x6CD5;"></p>
+<h3 id="&#x539F;&#x578B;&#x7684;&#x7EC4;&#x6210;"><a href="#&#x539F;&#x578B;&#x7684;&#x7EC4;&#x6210;" class="headerlink" title="&#x539F;&#x578B;&#x7684;&#x7EC4;&#x6210;"></a>&#x539F;&#x578B;&#x7684;&#x7EC4;&#x6210;</h3><p>&#x7531;&#x4E0A;&#x8BC9;&#x4F8B;&#x5B50;,&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x4E24;&#x4E2A;&#x5B9E;&#x4F8B;&#x7684;&#x65B9;&#x6CD5;&#x6307;&#x5411;&#x540C;&#x4E00;&#x5757;&#x533A;&#x57DF;</p>
+<ul>
+<li>&#x5F53;&#x6211;&#x4EEC;&#x6784;&#x9020;&#x51FD;&#x6570;Box&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x540E;,&#x91CC;&#x9762;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4E86;&#x2019;proto&#x2019;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;(&#x4E24;&#x8FB9;&#x90FD;&#x6709;&#x53CC;&#x4E0B;&#x6ED1;&#x7EBF;)<br>&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x662F;&#x6307;&#x5411;&#x539F;&#x578B;&#x5BF9;&#x8C61;&#x4E00;&#x4E2A;&#x6307;&#x9488;,&#x4ED6;&#x7684;&#x4F5C;&#x7528;&#x989D;&#x5C31;&#x662F;&#x6307;&#x5411;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5C5E;&#x6027;<strong>constructor</strong>&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;,&#x5C31;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5230;&#x539F;&#x578B;&#x7684;&#x65B9;&#x6CD5;&#x548C;&#x6307;&#x9488;&#x4E86;&#x3002;</li>
+</ul>
+<p>PS: IE&#x6D4F;&#x89C8;&#x5668;&#x5728;&#x811A;&#x672C;&#x8BBF;&#x95EE;proto&#x4E0D;&#x80FD;&#x8BC6;&#x522B;,FF,chrome&#x867D;&#x7136;&#x80FD;&#x591F;&#x8F93;&#x51FA;,&#x4F46;&#x65E0;&#x6CD5;&#x83B7;&#x53D6;&#x5185;&#x90E8;&#x4FE1;&#x606F;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(box1.__proto__);		<span class="comment">//[object Object]</span></div></pre></td></tr></table></figure>
+<p>PS: &#x5224;&#x65AD;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x6307;&#x5411;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;&#x5BF9;&#x8C61;,&#x53EF;&#x4EE5;&#x7528;isPrototypeOf()&#x65B9;&#x6CD5;&#x6765;&#x6D4B;&#x8BD5;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(Box.isPrototypeOf(box1));		<span class="comment">//&#x53EA;&#x8981;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;,&#x90FD;&#x4F1A;&#x6307;&#x5411;</span></div></pre></td></tr></table></figure>
+<p>&#x539F;&#x578B;&#x6A21;&#x5F0F;&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;<br>1.&#x5148;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x4F8B;&#x7684;&#x65B9;&#x6CD5;&#x548C;&#x5C5E;&#x6027;&#x67E5;&#x627E;&#xFF0C;&#x5982;&#x679C;&#x6709;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;<br>2.&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x4F8B;&#x627E;&#x4E0D;&#x5230;&#x540E;&#x518D;&#x53D6;&#x539F;&#x578B;&#x4E0A;&#x67E5;&#x627E;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">&apos;zkh&apos;</span>;</div><div class="line">}</div><div class="line"><span class="keyword">var</span> box1 = <span class="keyword">new</span> Box();</div><div class="line">box1.name = <span class="string">&apos;zzz&apos;</span>;			</div><div class="line">alert(box1.name);			<span class="comment">//zzz &#x5C31;&#x8FD1;&#x627E;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> box2 = <span class="keyword">new</span> Box();</div><div class="line">alert(box2.name);			<span class="comment">//zkh&#x627E;&#x5230;&#x539F;&#x578B;&#x4E0A;</span></div></pre></td></tr></table></figure></p>
+<p>&#x6211;&#x4EEC;&#x867D;&#x7136;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x6765;&#x8BBF;&#x95EE;&#x4FDD;&#x5B58;&#x5728;&#x539F;&#x578B;&#x4E2D;&#x7684;&#x503C;,&#x4F46;&#x4E0D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBF;&#x95EE;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x6765;&#x91CD;&#x5199;&#x539F;&#x578B;&#x7684;&#x503C;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box1 = <span class="keyword">new</span> Box();</div><div class="line">alert(box1.name);		<span class="comment">//zkh&#x539F;&#x578B;&#x4E2D;&#x7684;&#x503C;</span></div><div class="line">box1.name = <span class="string">&apos;zzz&apos;</span>;</div><div class="line">alert(box1.name);		<span class="comment">//&apos;zzz&apos;&#xFF0C;&#x5C31;&#x8FD1;&#x67E5;&#x627E;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> box2 = <span class="keyword">new</span> Box();</div><div class="line">alert(box2.name);		<span class="comment">//zkh,&#x539F;&#x578B;&#x4E2D;&#x7684;&#x503C;,&#x6CA1;&#x6709;&#x88AB;box1&#x4FEE;&#x6539;</span></div></pre></td></tr></table></figure>
+<p><img src="/2016/05/19/JavaScript-&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x4E0E;&#x539F;&#x578B;/pic_003.png" alt="&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;&#x548C;&#x539F;&#x578B;&#x5C5E;&#x6027;&#x793A;&#x610F;&#x56FE;" title="&#x6784;&#x9020;&#x51FD;&#x6570;&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;&#x548C;&#x539F;&#x578B;&#x5C5E;&#x6027;&#x793A;&#x610F;&#x56FE;"></p>
+<p>&#x5176;&#x5B9E;&#x660E;&#x767D;&#x4E86;&#x539F;&#x578B;,&#x6784;&#x9020;&#x51FD;&#x6570;,&#x6784;&#x9020;&#x5B9E;&#x4F8B;&#x4E4B;&#x95F4;&#x7684;&#x6307;&#x5411;&#x95EE;&#x9898;,&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5F88;&#x7B80;&#x5355;<br><strong>&#x56E0;&#x4E3A;box1&#x4FEE;&#x6539;&#x7684;&#x81EA;&#x5DF1;&#x5B9E;&#x4F8B;&#x7684;&#x503C;,&#x800C;&#x539F;&#x578B;&#x4E2D;&#x7684;name&#x503C;&#x6CA1;&#x7ED9;&#x4FEE;&#x6539;,box2 new&#x51FA;&#x6765;&#x7684;name&#x81EA;&#x7136;&#x4E5F;&#x662F;zkh</strong></p>
+<p>&#x8981;&#x5224;&#x65AD;&#x5C5E;&#x6027;&#x662F;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x4F8B;&#x4E2D;&#x8FD8;&#x662F;&#x539F;&#x578B;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x7528; <strong>hasOwnProperty()</strong><br>&#x51FD;&#x6570;&#x6765;&#x9A8C;&#x8BC1;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(box.hasOwnProperty(<span class="string">&apos;name&apos;</span>));		<span class="comment">//&#x5B9E;&#x4F8B;&#x4E2D;&#x6709;&#x8FD4;&#x56DE;true&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;false</span></div></pre></td></tr></table></figure></p>
+<p><strong>in</strong> &#x64CD;&#x4F5C;&#x7B26;&#x8BBF;&#x95EE;&#x7279;&#x5B9A;&#x5C5E;&#x6027;&#x662F;&#x53EA;&#x8981;&#x5B58;&#x5728;&#x5C31;&#x8FD4;&#x56DE;true &#x65E0;&#x8BBA;&#x662F;&#x5426;&#x5B58;&#x5728;&#x5B9E;&#x4F8B;&#x4E2D;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(<span class="string">&apos;name&apos;</span> <span class="keyword">in</span> box);		<span class="comment">//&#x5B9E;&#x4F8B;&#x4E2D;&#x6709;&#x8FD4;&#x56DE;true&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;false</span></div></pre></td></tr></table></figure></p>
+<p>&#x6839;&#x636E;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x5706;&#x5F62;&#x4E0A;&#x662F;&#x5426;&#x5B58;&#x5728;&#x5C5E;&#x6027;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isProperty</span>(<span class="params">object,property</span>)</span>{</div><div class="line">	<span class="keyword">return</span> !object.hasOwnProperty(property) &amp;&amp; (property <span class="keyword">in</span> object);</div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">&apos;zkh&apos;</span>;</div><div class="line">}</div><div class="line">Box.prototype.age = <span class="number">21</span>;</div><div class="line"><span class="keyword">var</span> box = <span class="keyword">new</span> Box();</div><div class="line">alert(isProperty(box,<span class="string">&apos;age&apos;</span>));			<span class="comment">//true &#x539F;&#x578B;&#x4E0A;&#x7684;&#x5C5E;&#x6027;</span></div><div class="line">alert(isProperty(box,<span class="string">&apos;name&apos;</span>));			<span class="comment">//false &#x5C5E;&#x6027;&#x4E0D;&#x518D;&#x539F;&#x578B;&#x4E0A;</span></div></pre></td></tr></table></figure></p>
+<h3 id="&#x4EE5;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x5F62;&#x5F0F;&#x521B;&#x5EFA;&#x539F;&#x578B;"><a href="#&#x4EE5;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x5F62;&#x5F0F;&#x521B;&#x5EFA;&#x539F;&#x578B;" class="headerlink" title="&#x4EE5;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x5F62;&#x5F0F;&#x521B;&#x5EFA;&#x539F;&#x578B;"></a>&#x4EE5;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x5F62;&#x5F0F;&#x521B;&#x5EFA;&#x539F;&#x578B;</h3><h4 id="&#x57FA;&#x672C;&#x7684;&#x521B;&#x5EFA;&#x65B9;&#x6CD5;"><a href="#&#x57FA;&#x672C;&#x7684;&#x521B;&#x5EFA;&#x65B9;&#x6CD5;" class="headerlink" title="&#x57FA;&#x672C;&#x7684;&#x521B;&#x5EFA;&#x65B9;&#x6CD5;"></a>&#x57FA;&#x672C;&#x7684;&#x521B;&#x5EFA;&#x65B9;&#x6CD5;</h4><p>&#x4E3A;&#x4E86;&#x8BA9;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x66F4;&#x597D;&#x7684;&#x4F53;&#x73B0;&#x5C01;&#x88C5;&#x6548;&#x679C;,&#x5E76;&#x4E14;&#x51CF;&#x5C11;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x8F93;&#x5165;,&#x539F;&#x578B;&#x7684;&#x521B;&#x5EFA;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <strong>&#x5B57;&#x9762;&#x91CF;</strong> &#x7684;&#x65B9;&#x5F0F;:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span></span>{};</div><div class="line">Box.prototype = {</div><div class="line">	name:<span class="string">&apos;zkh&apos;</span>,</div><div class="line">	age: <span class="number">21</span>,</div><div class="line">	run:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age + <span class="string">&apos;&#x8FD0;&#x884C;&#x4E2D;...&apos;</span>;</div><div class="line">	}</div><div class="line">};</div></pre></td></tr></table></figure>
+<p>&#x4F46;&#x5B9E;&#x9645;&#x4E0A;,&#x901A;&#x8FC7;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x5F62;&#x5F0F;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x539F;&#x578B;&#x65F6;,&#x5BF9;&#x8C61;&#x539F;&#x578B;&#x7684;<strong>constructor</strong>&#x4F1A;&#x6307;&#x5411;Object,&#x800C;&#x975E;&#x6784;&#x9020;&#x51FD;&#x6570;&#x672C;&#x8EAB;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="keyword">new</span> Box();</div><div class="line">alert(box.constructor == Box);		<span class="comment">//&#x5B57;&#x9762;&#x91CF;&#x7684;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x539F;&#x578B;&#x65F6;&#x4E3A; false &#x5426;&#x5219;&#x4E3A;ture</span></div><div class="line">alert(box.constructor == <span class="built_in">Object</span>);	<span class="comment">//&#x5B57;&#x9762;&#x91CF;&#x7684;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x539F;&#x578B;&#x65F6;&#x4E3A; true &#x5426;&#x5219;&#x4E3A;false</span></div></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x5F3A;&#x5236;&#x6307;&#x5411;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5BF9;&#x8C61;&#x672C;&#x8EAB;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params"></span>)</span>{};</div><div class="line">Box.prototype = {</div><div class="line">	<span class="keyword">constructor</span>:Box</div><div class="line">};</div></pre></td></tr></table></figure>
+<p>PS&#xFF1A;&#x5B57;&#x9762;&#x91CF;&#x65B9;&#x5F0F;&#x4E3A;&#x4EC0;&#x4E48;constructor&#x4F1A;&#x6307;&#x5411;Object&#xFF1F;&#x56E0;&#x4E3A;Box.prototype={};&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x5176;&#x5B9E;<br>&#x5C31;&#x662F;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#x3002;&#x800C;&#x6BCF;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5C31;&#x4F1A;&#x540C;&#x65F6;&#x521B;&#x5EFA;&#x5B83;prototype&#xFF0C;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4E5F;&#x4F1A;&#x81EA;<br>&#x52A8;&#x83B7;&#x53D6;constructor&#x5C5E;&#x6027;&#x3002; &#x6240;&#x4EE5;&#xFF0C; &#x65B0;&#x5BF9;&#x8C61;&#x7684;constructor&#x91CD;&#x5199;&#x4E86;Box&#x539F;&#x6765;&#x7684;constructor&#xFF0C; &#x56E0;&#x6B64;&#x4F1A;<br>&#x6307;&#x5411;&#x65B0;&#x5BF9;&#x8C61;&#xFF0C;&#x90A3;&#x4E2A;&#x65B0;&#x5BF9;&#x8C61;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9ED8;&#x8BA4;&#x4E3A;Object&#x3002;<br>&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x91CD;&#x5199;&#x539F;&#x578B;&#x65F6;,&#x4F1A;&#x5207;&#x65AD;&#x539F;&#x6765;&#x7684;&#x539F;&#x578B;,&#x4E0D;&#x4FDD;&#x7559;&#x4E4B;&#x524D;&#x7684;&#x5C5E;&#x6027;&#x65B9;&#x6CD5;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params"></span>)</span>{};</div><div class="line">Box.prototype = {</div><div class="line">	run:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">		<span class="keyword">return</span> <span class="string">&apos;&#x8FD0;&#x884C;&#x4E2D;...&apos;</span></div><div class="line">	}</div><div class="line">}</div><div class="line">Box.prototype = {</div><div class="line">	age:<span class="number">21</span></div><div class="line">}</div><div class="line"><span class="keyword">var</span> box = <span class="keyword">new</span> Box();</div><div class="line">alert(box.run());		<span class="comment">//&#x62A5;&#x9519; box.run is not a function</span></div></pre></td></tr></table></figure></p>
+<h4 id="&#x539F;&#x578B;&#x7684;&#x4F18;&#x7F3A;&#x70B9;"><a href="#&#x539F;&#x578B;&#x7684;&#x4F18;&#x7F3A;&#x70B9;" class="headerlink" title="&#x539F;&#x578B;&#x7684;&#x4F18;&#x7F3A;&#x70B9;"></a>&#x539F;&#x578B;&#x7684;&#x4F18;&#x7F3A;&#x70B9;</h4><p>&#x539F;&#x578B;&#x4E5F;&#x6709;&#x7F3A;&#x70B9;,&#x5B83;&#x7701;&#x7565;&#x4E86;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4F20;&#x53C2;&#x521D;&#x59CB;&#x5316;&#x8FD9;&#x4E2A;&#x6B65;&#x9AA4;<strong>&#x4F8B;:(this.age = age)</strong>&#xFF0C;&#x5BFC;&#x81F4;&#x4E86;&#x521D;&#x59CB;&#x5316;&#x7684;&#x503C;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;,&#x800C;&#x8FD9;&#x4E5F;&#x662F;&#x4ED6;&#x6700;&#x5927;&#x7684;&#x4F18;&#x70B9;,&#x90A3;&#x5C31;&#x662F;&#x5171;&#x4EAB;</p>
+<p>&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;,&#x539F;&#x578B;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x5982;&#x679C;&#x5305;&#x542B; <strong>&#x5F15;&#x7528;&#x7C7B;&#x578B;</strong> ,&#x5C31;&#x5B58;&#x5728;&#x4E00;&#x5B9A;&#x7684;&#x95EE;&#x9898;&#x4E86;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params"></span>)</span>{};</div><div class="line">Box.prototype = {</div><div class="line">	<span class="keyword">constructor</span>:Box,</div><div class="line">	age:21,</div><div class="line">	name:&apos;zkh&apos;,</div><div class="line">	family:[&apos;&#x7238;&#x7238;&apos;,&apos;&#x5988;&#x5988;&apos;,&apos;&#x54E5;&#x54E5;&apos;],</div><div class="line">	run:function(){</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age + <span class="keyword">this</span>.family;</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> box1 = <span class="keyword">new</span> Box();	</div><div class="line">box1.family.push(<span class="string">&apos;&#x5F1F;&#x5F1F;&apos;</span>);</div><div class="line">alert(box1.run());		<span class="comment">//zkh21&#x7238;&#x7238;,&#x5988;&#x5988;,&#x54E5;&#x54E5;,&#x5F1F;&#x5F1F;  &#x5728;&#x5B9E;&#x4F8B;&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x5F1F;&#x5F1F;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> box2 = <span class="keyword">new</span> Box();</div><div class="line"><span class="built_in">console</span>.log(box2.run());<span class="comment">//zkh21&#x7238;&#x7238;,&#x5988;&#x5988;,&#x54E5;&#x54E5;,&#x5F1F;&#x5F1F; &#x5B9E;&#x4F8B;&#x5316;&#x540E;&#x7684;box2&#x4E2D;&#x4E5F;&#x6709;&#x4E86;&apos;&#x5F1F;&#x5F1F;&apos;</span></div></pre></td></tr></table></figure>
+<h4 id="&#x7EC4;&#x5408;&#x6784;&#x9020;&#x51FD;&#x6570;-&#x539F;&#x578B;&#x6A21;&#x5F0F;"><a href="#&#x7EC4;&#x5408;&#x6784;&#x9020;&#x51FD;&#x6570;-&#x539F;&#x578B;&#x6A21;&#x5F0F;" class="headerlink" title="&#x7EC4;&#x5408;&#x6784;&#x9020;&#x51FD;&#x6570;+&#x539F;&#x578B;&#x6A21;&#x5F0F;"></a>&#x7EC4;&#x5408;&#x6784;&#x9020;&#x51FD;&#x6570;+&#x539F;&#x578B;&#x6A21;&#x5F0F;</h4><p>&#x9488;&#x5BF9;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4F20;&#x53C2;&#x548C;&#x5171;&#x4EAB;&#x7684;&#x95EE;&#x9898;,&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7EC4;&#x5408;&#x6784;&#x9020;&#x51FD;&#x6570;+&#x539F;&#x578B;&#x6A21;&#x5F0F;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name,age</span>)</span>{	<span class="comment">//&#x4E0D;&#x5171;&#x4EAB;&#x7684;&#x4F7F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;</span></div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="keyword">this</span>.family = [<span class="string">&apos;&#x7238;&#x7238;&apos;</span>,<span class="string">&apos;&#x5988;&#x5988;&apos;</span>,<span class="string">&apos;&#x54E5;&#x54E5;&apos;</span>];</div><div class="line">};</div><div class="line">Box.prototype = {	<span class="comment">//&#x5171;&#x4EAB;&#x7684;&#x4F7F;&#x7528;&#x539F;&#x578B;&#x6A21;&#x5F0F;</span></div><div class="line">	<span class="keyword">constructor</span>:Box,</div><div class="line">	run:function(){</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age + <span class="keyword">this</span>.family;</div><div class="line">	}</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> box1 = <span class="keyword">new</span> Box();	</div><div class="line">box1.family.push(<span class="string">&apos;&#x5F1F;&#x5F1F;&apos;</span>);</div><div class="line">alert(box1.run());		<span class="comment">//zkh21&#x7238;&#x7238;,&#x5988;&#x5988;,&#x54E5;&#x54E5;,&#x5F1F;&#x5F1F;  &#x5728;&#x5B9E;&#x4F8B;&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x5F1F;&#x5F1F;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> box2 = <span class="keyword">new</span> Box();</div><div class="line"><span class="built_in">console</span>.log(box2.run());<span class="comment">//zkh21&#x7238;&#x7238;,&#x5988;&#x5988;,&#x54E5;&#x54E5; &#x5373;&#x505A;&#x5230;&#x516C;&#x6709;&#x7684;&#x5171;&#x4EAB;,&#x6709;&#x505A;&#x5230;&#x79C1;&#x6709;&#x7684;&#x72EC;&#x7ACB;&#x8BBE;&#x7F6E;</span></div></pre></td></tr></table></figure>
+<h4 id="&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;"><a href="#&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;" class="headerlink" title="&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;"></a>&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;</h4><p>&#x539F;&#x578B;&#x6A21;&#x5F0F;&#x4E2D;,&#x65E0;&#x8BBA;&#x662F;&#x5426;&#x8C03;&#x7528;&#x4E86;&#x539F;&#x578B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;,&#x4ED6;&#x90FD;&#x4F1A;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;,&#x800C;&#x4E14;&#x6784;&#x9020;&#x51FD;&#x6570;+&#x539F;&#x578B;&#x90E8;&#x5206;&#x6709;&#x4E9B;&#x5947;&#x602A;,&#x6700;&#x597D;&#x5C31;&#x662F;&#x628A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;&#x539F;&#x578B;&#x5C01;&#x88C5;&#x5728;&#x4E00;&#x8D77;,&#x8FD9;&#x65F6;&#x5019;<strong>&#x52A8;&#x6001;&#x539F;&#x578B;&#x6A21;&#x5F0F;</strong>&#x5C31;&#x8D77;&#x4F5C;&#x7528;&#x4E86;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name,age</span>)</span>{	<span class="comment">//&#x6240;&#x6709;&#x4FE1;&#x606F;&#x5C01;&#x88C5;&#x5728;&#x51FD;&#x6570;&#x4F53;&#x5185;</span></div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="keyword">this</span>.run!=<span class="string">&apos;Function&apos;</span>){	<span class="comment">//&#x7B2C;&#x4E00;&#x6B21;&#x521D;&#x59CB;&#x5316;&#x540E;&#x4E4B;&#x540E;&#x5C31;&#x4E0D;&#x521D;&#x59CB;&#x5316;&#x4E86;</span></div><div class="line">		alert(<span class="string">&quot;&#x7B2C;&#x4E00;&#x6B21;&#x521D;&#x59CB;&#x5316;&quot;</span>);			<span class="comment">//&#x6D4B;&#x8BD5;&#x7528;</span></div><div class="line">		Box.prototype.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{	<span class="comment">//&#x5E76;&#x4E14;&#x8FBE;&#x5230;&#x539F;&#x578B;&#x65B9;&#x6CD5;&#x7684;&#x5171;&#x4EAB;</span></div><div class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age + <span class="string">&apos;&#x8FD0;&#x884C;&#x4E2D;...&apos;</span>;</div><div class="line">		};</div><div class="line">	}</div><div class="line">}</div><div class="line"><span class="keyword">var</span> box1 = <span class="keyword">new</span> Box(<span class="string">&apos;zkh&apos;</span>,<span class="number">21</span>);</div><div class="line">alert(box1.run());			<span class="comment">//&#x7B2C;&#x4E00;&#x6B21;&#x521D;&#x59CB;&#x5316; zkh21&#x8FD0;&#x884C;&#x4E2D;...</span></div><div class="line">alert(box1.run());			<span class="comment">// &#x65E0;&#x5F39;&#x51FA;&#x7B2C;&#x4E00;&#x6B21;&#x521D;&#x59CB;&#x5316; zkh21&#x8FD0;&#x884C;&#x4E2D;...</span></div><div class="line"><span class="keyword">var</span> box2 = <span class="keyword">new</span> Box();</div><div class="line">alert(box2.run());</div></pre></td></tr></table></figure>
+<p>&#x901A;&#x8FC7;&#x4EE5;&#x4E0A;&#x65B9;&#x5F0F;,&#x6211;&#x4EEC;&#x505A;&#x5230;&#x4E86;&#x5C01;&#x88C5;,&#x5171;&#x4EAB;&#x65B9;&#x6CD5;&#x7684;&#x4E00;&#x6B21;&#x58F0;&#x660E;&#x5E76;&#x5171;&#x4EAB;</p>
+<h4 id="&#x5BC4;&#x751F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;"><a href="#&#x5BC4;&#x751F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;" class="headerlink" title="&#x5BC4;&#x751F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;"></a>&#x5BC4;&#x751F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;</h4><p>&#x5BC4;&#x751F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5C31;&#x662F; &#x5DE5;&#x5382;&#x6A21;&#x5F0F; + &#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;&#xFF0C;&#x9664;&#x975E;&#x4EE5;&#x4E0A;&#x65B9;&#x6CD5;&#x5747;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x9700;&#x6C42;&#xFF0C;&#x5426;&#x5219;&#x4E0D;&#x8981;&#x4F7F;&#x7528;<br>&#x90A3;&#x4E48;&#xFF0C;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x5728;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#x7684;&#x591A;&#x5462;&#xFF1F;<br>&#x5047;&#x8BBE;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x989D;&#x5916;&#x65B9;&#x6CD5;&#x7684;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x3002;&#x7531;&#x4E8E;&#x4E0D;&#x5EFA;&#x8BAE;&#x76F4;&#x63A5;&#x4F7F;&#x7528;String.protoype.addString&#xFF08;&#x56E0;&#x4E3A;&#x4E0D;&#x5229;&#x4E8E;&#x7EF4;&#x62A4;&#xFF0C;&#x8FD8;&#x53EF;&#x80FD;&#x4E0E;&#x539F;&#x5C01;&#x88C5;&#x51FD;&#x6570;&#x9020;&#x6210;&#x51B2;&#x7A81;&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5BC4;&#x751F;&#x6A21;&#x5F0F;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myString</span>(<span class="params">string</span>)</span>{</div><div class="line">	<span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(string);</div><div class="line">	str.addString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span> + <span class="string">&apos;&#x88AB;&#x6DFB;&#x52A0;&#x4E86;&apos;</span>;</div><div class="line">	};</div><div class="line">	<span class="keyword">return</span> str;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> box = <span class="keyword">new</span> myString(<span class="string">&apos;zkh&apos;</span>);		<span class="comment">//&#x6BD4;&#x76F4;&#x63A5;&#x5728;&#x5F15;&#x7528;&#x539F;&#x578B;&#x4E0A;&#x6DFB;&#x52A0;&#x7E41;&#x7410;&#x7684;&#x591A;</span></div><div class="line">alert(box.addString());</div></pre></td></tr></table></figure></p>
+<h4 id="&#x7A33;&#x59A5;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;"><a href="#&#x7A33;&#x59A5;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;" class="headerlink" title="&#x7A33;&#x59A5;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;"></a>&#x7A33;&#x59A5;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;</h4><p>&#x5728;&#x4E00;&#x4E9B;&#x5B89;&#x5168;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x6BD4;&#x5982;&#x7981;&#x6B62; <strong>this</strong> &#x548C; <strong>new</strong> &#x7684;</p>
+<ul>
+<li><strong>this</strong> &#x6307;&#x7684;&#x662F;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x4E0D;&#x4F7F;&#x7528;this</li>
+<li><strong>new</strong>  &#x6307;&#x7684;&#x662F;&#x5728;&#x5916;&#x90E8;&#x5B9E;&#x4F8B;&#x5316;&#x4E0D;&#x9002;&#x7528;new</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name,age</span>)</span>{</div><div class="line">	<span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">	obj.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">		<span class="keyword">return</span> name + age + <span class="string">&apos;&#x8FD0;&#x884C;&#x4E2D;...&apos;</span>;<span class="comment">//&#x76F4;&#x63A5;&#x6253;&#x5370;&#x53C2;&#x6570;</span></div><div class="line">	};</div><div class="line">	<span class="keyword">return</span> obj;</div><div class="line">}</div><div class="line"><span class="keyword">var</span> box = Box(<span class="string">&apos;zkh&apos;</span>,<span class="number">21</span>);				<span class="comment">//&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x51FD;&#x6570;</span></div><div class="line">alert(box.run());</div></pre></td></tr></table></figure>
+<p>PS&#xFF1A;&#x611F;&#x89C9;&#x8FD9;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x7528;&#x7684;&#x4E0D;&#x591A; = =</p>
+<h2 id="&#x7EE7;&#x627F;"><a href="#&#x7EE7;&#x627F;" class="headerlink" title="&#x7EE7;&#x627F;"></a>&#x7EE7;&#x627F;</h2><h3 id="ECMAScript&#x7EE7;&#x627F;&#x7684;&#x5B9E;&#x73B0;"><a href="#ECMAScript&#x7EE7;&#x627F;&#x7684;&#x5B9E;&#x73B0;" class="headerlink" title="ECMAScript&#x7EE7;&#x627F;&#x7684;&#x5B9E;&#x73B0;"></a>ECMAScript&#x7EE7;&#x627F;&#x7684;&#x5B9E;&#x73B0;</h3><p>&#x4E00;&#x822C;&#x6B63;&#x7EDF;&#x7684;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x8BED;&#x8A00;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;&#x6709;&#x4E24;&#x79CD; <strong>&#x63A5;&#x53E3;&#x5B9E;&#x73B0;</strong> &#x548C; <strong>&#x7EE7;&#x627F;</strong><br>&#x800C;ECMAScript <strong>&#x53EA;&#x652F;&#x6301;&#x7EE7;&#x627F;</strong> &#xFF0C;&#x800C;&#x7EE7;&#x627F;&#x7684;&#x5B9E;&#x73B0;&#x901A;&#x8FC7; <strong>&#x539F;&#x578B;&#x94FE;</strong> &#x6765;&#x5B9E;&#x73B0;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">&apos;Lee&apos;</span>;</div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Desk</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">this</span>.age = <span class="number">100</span>;</div><div class="line">}</div><div class="line">Desk.prototype = <span class="keyword">new</span> Box();	<span class="comment">//&#x5B9E;&#x73B0;&#x4E86;&#x539F;&#x578B;&#x94FE;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> desk = <span class="keyword">new</span> Desk();</div><div class="line">alert(desk.name);			<span class="comment">//Lee</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Table</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">this</span>.level = <span class="string">&apos;AAAAA&apos;</span></div><div class="line">}</div><div class="line">Table.prototype = <span class="keyword">new</span> Desk();<span class="comment">//&#x540C;&#x65F6;&#x7EE7;&#x627F;&#x4E86;Desk&#x548C;Box</span></div><div class="line"><span class="keyword">var</span> table = <span class="keyword">new</span> Table();</div><div class="line">alert(table.name + table.age);</div></pre></td></tr></table></figure></p>
+<p><img src="/2016/05/19/JavaScript-&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x4E0E;&#x539F;&#x578B;/pic_002.png" alt="&#x539F;&#x578B;&#x94FE;&#x7EE7;&#x627F;&#x6D41;&#x7A0B;&#x56FE;" title="&#x539F;&#x578B;&#x94FE;&#x7EE7;&#x627F;&#x6D41;&#x7A0B;&#x56FE;"></p>
+<p>&#x4EE5;&#x4E0A;&#x5B9E;&#x4F8B;&#x4E2D;&#x8FD8;&#x7F3A;&#x5C11;&#x4E00;&#x4E2A;&#x73AF;&#x8282;&#xFF0C;&#x5C31;&#x662F;&#x6240;&#x6709; <strong>&#x6784;&#x9020;&#x51FD;&#x6570;&#x90FD;&#x7EE7;&#x627F;&#x4E8E;Object&#x7C7B;</strong> &#xFF0C;&#x800C;&#x7EE7;&#x627F;Object&#x662F;&#x81EA;&#x52A8;&#x5B8C;&#x6210;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x6DFB;&#x52A0;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">&apos;Lee&apos;</span>;</div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Desk</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">this</span>.age = <span class="number">100</span>;</div><div class="line">}</div><div class="line">Desk.prototype = <span class="keyword">new</span> Box();	<span class="comment">//&#x5B9E;&#x73B0;&#x4E86;&#x539F;&#x578B;&#x94FE;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> desk = <span class="keyword">new</span> Desk();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Table</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">this</span>.level = <span class="string">&apos;AAAAA&apos;</span></div><div class="line">}</div><div class="line">Table.prototype = <span class="keyword">new</span> Desk();<span class="comment">//&#x540C;&#x65F6;&#x7EE7;&#x627F;&#x4E86;Desk&#x548C;Box</span></div><div class="line"><span class="keyword">var</span> table = <span class="keyword">new</span> Table();</div><div class="line"></div><div class="line">alert(Desk <span class="keyword">instanceof</span> <span class="built_in">Object</span>);		<span class="comment">//true</span></div><div class="line">alert(Desk <span class="keyword">instanceof</span> Table);		<span class="comment">//false Desk&#x662F;Table&#x7684;&#x8D85;&#x7C7B;</span></div></pre></td></tr></table></figure></p>
+<h3 id="&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;-&#x5BF9;&#x8C61;&#x5192;&#x5145;"><a href="#&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;-&#x5BF9;&#x8C61;&#x5192;&#x5145;" class="headerlink" title="&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;(&#x5BF9;&#x8C61;&#x5192;&#x5145;)"></a>&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;(&#x5BF9;&#x8C61;&#x5192;&#x5145;)</h3><p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3; <strong>&#x5F15;&#x7528;&#x5171;&#x4EAB;</strong> &#x548C; <strong>&#x5B50;&#x7C7B;&#x65E0;&#x6CD5;&#x7ED9;&#x7236;&#x7C7B;&#x4F20;&#x53C2;</strong> &#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x4E00;&#x79CD;&#x53EB; <strong>&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;</strong> &#x7684;&#x6280;&#x672F;&#xFF0C;&#x6216;&#x8005;&#x79F0;&#x4E3A; <strong>&#x5BF9;&#x8C61;&#x5192;&#x5145;</strong> &#x7684;&#x6280;&#x672F;&#x6765;&#x89E3;&#x51B3;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">age</span>)</span>{</div><div class="line">	<span class="keyword">this</span>.name = [<span class="string">&apos;zkhzz&apos;</span>,<span class="string">&apos;ABCD&apos;</span>,<span class="string">&apos;AAAA&apos;</span>];</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Desk</span>(<span class="params">age</span>)</span>{</div><div class="line">	Box.call(<span class="keyword">this</span>,age);			<span class="comment">//&#x5BF9;&#x8C61;&#x5192;&#x5145;&#xFF0C;&#x7ED9;&#x8D85;&#x7C7B;&#x4F20;&#x53C2;</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> desk = <span class="keyword">new</span> Desk(<span class="number">200</span>);</div><div class="line">alert(desk.age + desk.name);</div><div class="line">desk.name.push(<span class="string">&apos;DDDD&apos;</span>);</div><div class="line">alert(desk.name);				<span class="comment">//&#x6DFB;&#x52A0;&#x7684;&#x65B0;&#x6570;&#x636E;&#x53EA;&#x7ED9;&#x4E86;desk</span></div></pre></td></tr></table></figure></p>
+<h3 id="&#x7EC4;&#x5408;&#x7EE7;&#x627F;-&#x539F;&#x578B;&#x94FE;-&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;"><a href="#&#x7EC4;&#x5408;&#x7EE7;&#x627F;-&#x539F;&#x578B;&#x94FE;-&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;" class="headerlink" title="&#x7EC4;&#x5408;&#x7EE7;&#x627F;(&#x539F;&#x578B;&#x94FE; + &#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;)"></a>&#x7EC4;&#x5408;&#x7EE7;&#x627F;(&#x539F;&#x578B;&#x94FE; + &#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;)</h3><p>&#x501F;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x867D;&#x7136;&#x89E3;&#x51B3;&#x4E86;&#x521A;&#x624D;&#x4E24;&#x79CD;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x539F;&#x578B;&#xFF0C;&#x4E5F;&#x65E0;&#x6CD5;&#x590D;&#x7528;&#x3002;&#x8FD9;&#x65F6;&#x5019; <strong>&#x7EC4;&#x5408;&#x7EE7;&#x627F;</strong> &#x6A21;&#x5F0F;&#x767B;&#x573A;&#x4E86;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">age</span>)</span>{</div><div class="line">	<span class="keyword">this</span>.name = [<span class="string">&apos;zkhzz&apos;</span>,<span class="string">&apos;ABCD&apos;</span>,<span class="string">&apos;AAAA&apos;</span>];</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">}</div><div class="line">Box.prototype.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="keyword">this</span>.age;</div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Desk</span>(<span class="params">age</span>)</span>{</div><div class="line">	Box.call(<span class="keyword">this</span>,age);			<span class="comment">//&#x5BF9;&#x8C61;&#x5192;&#x5145;&#xFF0C;&#x7ED9;&#x8D85;&#x7C7B;&#x4F20;&#x53C2;</span></div><div class="line">}</div><div class="line"></div><div class="line">Desk.prototype = <span class="keyword">new</span> Box();		<span class="comment">//&#x539F;&#x578B;&#x7EE7;&#x627F;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> desk = <span class="keyword">new</span> Desk(<span class="number">100</span>);</div><div class="line">alert(desk.run());</div></pre></td></tr></table></figure></p>
+<h3 id="&#x539F;&#x578B;&#x5F0F;&#x7EE7;&#x627F;"><a href="#&#x539F;&#x578B;&#x5F0F;&#x7EE7;&#x627F;" class="headerlink" title="&#x539F;&#x578B;&#x5F0F;&#x7EE7;&#x627F;"></a>&#x539F;&#x578B;&#x5F0F;&#x7EE7;&#x627F;</h3><p>&#x8FD9;&#x79CD;&#x7EE7;&#x627F;&#x501F;&#x52A9;&#x539F;&#x578B;&#xFF0C;&#x540C;&#x65F6;&#x57FA;&#x4E8E;&#x5DF2;&#x6709;&#x7684;&#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x4E0D;&#x5FC5;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">obj</span>(<span class="params">o</span>)</span>{	<span class="comment">//&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x5B57;&#x9762;&#x91CF;&#x51FD;&#x6570;</span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>{};	<span class="comment">//&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6784;&#x9020;</span></div><div class="line">	F.prototype = o;<span class="comment">//&#x5C06;&#x5B57;&#x9762;&#x91CF;&#x51FD;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;</span></div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> F();	<span class="comment">//&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x51FA;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> box = {				<span class="comment">//&#x5B57;&#x9762;&#x91CF;&#x5BF9;&#x8C61;</span></div><div class="line">	name:<span class="string">&apos;zkhzz&apos;</span>,</div><div class="line">	arr : [<span class="string">&apos;123&apos;</span>,<span class="string">&apos;321&apos;</span>,<span class="string">&apos;213&apos;</span>]</div><div class="line">};</div><div class="line">	</div><div class="line"><span class="keyword">var</span> box1 = obj(box);	<span class="comment">//&#x4F20;&#x9012;</span></div><div class="line">alert(box1.name);		<span class="comment">//zkhzz</span></div><div class="line">box1.name = <span class="string">&apos;Lee&apos;</span>;</div><div class="line">alert(box1.name);		<span class="comment">//Lee</span></div><div class="line">alert(box1.arr);		<span class="comment">//123,321,213</span></div><div class="line">box1.arr.push(<span class="string">&apos;abc&apos;</span>);</div><div class="line">alert(box1.arr);		<span class="comment">//123,321,213,abc</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> box2 = obj(box);	</div><div class="line">alert(box2.arr);		<span class="comment">//123,321,213,abc,&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x5171;&#x4EAB;&#x4E86;</span></div></pre></td></tr></table></figure></p>
+<h3 id="&#x5BC4;&#x751F;&#x5F0F;&#x7EE7;&#x627F;"><a href="#&#x5BC4;&#x751F;&#x5F0F;&#x7EE7;&#x627F;" class="headerlink" title="&#x5BC4;&#x751F;&#x5F0F;&#x7EE7;&#x627F;"></a>&#x5BC4;&#x751F;&#x5F0F;&#x7EE7;&#x627F;</h3><p><strong>&#x5BC4;&#x751F;&#x5F0F;&#x7EE7;&#x627F;</strong> &#x5C31;&#x662F;&#x628A; <strong>&#x539F;&#x578B;&#x5F0F;&#x7EE7;&#x627F;</strong> + <strong>&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</strong>,&#x76EE;&#x7684;&#x662F;&#x4E3A;&#x4E86;&#x5C01;&#x88C5;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x7684;&#x8FC7;&#x7A0B;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">obj</span>(<span class="params">o</span>)</span>{	<span class="comment">//&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x5B57;&#x9762;&#x91CF;&#x51FD;&#x6570;</span></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>{};	<span class="comment">//&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6784;&#x9020;</span></div><div class="line">	F.prototype = o;<span class="comment">//&#x5C06;&#x5B57;&#x9762;&#x91CF;&#x51FD;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x539F;&#x578B;</span></div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> F();	<span class="comment">//&#x6700;&#x7EC8;&#x8FD4;&#x56DE;&#x51FA;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> box = {				<span class="comment">//&#x5B57;&#x9762;&#x91CF;&#x5BF9;&#x8C61;</span></div><div class="line">	name:<span class="string">&apos;zkhzz&apos;</span>,</div><div class="line">	arr : [<span class="string">&apos;123&apos;</span>,<span class="string">&apos;321&apos;</span>,<span class="string">&apos;213&apos;</span>]</div><div class="line">};</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createO</span>(<span class="params">o</span>)</span>{	<span class="comment">//&#x5C01;&#x88C5;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;</span></div><div class="line">	<span class="keyword">var</span> f = obj(<span class="number">0</span>);</div><div class="line">	f.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.arr;<span class="comment">//&#x540C;&#x6837;&#x4F1A;&#x5171;&#x4EAB;&#x5F15;&#x7528;</span></div><div class="line">	};</div><div class="line">	<span class="keyword">return</span> f;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="&#x5BC4;&#x751F;&#x7EC4;&#x5408;&#x7EE7;&#x627F;"><a href="#&#x5BC4;&#x751F;&#x7EC4;&#x5408;&#x7EE7;&#x627F;" class="headerlink" title="&#x5BC4;&#x751F;&#x7EC4;&#x5408;&#x7EE7;&#x627F;"></a>&#x5BC4;&#x751F;&#x7EC4;&#x5408;&#x7EE7;&#x627F;</h3><p>&#x7EC4;&#x5408;&#x5F0F;&#x7EE7;&#x627F;&#x662F;&#x6211;&#x4EEC;&#x6BD4;&#x8F83;&#x5E38;&#x7528;&#x7684;&#xFF0C;&#x4F46;&#x8D85;&#x7C7B;&#x4F7F;&#x7528;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x4E24;&#x6B21;&#x3002;&#x4E00;&#x6B21;&#x662F; <strong>&#x521B;&#x5EFA;&#x5B50;&#x7C7B;&#x578B;&#x65F6;</strong> &#xFF0C; &#x4E00;&#x6B21;&#x662F;&#x5728; <strong>&#x5B50;&#x7C7B;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x5185;&#x90E8;*</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">age</span>)</span>{</div><div class="line">	<span class="keyword">this</span>.name = [<span class="string">&apos;zkhzz&apos;</span>,<span class="string">&apos;ABCD&apos;</span>,<span class="string">&apos;AAAA&apos;</span>];</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Desk</span>(<span class="params">age</span>)</span>{</div><div class="line">	Box.call(<span class="keyword">this</span>,age);			<span class="comment">//&#x7B2C;&#x4E8C;&#x6B21;&#x8C03;&#x7528;Box</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">var</span> desk = <span class="keyword">new</span> Desk(<span class="number">200</span>);</div><div class="line"></div><div class="line">Desk.prototype = <span class="keyword">new</span> Box();		<span class="comment">//&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;Box</span></div></pre></td></tr></table></figure></p>
+<p><strong>&#x5BC4;&#x751F;&#x7EC4;&#x5408;&#x7EE7;&#x627F;</strong>&#x89E3;&#x51B3;&#x4E24;&#x6B21;&#x8C03;&#x7528;&#x7684;&#x95EE;&#x9898;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">obj</span>(<span class="params">o</span>)</span>{</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>{};</div><div class="line">	F.prototype = o;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inPrototype</span>(<span class="params">box,desk</span>)</span>{</div><div class="line">	<span class="keyword">var</span> f = obj(box.prototype);</div><div class="line">	f.constructor =  desk;</div><div class="line">	desk.prototype = f;</div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Box</span>(<span class="params">name</span>)</span>{</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.arr = [<span class="string">&apos;abc&apos;</span>,<span class="string">&apos;cba&apos;</span>,<span class="string">&apos;bac&apos;</span>];</div><div class="line">}</div><div class="line">Box.prototype.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">};</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Desk</span>(<span class="params">name,age</span>)</span>{</div><div class="line">	Box.call(<span class="keyword">this</span>,name);</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">}</div><div class="line"></div><div class="line"></div><div class="line">inPrototype(Box,Desk);		<span class="comment">//&#x8FD9;&#x91CC;&#x5B9E;&#x73B0;&#x4E86;&#x7EE7;&#x627F;</span></div><div class="line"></div><div class="line">alert(desk.arr);			<span class="comment">//undefined</span></div><div class="line">alert(desk.run());			<span class="comment">//&#x53EA;&#x5171;&#x4EAB;&#x4E86;&#x65B9;&#x6CD5;</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> desk2 = <span class="keyword">new</span> Desk(<span class="string">&apos;Lee&apos;</span>,<span class="number">200</span>);</div><div class="line">alert(desk.arr);			<span class="comment">//&#x89E3;&#x51B3;&#x4E86;&#x5F15;&#x7528;&#x7684;&#x95EE;&#x9898;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/原型/" rel="tag">#原型</a>
+          
+            <a href="/tags/面向对象/" rel="tag">#面向对象</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/18/github-Hexo个性化搭载个人blog/" rel="next" title="github+Hexo个性化搭载个人blog">
+                <i class="fa fa-chevron-left"></i> github+Hexo个性化搭载个人blog
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/24/JavaScript-匿名函数和闭包/" rel="prev" title="JavaScript-匿名函数和闭包">
+                JavaScript-匿名函数和闭包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/19/JavaScript-面向对象与原型/"
+           data-title="JavaScript面向对象与原型" data-url="http://zhangkaihongzkh.github.io/2016/05/19/JavaScript-面向对象与原型/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Zkhzz" />
+          <p class="site-author-name" itemprop="name">Zkhzz</p>
+          <p class="site-description motion-element" itemprop="description">Never Enough</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangkaihongzkh" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhang-kai-hong-50" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建对象"><span class="nav-number">1.</span> <span class="nav-text">创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本模式"><span class="nav-number">1.1.</span> <span class="nav-text">基本模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂模式"><span class="nav-number">1.2.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数模式"><span class="nav-number">1.3.</span> <span class="nav-text">构造函数模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">2.</span> <span class="nav-text">原型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原型的基本创建"><span class="nav-number">2.1.</span> <span class="nav-text">原型的基本创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型的组成"><span class="nav-number">2.2.</span> <span class="nav-text">原型的组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以字面量的形式创建原型"><span class="nav-number">2.3.</span> <span class="nav-text">以字面量的形式创建原型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本的创建方法"><span class="nav-number">2.3.1.</span> <span class="nav-text">基本的创建方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原型的优缺点"><span class="nav-number">2.3.2.</span> <span class="nav-text">原型的优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组合构造函数-原型模式"><span class="nav-number">2.3.3.</span> <span class="nav-text">组合构造函数+原型模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态原型模式"><span class="nav-number">2.3.4.</span> <span class="nav-text">动态原型模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#寄生构造函数模式"><span class="nav-number">2.3.5.</span> <span class="nav-text">寄生构造函数模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#稳妥构造函数模式"><span class="nav-number">2.3.6.</span> <span class="nav-text">稳妥构造函数模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript继承的实现"><span class="nav-number">3.1.</span> <span class="nav-text">ECMAScript继承的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#借用构造函数-对象冒充"><span class="nav-number">3.2.</span> <span class="nav-text">借用构造函数(对象冒充)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合继承-原型链-借用构造函数"><span class="nav-number">3.3.</span> <span class="nav-text">组合继承(原型链 + 借用构造函数)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型式继承"><span class="nav-number">3.4.</span> <span class="nav-text">原型式继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄生式继承"><span class="nav-number">3.5.</span> <span class="nav-text">寄生式继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄生组合继承"><span class="nav-number">3.6.</span> <span class="nav-text">寄生组合继承</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zkhzz</span>
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zkhzz"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

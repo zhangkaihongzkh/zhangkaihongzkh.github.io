@@ -1,0 +1,668 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="LESS," />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x8003;&amp;#x62C9;&amp;#x5DE5;&amp;#x5177;&amp;#x4F7F;&amp;#x7528; 2.LESS&amp;#x76F8;&amp;#x5173;&amp;#x8BED;&amp;#x6CD5;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LESS-学习笔记">
+<meta property="og:url" content="http://zhangkaihongzkh.github.io/2016/07/25/LESS-学习笔记/index.html">
+<meta property="og:site_name" content="zkhzz 's blog">
+<meta property="og:description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x8003;&amp;#x62C9;&amp;#x5DE5;&amp;#x5177;&amp;#x4F7F;&amp;#x7528; 2.LESS&amp;#x76F8;&amp;#x5173;&amp;#x8BED;&amp;#x6CD5;">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/25/LESS-学习笔记/pic_001.png">
+<meta property="og:updated_time" content="2016-08-12T14:25:19.879Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LESS-学习笔记">
+<meta name="twitter:description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x8003;&amp;#x62C9;&amp;#x5DE5;&amp;#x5177;&amp;#x4F7F;&amp;#x7528; 2.LESS&amp;#x76F8;&amp;#x5173;&amp;#x8BED;&amp;#x6CD5;">
+<meta name="twitter:image" content="http://zhangkaihongzkh.github.io/2016/07/25/LESS-学习笔记/pic_001.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> LESS-学习笔记 | zkhzz 's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zkhzz 's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                LESS-学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-25T11:03:00+08:00" content="2016-07-25">
+              2016-07-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/LESS基础语法/" itemprop="url" rel="index">
+                    <span itemprop="name">LESS基础语法</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/25/LESS-学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/25/LESS-学习笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          <span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+        
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x6458;&#x8981;:1.&#x8003;&#x62C9;&#x5DE5;&#x5177;&#x4F7F;&#x7528; 2.LESS&#x76F8;&#x5173;&#x8BED;&#x6CD5;<br><a id="more"></a></p>
+<h2 id="&#x8003;&#x62C9;&#x5DE5;&#x5177;&#x4F7F;&#x7528;"><a href="#&#x8003;&#x62C9;&#x5DE5;&#x5177;&#x4F7F;&#x7528;" class="headerlink" title="&#x8003;&#x62C9;&#x5DE5;&#x5177;&#x4F7F;&#x7528;"></a>&#x8003;&#x62C9;&#x5DE5;&#x5177;&#x4F7F;&#x7528;</h2><p>&#x4F18;&#x70B9;:&#x754C;&#x9762;&#x7F8E;&#x5316; &#x81EA;&#x52A8;&#x68C0;&#x9519; &#x652F;&#x6301;&#x4E2D;&#x6587;<br><img src="/2016/07/25/LESS-&#x5B66;&#x4E60;&#x7B14;&#x8BB0;/pic_001.png" alt="&#x8003;&#x62C9;&#x5DE5;&#x5177;)" title="&#x8003;&#x62C9;&#x5DE5;&#x5177;"></p>
+<h3 id="&#x5C06;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x62D6;&#x5165;&#x8003;&#x62C9;"><a href="#&#x5C06;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x62D6;&#x5165;&#x8003;&#x62C9;" class="headerlink" title="&#x5C06;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x62D6;&#x5165;&#x8003;&#x62C9;"></a>&#x5C06;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x62D6;&#x5165;&#x8003;&#x62C9;</h3><h3 id="&#x8BBE;&#x7F6E;&#x9879;&#x76EE;&#x7684;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;-&#x8FD8;&#x6709;&#x8F93;&#x51FA;&#x7684;&#x6587;&#x4EF6;&#x5F62;&#x5F0F;"><a href="#&#x8BBE;&#x7F6E;&#x9879;&#x76EE;&#x7684;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;-&#x8FD8;&#x6709;&#x8F93;&#x51FA;&#x7684;&#x6587;&#x4EF6;&#x5F62;&#x5F0F;" class="headerlink" title="&#x8BBE;&#x7F6E;&#x9879;&#x76EE;&#x7684;&#x8F93;&#x51FA;&#x8DEF;&#x5F84; &#x8FD8;&#x6709;&#x8F93;&#x51FA;&#x7684;&#x6587;&#x4EF6;&#x5F62;&#x5F0F;"></a>&#x8BBE;&#x7F6E;&#x9879;&#x76EE;&#x7684;&#x8F93;&#x51FA;&#x8DEF;&#x5F84; &#x8FD8;&#x6709;&#x8F93;&#x51FA;&#x7684;&#x6587;&#x4EF6;&#x5F62;&#x5F0F;</h3><h2 id="LESS&#x76F8;&#x5173;&#x8BED;&#x6CD5;"><a href="#LESS&#x76F8;&#x5173;&#x8BED;&#x6CD5;" class="headerlink" title="LESS&#x76F8;&#x5173;&#x8BED;&#x6CD5;"></a>LESS&#x76F8;&#x5173;&#x8BED;&#x6CD5;</h2><h3 id="LESS&#x6CE8;&#x91CA;"><a href="#LESS&#x6CE8;&#x91CA;" class="headerlink" title="LESS&#x6CE8;&#x91CA;"></a>LESS&#x6CE8;&#x91CA;</h3><h4 id=""><a href="#" class="headerlink" title="/ /"></a>/<em> </em>/</h4><p>CSS&#x548C;LESS</p>
+<h4 id="-1"><a href="#-1" class="headerlink" title="//"></a>//</h4><p>LESS &#x7528;&#x4E86;&#x8FD9;&#x4E2A;&#x7F16;&#x8BD1;&#x51FA;&#x7684;&#x5728;CSS&#x6587;&#x4EF6;&#x4E2D;&#x81EA;&#x52A8;&#x5FFD;&#x7565;&#xFF08;&#x4E0D;&#x518D;CSS&#x4E2D;&#x5F62;&#x6210;&#xFF09;</p>
+<h3 id="&#x53D8;&#x91CF;"><a href="#&#x53D8;&#x91CF;" class="headerlink" title="&#x53D8;&#x91CF;"></a>&#x53D8;&#x91CF;</h3><h3 id="&#x5B9A;&#x4E49;&#x53D8;&#x91CF;"><a href="#&#x5B9A;&#x4E49;&#x53D8;&#x91CF;" class="headerlink" title="&#x5B9A;&#x4E49;&#x53D8;&#x91CF;"></a>&#x5B9A;&#x4E49;&#x53D8;&#x91CF;</h3><p>&#x901A;&#x8FC7; <strong>@</strong> &#x7B26;&#x53F7;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;<br>&#x683C;&#x5F0F; <strong>@&#x53D8;&#x91CF;&#x540D;:xxx;</strong> &#x6CE8;&#x610F;&#x6709;&#x5206;&#x53F7;<br>LESS&#x4EE3;&#x7801;<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@max_width:</span><span class="number">300px</span>;</div><div class="line"><span class="variable">@max_height:</span><span class="number">300px</span>;</div><div class="line"></div><div class="line"><span class="selector-class">.box</span>{</div><div class="line">    <span class="attribute">width</span>: <span class="variable">@max_width</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="variable">@max_height</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#b5b5b5</span>;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#x540E;&#x7684;CSS&#x4EE3;&#x7801;<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>{</div><div class="line">    <span class="attribute">background</span>: red;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="selector-class">.box</span>{</div><div class="line">    <span class="attribute">width</span>: @max_width;</div><div class="line">    <span class="attribute">height</span>: @max_height;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#b5b5b5</span>;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="&#x6DF7;&#x5408;"><a href="#&#x6DF7;&#x5408;" class="headerlink" title="&#x6DF7;&#x5408;"></a>&#x6DF7;&#x5408;</h3><p>&#x76F8;&#x4F3C;&#x529F;&#x80FD;&#x7684; &#x53EF;&#x4EE5;&#x5D4C;&#x5957;&#x7C7B; &#x76F4;&#x63A5;&#x590D;&#x5236;&#x6574;&#x4E2A;CSS&#x6837;&#x5F0F;</p>
+<h4 id="&#x6DF7;&#x5408;&#x2013;&#x4E0D;&#x5E26;&#x53C2;&#x6570;"><a href="#&#x6DF7;&#x5408;&#x2013;&#x4E0D;&#x5E26;&#x53C2;&#x6570;" class="headerlink" title="&#x6DF7;&#x5408;&#x2013;&#x4E0D;&#x5E26;&#x53C2;&#x6570;"></a>&#x6DF7;&#x5408;&#x2013;&#x4E0D;&#x5E26;&#x53C2;&#x6570;</h4><p>&#x683C;&#x5F0F;&#xFF1A;<strong>&#x7C7B;&#x540D;{}</strong><br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x6DF7;&#x5408;--&#x4E0D;&#x5E26;&#x53C2;&#x6570;</span></div><div class="line"><span class="selector-class">.border</span>{</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eeeeee</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="selector-class">.box2</span>{</div><div class="line">    <span class="selector-class">.box</span>;</div><div class="line"></div><div class="line">    <span class="attribute">margin-left</span>: <span class="number">100px</span>;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#x540E;&#x7684;CSS&#x4EE3;&#x7801;<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> {</div><div class="line">  <span class="attribute">background</span>: red;</div><div class="line">}</div><div class="line"><span class="selector-class">.box</span> {</div><div class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#b5b5b5</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eeeeee</span>;</div><div class="line">}</div><div class="line"><span class="selector-class">.border</span> {</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eeeeee</span>;</div><div class="line">}</div><div class="line"><span class="selector-class">.box2</span> {</div><div class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#b5b5b5</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eeeeee</span>;</div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">100px</span>;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="&#x6DF7;&#x5408;&#x2013;&#x5E26;&#x53C2;&#x6570;"><a href="#&#x6DF7;&#x5408;&#x2013;&#x5E26;&#x53C2;&#x6570;" class="headerlink" title="&#x6DF7;&#x5408;&#x2013;&#x5E26;&#x53C2;&#x6570;"></a>&#x6DF7;&#x5408;&#x2013;&#x5E26;&#x53C2;&#x6570;</h4><p>&#x683C;&#x5F0F;&#xFF1A;<strong>&#x7C7B;&#x540D;(@&#x53D8;&#x91CF;&#x540D;){}</strong><br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* &#x6DF7;&#x5408;--&#x5E26;&#x53C2;&#x6570; */</span></div><div class="line"><span class="selector-class">.border_02</span>(<span class="variable">@border_width</span>){</div><div class="line">    <span class="attribute">border</span>: <span class="variable">@border_width</span> solid <span class="number">#bbbbbb</span>;</div><div class="line">}</div><div class="line"><span class="selector-class">.hunhe_02</span>{</div><div class="line">    <span class="selector-class">.border_02</span>(<span class="number">30px</span>);</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="&#x6DF7;&#x5408;&#x2013;&#x5E26;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;"><a href="#&#x6DF7;&#x5408;&#x2013;&#x5E26;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;" class="headerlink" title="&#x6DF7;&#x5408;&#x2013;&#x5E26;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;"></a>&#x6DF7;&#x5408;&#x2013;&#x5E26;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;</h4><p>&#x683C;&#x5F0F;&#xFF1A;<strong>&#x7C7B;&#x540D;(@&#x53D8;&#x91CF;&#x540D;:&#x9ED8;&#x8BA4;&#x503C;){}</strong><br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x6DF7;&#x5408;--&#x5E26;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;</span></div><div class="line"><span class="selector-class">.border_03</span>(<span class="variable">@border_width</span>:<span class="number">30px</span>){</div><div class="line">    <span class="attribute">border</span>: solid green <span class="variable">@border_width</span>;</div><div class="line">}</div><div class="line"><span class="selector-class">.hunhe_03</span>{</div><div class="line">    <span class="selector-class">.border_03</span>();</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x4FEE;&#x6539;&#x539F;&#x672C;&#x9ED8;&#x8BA4;&#x503C;<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x6DF7;&#x5408;--&#x5E26;&#x9ED8;&#x8BA4;&#x53C2;&#x6570;</span></div><div class="line"><span class="selector-class">.hunhe_03</span>{</div><div class="line">     <span class="selector-class">.border_03</span>(<span class="number">50px</span>);  <span class="comment">//&#x4FEE;&#x6539;&#x4E86;&#x9ED8;&#x8BA4;&#x503C;</span></div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="&#x6DF7;&#x5408;&#x7684;&#x4F8B;&#x5B50;"><a href="#&#x6DF7;&#x5408;&#x7684;&#x4F8B;&#x5B50;" class="headerlink" title="&#x6DF7;&#x5408;&#x7684;&#x4F8B;&#x5B50;"></a>&#x6DF7;&#x5408;&#x7684;&#x4F8B;&#x5B50;</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x6DF7;&#x5408;&#x7684;&#x4F8B;&#x5B50;</span></div><div class="line"><span class="selector-class">.border_radius</span>(<span class="variable">@radius</span>:<span class="number">5px</span>){</div><div class="line">    <span class="attribute">-webkit-border-radius</span>:<span class="variable">@radius</span>;</div><div class="line">    <span class="attribute">-moz-border-radius</span>:<span class="variable">@radius</span>;</div><div class="line">    <span class="attribute">border-radius</span>:<span class="variable">@radius</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="selector-class">.radius_test</span>{</div><div class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">background-color</span>: green;</div><div class="line">    <span class="selector-class">.border_radius</span>();</div><div class="line">}</div></pre></td></tr></table></figure>
+<h3 id="&#x5339;&#x914D;&#x6A21;&#x5F0F;"><a href="#&#x5339;&#x914D;&#x6A21;&#x5F0F;" class="headerlink" title="&#x5339;&#x914D;&#x6A21;&#x5F0F;"></a>&#x5339;&#x914D;&#x6A21;&#x5F0F;</h3><p>&#x76F8;&#x5F53;&#x4E8E;JS&#x4E2D;&#x7684;if&#xFF0C;&#x4F46;&#x4E0D;&#x5B8C;&#x5168;&#x662F;</p>
+<h4 id="&#x4E00;&#x822C;&#x7684;&#x5339;&#x914D;&#x6A21;&#x5F0F;"><a href="#&#x4E00;&#x822C;&#x7684;&#x5339;&#x914D;&#x6A21;&#x5F0F;" class="headerlink" title="&#x4E00;&#x822C;&#x7684;&#x5339;&#x914D;&#x6A21;&#x5F0F;"></a>&#x4E00;&#x822C;&#x7684;&#x5339;&#x914D;&#x6A21;&#x5F0F;</h4><p>&#x683C;&#x5F0F;&#xFF1A;<strong>&#x7C7B;&#x540D;(&#x5224;&#x65AD;&#x7684;&#x6761;&#x4EF6;,@&#x53D8;&#x91CF;&#x540D;:&#x9ED8;&#x8BA4;&#x503C;xn){}</strong><br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x7684;&#x4F8B;&#x5B50;</span></div><div class="line"><span class="selector-class">.triangle</span>(top,<span class="variable">@w</span>:<span class="number">5px</span>,<span class="variable">@c</span>:black){</div><div class="line">    <span class="attribute">border-width</span>: <span class="variable">@w</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="variable">@c</span> transparent transparent transparent;</div><div class="line">    <span class="attribute">border-style</span>: solid dashed dashed dashed;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="selector-class">.triangle</span>(bottom,<span class="variable">@w</span>:<span class="number">5px</span>,<span class="variable">@c</span>:black){</div><div class="line">    <span class="attribute">border-width</span>: <span class="variable">@w</span>;</div><div class="line">    <span class="attribute">border-color</span>: transparent transparent <span class="variable">@c</span> transparent;</div><div class="line">    <span class="attribute">border-style</span>: dashed dashed solid dashed;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="selector-class">.sanjiao</span>{</div><div class="line">    <span class="attribute">color</span>: <span class="number">#b5b5b5</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">    <span class="selector-class">.triangle</span>(bottom);</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x4E2D;&#x9ED8;&#x8BA4;&#x6240;&#x6709;&#x6A21;&#x5F0F;&#x90FD;&#x5E94;&#x6709;&#x7684;&#x60C5;&#x51B5;"><a href="#&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x4E2D;&#x9ED8;&#x8BA4;&#x6240;&#x6709;&#x6A21;&#x5F0F;&#x90FD;&#x5E94;&#x6709;&#x7684;&#x60C5;&#x51B5;" class="headerlink" title="&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x4E2D;&#x9ED8;&#x8BA4;&#x6240;&#x6709;&#x6A21;&#x5F0F;&#x90FD;&#x5E94;&#x6709;&#x7684;&#x60C5;&#x51B5;"></a>&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x4E2D;&#x9ED8;&#x8BA4;&#x6240;&#x6709;&#x6A21;&#x5F0F;&#x90FD;&#x5E94;&#x6709;&#x7684;&#x60C5;&#x51B5;</h4><p>&#x683C;&#x5F0F;&#xFF1A;<strong>&#x7C7B;&#x540D;(@_,@&#x53D8;&#x91CF;&#x540D;:&#x9ED8;&#x8BA4;&#x503C;xn){}</strong><br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x4E2D;&#x9ED8;&#x8BA4;&#x6240;&#x6709;&#x6A21;&#x5F0F;&#x90FD;&#x5E94;&#x6709;&#x7684;&#x60C5;&#x51B5;</span></div><div class="line"><span class="selector-class">.triangle</span>(top,<span class="variable">@w</span>:<span class="number">5px</span>,<span class="variable">@c</span>:black){</div><div class="line">    <span class="attribute">border-width</span>: <span class="variable">@w</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="variable">@c</span> transparent transparent transparent;</div><div class="line">    <span class="attribute">border-style</span>: solid dashed dashed dashed;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="selector-class">.triangle</span>(bottom,<span class="variable">@w</span>:<span class="number">5px</span>,<span class="variable">@c</span>:black){</div><div class="line">    <span class="attribute">border-width</span>: <span class="variable">@w</span>;</div><div class="line">    <span class="attribute">border-color</span>: transparent transparent <span class="variable">@c</span> transparent;</div><div class="line">    <span class="attribute">border-style</span>: dashed dashed solid dashed;</div><div class="line">}</div><div class="line"><span class="selector-class">.sanjiao</span>{</div><div class="line"></div><div class="line">    <span class="selector-class">.triangle</span>(bottom);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x4E2D;&#x9ED8;&#x8BA4;&#x6240;&#x6709;&#x6A21;&#x5F0F;&#x90FD;&#x5E94;&#x6709;&#x7684;&#x60C5;&#x51B5;</span></div><div class="line"><span class="selector-class">.triangle</span>(<span class="variable">@_</span>,<span class="variable">@w</span>:<span class="number">5px</span>,<span class="variable">@c</span>:black){</div><div class="line">    <span class="attribute">color</span>: <span class="number">#b5b5b5</span>;</div><div class="line">    <span class="attribute">width</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x53E6;&#x4E00;&#x79CD;&#x5E38;&#x7528;&#x60C5;&#x51B5;&#x2013;&#x5B9A;&#x4F4D;"><a href="#&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x53E6;&#x4E00;&#x79CD;&#x5E38;&#x7528;&#x60C5;&#x51B5;&#x2013;&#x5B9A;&#x4F4D;" class="headerlink" title="&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x53E6;&#x4E00;&#x79CD;&#x5E38;&#x7528;&#x60C5;&#x51B5;&#x2013;&#x5B9A;&#x4F4D;"></a>&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x53E6;&#x4E00;&#x79CD;&#x5E38;&#x7528;&#x60C5;&#x51B5;&#x2013;&#x5B9A;&#x4F4D;</h4><p>&#x683C;&#x5F0F;&#xFF1A;<strong>&#x7C7B;&#x540D;(x){}</strong><br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x5339;&#x914D;&#x6A21;&#x5F0F;&#x53E6;&#x4E00;&#x79CD;&#x5E38;&#x7528;&#x60C5;&#x51B5;--&#x5B9A;&#x4F4D;</span></div><div class="line"><span class="selector-class">.pop</span>(a){</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">}</div><div class="line"><span class="selector-class">.pop</span>(r){</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">}</div><div class="line"><span class="selector-class">.pop</span>(f){</div><div class="line">    <span class="attribute">position</span>: fixed;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="selector-class">.pipe</span>{</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">    <span class="selector-class">.pop</span>(a);</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="&#x8FD0;&#x7B97;"><a href="#&#x8FD0;&#x7B97;" class="headerlink" title="&#x8FD0;&#x7B97;"></a>&#x8FD0;&#x7B97;</h3><p>&#x652F;&#x6301;&#x52A0;&#x51CF;&#x4E58;&#x9664;</p>
+<h3 id="&#x5D4C;&#x5957;"><a href="#&#x5D4C;&#x5957;" class="headerlink" title="&#x5D4C;&#x5957;"></a>&#x5D4C;&#x5957;</h3><h4 id="&#x4E00;&#x822C;&#x5D4C;&#x5957;"><a href="#&#x4E00;&#x822C;&#x5D4C;&#x5957;" class="headerlink" title="&#x4E00;&#x822C;&#x5D4C;&#x5957;"></a>&#x4E00;&#x822C;&#x5D4C;&#x5957;</h4><p>&#x5EFA;&#x8BAE;&#x4E0D;&#x8981;&#x591A;&#x5C42;&#x5D4C;&#x5957; CSS&#x6E32;&#x67D3;&#x8D77;&#x6765;&#x52A0;&#x591A;&#x7C7B;&#x540D;&#xFF0C;&#x4E16;&#x7EAA;&#x6CA1;&#x4EC0;&#x4E48;&#x5E2E;&#x52A9;<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x5D4C;&#x5957;</span></div><div class="line"><span class="selector-tag">ul</span><span class="selector-class">.list</span>{</div><div class="line">    <span class="attribute">width</span>: <span class="number">600px</span>;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">30px</span> auto;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#b5b5b5</span>;</div><div class="line">    </div><div class="line">    <span class="selector-tag">li</span>{</div><div class="line">        <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</div><div class="line">        <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">        <span class="attribute">list-style</span>: none;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="selector-tag">a</span>{</div><div class="line">        <span class="attribute">float</span>: left;</div><div class="line">    }</div><div class="line">    <span class="selector-tag">span</span>{</div><div class="line">        <span class="attribute">float</span>: right;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="&#x5F53;&#x5E26;hover&#x7B49;&#x4F2A;&#x7C7B;&#x65F6;"><a href="#&#x5F53;&#x5E26;hover&#x7B49;&#x4F2A;&#x7C7B;&#x65F6;" class="headerlink" title="&#x5F53;&#x5E26;hover&#x7B49;&#x4F2A;&#x7C7B;&#x65F6;"></a>&#x5F53;&#x5E26;hover&#x7B49;&#x4F2A;&#x7C7B;&#x65F6;</h4><p>&#x683C;&#x5F0F;&#xFF1A;<strong>&amp;:hover{}</strong><br>&#x5176;&#x4E2D;&amp;&#x4ED6;&#x4EE3;&#x8868;&#x4E0A;&#x4E00;&#x5C42;&#x7684;&#x9009;&#x62E9;&#x5668;<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x5F53;&#x5E26;hover&#x7B49;&#x4F2A;&#x7C7B;&#x65F6;</span></div><div class="line"><span class="selector-tag">a</span>{</div><div class="line">    <span class="attribute">color</span>: black;</div><div class="line">    <span class="attribute">float</span>: left;</div><div class="line">    <span class="comment">//&#x4EE3;&#x8868;&#x5979;&#x4E0A;&#x4E00;&#x5C42;&#x7684;&#x9009;&#x62E9;&#x5668;</span></div><div class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span>{</div><div class="line">        <span class="attribute">opacity</span>: <span class="number">0.8</span>;</div><div class="line">        <span class="attribute">color</span>: red;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="arguments"><a href="#arguments" class="headerlink" title="@arguments"></a>@arguments</h4><p>&#x4E0D;&#x60F3;&#x5904;&#x7406;&#x6BCF;&#x4E00;&#x4E2A;&#x53C2;&#x6570;,&#x76F4;&#x63A5;&#x4F20;&#x5165;@arguments&#x53EF;&#x4EE5;&#x4EE3;&#x66FF;&#x4F20;&#x5165;&#x6240;&#x6709;&#x53C2;&#x6570;<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x4E0D;&#x60F3;&#x5904;&#x7406;&#x6BCF;&#x4E00;&#x4E2A;&#x53C2;&#x6570;</span></div><div class="line"><span class="comment">//@arguments</span></div><div class="line"><span class="selector-class">.abc</span>(<span class="variable">@w</span>:<span class="number">5px</span>,<span class="variable">@s</span>:solid,<span class="variable">@c</span>:<span class="number">#ccc</span>){</div><div class="line">    <span class="attribute">border</span>: <span class="variable">@arguments</span>;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="&#x907F;&#x514D;&#x7F16;&#x8BD1;"><a href="#&#x907F;&#x514D;&#x7F16;&#x8BD1;" class="headerlink" title="&#x907F;&#x514D;&#x7F16;&#x8BD1;"></a>&#x907F;&#x514D;&#x7F16;&#x8BD1;</h4><p>&#x683C;&#x5F0F;&#xFF1A;<strong>attr:~&#x2019;xxxx&#x2019;{}</strong><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">```LESS</div><div class="line"><span class="comment">//&#x907F;&#x514D;&#x7F16;&#x8BD1;</span></div><div class="line"><span class="selector-class">.test_03</span> {</div><div class="line">  <span class="attribute">width</span>: cal(<span class="number">0</span>,<span class="number">0</span>,<span class="number">3</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//&#x7F16;&#x8BD1;&#x540E;&#x7684;CSS</span></div><div class="line"><span class="selector-class">.test_03</span> {</div><div class="line">  <span class="attribute">width</span>: cal(<span class="number">0</span>,<span class="number">0</span>,<span class="number">3</span>);</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h4 id="important"><a href="#important" class="headerlink" title="!important"></a>!important</h4><p>&#x4E00;&#x822C;&#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//!important</span></div><div class="line"><span class="selector-class">.test_important</span>{</div><div class="line">    <span class="selector-class">.border_radius</span>()!important;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//&#x7F16;&#x8BD1;&#x540E;&#x7684;CSS</span></div><div class="line"><span class="selector-class">.test_important</span> {</div><div class="line">  <span class="attribute">-webkit-border-radius</span>: <span class="number">5px</span> <span class="meta">!important</span>;</div><div class="line">  <span class="attribute">-moz-border-radius</span>: <span class="number">5px</span> <span class="meta">!important</span>;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span> <span class="meta">!important</span>;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x66F4;&#x591A;&#x8D44;&#x8BAF;&#x5B98;&#x7F51;&#x67E5;&#x8BE2;<br><a href="http://less.bootcss.com/" target="_blank" rel="external">LESS&#x5B98;&#x65B9;&#x624B;&#x518C;</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LESS/" rel="tag">#LESS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/23/JavaScript-DOM基础/" rel="next" title="JavaScript-DOM基础">
+                <i class="fa fa-chevron-left"></i> JavaScript-DOM基础
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/27/jQ-ajax基础/" rel="prev" title="JQ-ajax基础">
+                JQ-ajax基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/25/LESS-学习笔记/"
+           data-title="LESS-学习笔记" data-url="http://zhangkaihongzkh.github.io/2016/07/25/LESS-学习笔记/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Zkhzz" />
+          <p class="site-author-name" itemprop="name">Zkhzz</p>
+          <p class="site-description motion-element" itemprop="description">Never Enough</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangkaihongzkh" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhang-kai-hong-50" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#考拉工具使用"><span class="nav-number">1.</span> <span class="nav-text">考拉工具使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将项目文件拖入考拉"><span class="nav-number">1.1.</span> <span class="nav-text">将项目文件拖入考拉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置项目的输出路径-还有输出的文件形式"><span class="nav-number">1.2.</span> <span class="nav-text">设置项目的输出路径 还有输出的文件形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LESS相关语法"><span class="nav-number">2.</span> <span class="nav-text">LESS相关语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LESS注释"><span class="nav-number">2.1.</span> <span class="nav-text">LESS注释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">2.1.1.</span> <span class="nav-text">/ /</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">//</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">2.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义变量"><span class="nav-number">2.3.</span> <span class="nav-text">定义变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合"><span class="nav-number">2.4.</span> <span class="nav-text">混合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#混合–不带参数"><span class="nav-number">2.4.1.</span> <span class="nav-text">混合–不带参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合–带参数"><span class="nav-number">2.4.2.</span> <span class="nav-text">混合–带参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合–带默认参数"><span class="nav-number">2.4.3.</span> <span class="nav-text">混合–带默认参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#混合的例子"><span class="nav-number">2.4.4.</span> <span class="nav-text">混合的例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配模式"><span class="nav-number">2.5.</span> <span class="nav-text">匹配模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一般的匹配模式"><span class="nav-number">2.5.1.</span> <span class="nav-text">一般的匹配模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配模式中默认所有模式都应有的情况"><span class="nav-number">2.5.2.</span> <span class="nav-text">匹配模式中默认所有模式都应有的情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配模式另一种常用情况–定位"><span class="nav-number">2.5.3.</span> <span class="nav-text">匹配模式另一种常用情况–定位</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算"><span class="nav-number">2.6.</span> <span class="nav-text">运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套"><span class="nav-number">2.7.</span> <span class="nav-text">嵌套</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一般嵌套"><span class="nav-number">2.7.1.</span> <span class="nav-text">一般嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当带hover等伪类时"><span class="nav-number">2.7.2.</span> <span class="nav-text">当带hover等伪类时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arguments"><span class="nav-number">2.7.3.</span> <span class="nav-text">@arguments</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#避免编译"><span class="nav-number">2.7.4.</span> <span class="nav-text">避免编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#important"><span class="nav-number">2.7.5.</span> <span class="nav-text">!important</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zkhzz</span>
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zkhzz"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

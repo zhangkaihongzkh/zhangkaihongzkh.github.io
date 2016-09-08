@@ -1,0 +1,669 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="模块和包,node," />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x6A21;&amp;#x5757; 2.&amp;#x5305;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node-模块和包">
+<meta property="og:url" content="http://zhangkaihongzkh.github.io/2016/07/20/node-模块和包/index.html">
+<meta property="og:site_name" content="zkhzz 's blog">
+<meta property="og:description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x6A21;&amp;#x5757; 2.&amp;#x5305;">
+<meta property="og:updated_time" content="2016-07-21T07:34:59.439Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node-模块和包">
+<meta name="twitter:description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x6A21;&amp;#x5757; 2.&amp;#x5305;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> node-模块和包 | zkhzz 's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zkhzz 's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                node-模块和包
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T14:42:33+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/node基础篇/" itemprop="url" rel="index">
+                    <span itemprop="name">node基础篇</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/20/node-模块和包/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/node-模块和包/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          <span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+        
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x6458;&#x8981;:1.&#x6A21;&#x5757; 2.&#x5305;<br><a id="more"></a></p>
+<h2 id="&#x6A21;&#x5757;"><a href="#&#x6A21;&#x5757;" class="headerlink" title="&#x6A21;&#x5757;"></a>&#x6A21;&#x5757;</h2><h3 id="&#x6A21;&#x5757;&#x7684;&#x5B9A;&#x4E49;"><a href="#&#x6A21;&#x5757;&#x7684;&#x5B9A;&#x4E49;" class="headerlink" title="&#x6A21;&#x5757;&#x7684;&#x5B9A;&#x4E49;"></a>&#x6A21;&#x5757;&#x7684;&#x5B9A;&#x4E49;</h3><p>&#x4E00;&#x4E2A;node.js&#x6587;&#x4EF6;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x5185;&#x90E8;&#x7531;C++&#x5B9E;&#x73B0; &#x5916;&#x90E8;&#x901A;&#x8FC7;JS&#x5B9E;&#x73B0;&#x5C01;&#x88C5;</p>
+<h3 id="&#x521B;&#x5EFA;&#x4EE5;&#x53CA;&#x52A0;&#x8F7D;&#x6A21;&#x5757;"><a href="#&#x521B;&#x5EFA;&#x4EE5;&#x53CA;&#x52A0;&#x8F7D;&#x6A21;&#x5757;" class="headerlink" title="&#x521B;&#x5EFA;&#x4EE5;&#x53CA;&#x52A0;&#x8F7D;&#x6A21;&#x5757;"></a>&#x521B;&#x5EFA;&#x4EE5;&#x53CA;&#x52A0;&#x8F7D;&#x6A21;&#x5757;</h3><p> node.js&#x4E2D;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;node.js&#x63D0;&#x4F9B;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61; </p>
+<blockquote>
+<ul>
+<li><strong>exports</strong> &#x662F;&#x6A21;&#x5757;&#x516C;&#x5F00;&#x7684;&#x63A5;&#x53E3; </li>
+</ul>
+<ul>
+<li><strong>requires</strong> &#x7528;&#x4E8E;&#x4ECE;&#x5916;&#x90E8;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x5373;&#x83B7;&#x53D6;&#x6A21;&#x5757;&#x7684;exports&#x5BF9;&#x8C61;</li>
+</ul>
+</blockquote>
+<h4 id="&#x521B;&#x5EFA;&#x6A21;&#x5757;"><a href="#&#x521B;&#x5EFA;&#x6A21;&#x5757;" class="headerlink" title="&#x521B;&#x5EFA;&#x6A21;&#x5757;"></a>&#x521B;&#x5EFA;&#x6A21;&#x5757;</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//module.js</span></div><div class="line"><span class="keyword">var</span> name;</div><div class="line">exports.setName = <span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>{</div><div class="line">    name = str;</div><div class="line">};</div><div class="line">exports.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>{</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">&apos;Hello &apos;</span>+ name);</div><div class="line">};</div><div class="line"><span class="comment">//&#x540C;&#x4E00;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x6587;&#x4EF6; getModule.js</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> myModule = requires.(<span class="string">&apos;./module&apos;</span>);</div><div class="line">myModule.setName(<span class="string">&apos;zkhzz&apos;</span>);</div><div class="line">myModule.sayHello(<span class="string">&apos;zkhzz&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">//Hello zkhzz</span></div></pre></td></tr></table></figure>
+<ul>
+<li>module.js&#x901A;&#x8FC7;exports&#x5BF9;&#x8C61;&#x5C06;setName &#x548C; sayHello &#x6700;&#x4E3A;&#x6A21;&#x5757;&#x7684;&#x8BBF;&#x95EE;&#x63A5;&#x53E3; </li>
+<li>getModule.js&#x901A;&#x8FC7;require(&#x2018;./require&#x2019;);&#x52A0;&#x8F7D;&#x8FD9;&#x4E2A;&#x6A21;&#x5757;,&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;module.js&#x4E2D;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x4E86;</li>
+</ul>
+<h4 id="&#x5355;&#x6B21;&#x52A0;&#x8F7D;"><a href="#&#x5355;&#x6B21;&#x52A0;&#x8F7D;" class="headerlink" title="&#x5355;&#x6B21;&#x52A0;&#x8F7D;"></a>&#x5355;&#x6B21;&#x52A0;&#x8F7D;</h4><p>require&#x4E0D;&#x4F1A;&#x91CD;&#x590D;&#x52A0;&#x8F7D;&#x6A21;&#x5757;&#xFF0C;&#x4E0D;&#x8BBA;&#x8C03;&#x7528;&#x591A;&#x5C11;&#x6B21;require&#xFF0C;&#x83B7;&#x5F97;&#x7684;&#x6A21;&#x5757;&#x90FD;&#x662F;&#x540C;&#x4E00;&#x4E2A;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//loadmodule.js</span></div><div class="line"><span class="keyword">var</span> hello1 = <span class="built_in">require</span>(<span class="string">&apos;./module&apos;</span>);</div><div class="line">hello1.setName(<span class="string">&apos;zkhzz&apos;</span>);</div><div class="line"><span class="keyword">var</span> hello2 = <span class="built_in">require</span>(<span class="string">&apos;./module&apos;</span>);</div><div class="line">hello2.setName(<span class="string">&apos;zzzzzzzz&apos;</span>);</div><div class="line"></div><div class="line">hello1.sayHello();</div><div class="line"></div><div class="line"><span class="comment">//zzzzzzzz</span></div></pre></td></tr></table></figure></p>
+<p>&#x56E0;&#x4E3A;hello1 &#x548C;hello2&#x7684;&#x5B9E;&#x4F8B;&#x5747;&#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B; &#x800C;hello1.setName&#x88AB;hello2.setName&#x8986;&#x76D6;</p>
+<h4 id="&#x8986;&#x76D6;exports"><a href="#&#x8986;&#x76D6;exports" class="headerlink" title="&#x8986;&#x76D6;exports"></a>&#x8986;&#x76D6;exports</h4><p>&#x6709;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53EA;&#x60F3;&#x628A;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5C01;&#x88C5;&#x5230;&#x6A21;&#x5757;&#x4E2D;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//singleobject.js</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hello</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">var</span> name;</div><div class="line">    <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">egName</span>)</span>{</div><div class="line">        name = egName;</div><div class="line">    };</div><div class="line">    <span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;Hello &apos;</span> + name);</div><div class="line">    };</div><div class="line">}</div><div class="line">exports.Hello = Hello;</div></pre></td></tr></table></figure></p>
+<p>&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x5728;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x8981;&#x8BBF;&#x95EE;&#x65F6;&#x9700;&#x8981;&#x901A;&#x8FC7; require(&#x2018;./singleobject&#x2019;).Hello &#x6765;&#x83B7;&#x53D6;Hello&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x4F7F;&#x5176;&#x65B9;&#x4FBF;Hello&#x5BF9;&#x8C61;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//hello.js</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hello</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">var</span> name =;</div><div class="line">    <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">egName</span>)</span>{</div><div class="line">        name = egName;</div><div class="line">    };</div><div class="line">    <span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">&apos;Hello &apos;</span> + name);</div><div class="line">    };</div><div class="line">}</div><div class="line"><span class="built_in">module</span>.exports = Hello;</div></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x83B7;&#x53D6;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x4E86;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//gethello.js</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> Hello = <span class="built_in">require</span>(<span class="string">&apos;./hello&apos;</span>);</div><div class="line"></div><div class="line">hello = <span class="keyword">new</span> Hello();</div><div class="line">hello.setName(<span class="string">&apos;zkhzz&apos;</span>);</div><div class="line">hello.sayHello();       <span class="comment">//Hello zkhzz</span></div></pre></td></tr></table></figure></p>
+<p>&#x4E0E;&#x4E0A;&#x8005;&#x4E0D;&#x540C;&#x7684;&#x662F; &#x540E;&#x8005;&#x5C06;module.exports = Hello; &#x4EE3;&#x66FF;&#x4E86; exports.Hello = Hello &#x4E5F;&#x5C31;&#x662F;&#x8BF4; &#x5728;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x662F;Hello&#x5BF9;&#x8C61;&#x672C;&#x8EAB; &#x800C;&#x4E0D;&#x662F;&#x539F;&#x6765;&#x7684;exports</p>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;exports&#x672C;&#x8EAB;&#x53EA;&#x662F;&#x4E00;&#x4E2A;<strong>&#x7A7A;&#x5BF9;&#x8C61;</strong>&#xFF0C;&#x5373;{}&#x3002;&#x4ED6;&#x4E13;&#x95E8;&#x7528;&#x6765;&#x58F0;&#x660E;&#x63A5;&#x53E3;&#x3002;&#x672C;&#x8D28;&#x4E0A;&#x901A;&#x8FC7;&#x4ED6;&#xFF0C;&#x80FD;&#x591F;&#x4E3A;&#x6A21;&#x5757;&#x95ED;&#x5305;&#x7684;&#x5185;&#x90E8;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6709;&#x9650;&#x7684;&#x8BBF;&#x95EE;&#x63A5;&#x53E3;&#x3002;&#x56E0;&#x4E3A;&#x4ED6;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x7279;&#x6B8A;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x7528;&#x5176;&#x4ED6;&#x4E1C;&#x897F;&#x6765;&#x4EE3;&#x66FF;&#xFF0C;&#x6BD4;&#x5982; module.exports = Hello</p>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F; &#x4E0D;&#x80FD;&#x7528; <strong>exports</strong> &#x4EE3;&#x66FF;&#x4E0A;&#x9762;&#x7684; <strong>module.exports</strong>&#x3002;&#x56E0;&#x4E3A;exports&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x548C;module.exports&#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5728;&#x6A21;&#x5757;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#x5C31;&#x4F1A;&#x91CA;&#x653E;&#x3002;&#x800C;module&#x4E0D;&#x4F1A;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x6307;&#x5B9A;module.exports&#x6765;&#x6539;&#x53D8;&#x8BBF;&#x95EE;&#x63A5;&#x53E3;</p>
+<h2 id="&#x5305;"><a href="#&#x5305;" class="headerlink" title="&#x5305;"></a>&#x5305;</h2><p>Node.js&#x7684;&#x5305;&#x7C7B;&#x4F3C;&#x4E8E;java&#x7684;&#x7C7B;&#x5E93;&#x3002;&#x4ED6;&#x5C06;&#x67D0;&#x4E2A;&#x529F;&#x80FD;&#x5C01;&#x88C5;&#x8D77;&#x6765;&#xFF0C;&#x7528;&#x4E8E;&#x53D1;&#x5E03;&#xFF0C;&#x66F4;&#x65B0;&#xFF0C;&#x4F9D;&#x8D56;&#x7BA1;&#x7406;&#x548C;&#x7248;&#x672C;&#x63A7;&#x5236;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/模块和包/" rel="tag">#模块和包</a>
+          
+            <a href="/tags/node/" rel="tag">#node</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/24/JavaScript-匿名函数和闭包/" rel="next" title="JavaScript-匿名函数和闭包">
+                <i class="fa fa-chevron-left"></i> JavaScript-匿名函数和闭包
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/20/JavaScript-变量作用域-内存/" rel="prev" title="JavaScript 变量 作用域 内存">
+                JavaScript 变量 作用域 内存 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/20/node-模块和包/"
+           data-title="node-模块和包" data-url="http://zhangkaihongzkh.github.io/2016/07/20/node-模块和包/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Zkhzz" />
+          <p class="site-author-name" itemprop="name">Zkhzz</p>
+          <p class="site-description motion-element" itemprop="description">Never Enough</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangkaihongzkh" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhang-kai-hong-50" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#模块"><span class="nav-number">1.</span> <span class="nav-text">模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模块的定义"><span class="nav-number">1.1.</span> <span class="nav-text">模块的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建以及加载模块"><span class="nav-number">1.2.</span> <span class="nav-text">创建以及加载模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建模块"><span class="nav-number">1.2.1.</span> <span class="nav-text">创建模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单次加载"><span class="nav-number">1.2.2.</span> <span class="nav-text">单次加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#覆盖exports"><span class="nav-number">1.2.3.</span> <span class="nav-text">覆盖exports</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包"><span class="nav-number">2.</span> <span class="nav-text">包</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zkhzz</span>
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zkhzz"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

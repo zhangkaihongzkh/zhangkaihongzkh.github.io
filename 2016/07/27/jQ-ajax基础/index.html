@@ -1,0 +1,702 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ajax," />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;#x6458;&amp;#x8981;:1.ajax&amp;#x7684;&amp;#x4F18;&amp;#x7F3A;&amp;#x70B9; 2.load()&amp;#x65B9;&amp;#x6CD5; 3.$.get()&amp;#x65B9;&amp;#x6CD5;&amp;#x548C;$.post() 4.$.getScript()&amp;#x548C;$.getJSON() 5.$.ajax()&amp;#x65B9;&amp;#x6CD5; 6.&amp;#x8868;&amp;#x53">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JQ-ajax基础">
+<meta property="og:url" content="http://zhangkaihongzkh.github.io/2016/07/27/jQ-ajax基础/index.html">
+<meta property="og:site_name" content="zkhzz 's blog">
+<meta property="og:description" content="&amp;#x6458;&amp;#x8981;:1.ajax&amp;#x7684;&amp;#x4F18;&amp;#x7F3A;&amp;#x70B9; 2.load()&amp;#x65B9;&amp;#x6CD5; 3.$.get()&amp;#x65B9;&amp;#x6CD5;&amp;#x548C;$.post() 4.$.getScript()&amp;#x548C;$.getJSON() 5.$.ajax()&amp;#x65B9;&amp;#x6CD5; 6.&amp;#x8868;&amp;#x53">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/27/jQ-ajax基础/pic_001.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/27/jQ-ajax基础/pic_001.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/27/jQ-ajax基础/pic_003.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/27/jQ-ajax基础/pic_004.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/27/jQ-ajax基础/pic_005.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/27/jQ-ajax基础/pic_006.png">
+<meta property="og:updated_time" content="2016-07-27T10:33:18.575Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JQ-ajax基础">
+<meta name="twitter:description" content="&amp;#x6458;&amp;#x8981;:1.ajax&amp;#x7684;&amp;#x4F18;&amp;#x7F3A;&amp;#x70B9; 2.load()&amp;#x65B9;&amp;#x6CD5; 3.$.get()&amp;#x65B9;&amp;#x6CD5;&amp;#x548C;$.post() 4.$.getScript()&amp;#x548C;$.getJSON() 5.$.ajax()&amp;#x65B9;&amp;#x6CD5; 6.&amp;#x8868;&amp;#x53">
+<meta name="twitter:image" content="http://zhangkaihongzkh.github.io/2016/07/27/jQ-ajax基础/pic_001.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JQ-ajax基础 | zkhzz 's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zkhzz 's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JQ-ajax基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-27T15:13:43+08:00" content="2016-07-27">
+              2016-07-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JQ基础篇/" itemprop="url" rel="index">
+                    <span itemprop="name">JQ基础篇</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/27/jQ-ajax基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/27/jQ-ajax基础/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          <span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+        
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x6458;&#x8981;:1.ajax&#x7684;&#x4F18;&#x7F3A;&#x70B9; 2.load()&#x65B9;&#x6CD5; 3.$.get()&#x65B9;&#x6CD5;&#x548C;$.post() 4.$.getScript()&#x548C;$.getJSON() 5.$.ajax()&#x65B9;&#x6CD5; 6.&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;<br><a id="more"></a><br>jQuery&#x5BF9;Ajax&#x8FDB;&#x884C;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x5C01;&#x88C5;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x8003;&#x8651;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x517C;&#x5BB9;&#x6027;&#x3002;<br>&#x5176;&#x4E2D;JQ&#x8FDB;&#x884C;&#x4E86;&#x4E09;&#x5C42;&#x5C01;&#x88C5;<br>&#x6700;&#x5E95;&#x5C42;&#x662F;$.ajax()<br>&#x901A;&#x8FC7;&#x4E0A;&#x5C42;&#x5C01;&#x88C5;&#x4E86;&#x7B2C;&#x4E8C;&#x5C42;.load(),$.get()&#x548C;$.post<br>&#x6700;&#x9AD8;&#x5C42;&#x4E3A;$.getScript&#x548C;$.getJSON()</p>
+<h2 id="ajax&#x7684;&#x4F18;&#x7F3A;&#x70B9;"><a href="#ajax&#x7684;&#x4F18;&#x7F3A;&#x70B9;" class="headerlink" title="ajax&#x7684;&#x4F18;&#x7F3A;&#x70B9;"></a>ajax&#x7684;&#x4F18;&#x7F3A;&#x70B9;</h2><h3 id="&#x4F18;&#x70B9;"><a href="#&#x4F18;&#x70B9;" class="headerlink" title="&#x4F18;&#x70B9;"></a>&#x4F18;&#x70B9;</h3><p>1.&#x4E0D;&#x9700;&#x8981;&#x63D2;&#x4EF6;&#x652F;&#x6301;&#xFF08;&#x4E00;&#x822C;&#x6D4F;&#x89C8;&#x5668;&#x4E14;&#x9ED8;&#x8BA4;&#x5F00;&#x542F; JavaScript &#x5373;&#x53EF;&#xFF09;<br>2.&#x7528;&#x6237;&#x4F53;&#x9A8C;&#x6781;&#x4F73;&#xFF08;&#x4E0D;&#x5237;&#x65B0;&#x9875;&#x9762;&#x5373;&#x53EF;&#x83B7;&#x53D6;&#x53EF;&#x66F4;&#x65B0;&#x7684;&#x6570;&#x636E;&#xFF09;<br>3.&#x63D0;&#x5347; Web &#x7A0B;&#x5E8F;&#x7684;&#x6027;&#x80FD;&#xFF08;&#x5728;&#x4F20;&#x9012;&#x6570;&#x636E;&#x65B9;&#x9762;&#x505A;&#x5230;&#x6309;&#x9700;&#x653E;&#x677E;&#xFF0C;&#x4E0D;&#x5FC5;&#x6574;&#x4F53;&#x63D0;&#x4EA4;&#xFF09;<br>4.&#x51CF;&#x8F7B;&#x670D;&#x52A1;&#x5668;&#x548C;&#x5E26;&#x5BBD;&#x7684;&#x8D1F;&#x62C5;&#xFF08;&#x5C06;&#x670D;&#x52A1;&#x5668;&#x7684;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x8F6C;&#x79FB;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#xFF09;</p>
+<h3 id="&#x7F3A;&#x70B9;"><a href="#&#x7F3A;&#x70B9;" class="headerlink" title="&#x7F3A;&#x70B9;"></a>&#x7F3A;&#x70B9;</h3><p>1.&#x4E0D;&#x540C;&#x7248;&#x672C;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x5EA6; XMLHttpRequest &#x5BF9;&#x8C61;&#x652F;&#x6301;&#x5EA6;&#x4E0D;&#x8DB3;(&#x6BD4;&#x5982; IE5 &#x4E4B;&#x524D;)&#xFF1B;<br>2.&#x524D;&#x8FDB;&#x3001;&#x540E;&#x9000;&#x7684;&#x529F;&#x80FD;&#x88AB;&#x7834;&#x574F;&#xFF08;&#x56E0;&#x4E3A; Ajax &#x6C38;&#x8FDC;&#x5728;&#x5F53;&#x524D;&#x9875;&#xFF0C;&#x4E0D;&#x4F1A;&#x51E0;&#x7387;&#x524D;&#x540E;&#x9875;&#x9762;&#xFF09; &#xFF1B;<br>3.&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x7684;&#x652F;&#x6301;&#x5EA6;&#x4E0D;&#x591F;&#xFF08;&#x56E0;&#x4E3A;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x722C;&#x866B;&#x8FD8;&#x4E0D;&#x80FD;&#x7406;&#x89E3; JS &#x5F15;&#x8D77;&#x53D8;&#x5316;&#x6570;&#x636E;&#x7684;&#x5185;&#x5BB9;&#xFF09; &#xFF1B;<br>4.&#x5F00;&#x53D1;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#x7F3A;&#x4E4F;&#xFF08;&#x76F8;&#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x7684;&#x5DE5;&#x5177;&#x96C6;&#x6765;&#x8BF4;&#xFF0C;JS &#x6216; Ajax &#x8C03;&#x8BD5;&#x5F00;&#x53D1;&#x5C11;&#x7684;&#x53EF;&#x601C;&#xFF09; &#x3002;</p>
+<h2 id="load-&#x65B9;&#x6CD5;"><a href="#load-&#x65B9;&#x6CD5;" class="headerlink" title="load()&#x65B9;&#x6CD5;"></a>load()&#x65B9;&#x6CD5;</h2><p>.load&#x65B9;&#x6CD5;&#x53EF;&#x9009;&#x53C2;&#x6570;&#x4E3A;&#x4E09;&#x4E2A;</p>
+<ul>
+<li>url(&#x5FC5;&#x987B;&#xFF0C;&#x8BF7;&#x6C42;html&#x6587;&#x4EF6;&#x7684;url&#x5730;&#x5740; &#x53C2;&#x6570;&#x4E3A;String)</li>
+<li>data(&#x53EF;&#x9009;&#xFF0C;&#x53D1;&#x9001;&#x7684;key/value&#x6570;&#x636E;&#xFF0C;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x4E3A;Object)</li>
+<li>callback(&#x53EF;&#x9009;&#xFF0C;&#x6210;&#x529F;&#x6216;&#x5931;&#x8D25;&#x8FD4;&#x56DE;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x4E3A;&#x51FD;&#x6570;Function)</li>
+</ul>
+<h3 id="url"><a href="#url" class="headerlink" title="url"></a>url</h3><p>&#x5982;&#x679C;&#x60F3;&#x8BA9;Ajax&#x8FD4;&#x56DE;&#x4E00;&#x6BB5;html&#x5185;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x4E00;&#x4E2A;url&#x5373;&#x53EF;<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&#x5F02;&#x6B65;&#x83B7;&#x53D6;&#x6570;&#x636E;&quot;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;box&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;input&apos;).click(function () {</div><div class="line">    $(&apos;#box&apos;).load(&apos;test.html&apos;);    //zkhzz--&#x52A0;&#x6CB9;&#x554A;&#xFF01;</div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x60F3;&#x5BF9;&#x8F7D;&#x5165;&#x7684;HTML&#x8FDB;&#x884C;&#x7B5B;&#x9009;&#xFF0C;&#x53EA;&#x8981;&#x5728;urk&#x53C2;&#x6570;&#x540E;&#x9762;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9009;&#x62E9;&#x5668;&#x5373;&#x53EF;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;input&apos;).click(function () {</div><div class="line">    $(&apos;#box&apos;).load(&apos;test.html .name&apos;);    //zkhzz</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<h3 id="data"><a href="#data" class="headerlink" title="data"></a>data</h3><p>&#x5982;&#x679C;&#x662F;&#x670D;&#x52A1;&#x5668;&#x6587;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982;php&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x4EC5;&#x9700;&#x8981;&#x8F7D;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x5411;&#x670D;&#x52A1;&#x5668;&#x63D0;&#x4EA4;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;data &#x5411;&#x670D;&#x52A1;&#x5668;&#x63D0;&#x4EA4;&#x6570;&#x636E;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A; <strong>get</strong> &#x548C; <strong>post</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;input&apos;).click(function () {</div><div class="line">    $(&apos;#box&apos;).load(&apos;test.php?url=abc&apos;); //&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x4E3A;get</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<p>PHP-get<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>($_GET[<span class="string">&apos;url&apos;</span>] == <span class="string">&apos;abc&apos;</span>){</div><div class="line">    <span class="keyword">echo</span> <span class="string">&apos;zkhzz--&#x52A0;&#x6CB9;&#x5427;&#x9A9A;&#x5E74; &#x8FD9;&#x662F;GET&#x65B9;&#x6CD5;&#x63D0;&#x4EA4;&apos;</span>;</div><div class="line">} <span class="keyword">else</span> {</div><div class="line">    <span class="keyword">echo</span> <span class="string">&apos;GET&#x65B9;&#x6CD5;&#x9519;&#x8BEF;&apos;</span>;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x4F20;&#x9012;data&#xFF0C;&#x5219;&#x4E3A;post&#x65B9;&#x5F0F;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(&apos;input&apos;).click(function () {</div><div class="line">    $(&apos;#box&apos;).load(&apos;test.php&apos;,{</div><div class="line">        url:&apos;abc&apos;       //&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x52A0;</div><div class="line">    }); </div><div class="line">});</div></pre></td></tr></table></figure></p>
+<p>PHP-post<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>($_POST[<span class="string">&apos;url&apos;</span>] == <span class="string">&apos;abc&apos;</span>){</div><div class="line">    <span class="keyword">echo</span> <span class="string">&apos;zkhzz--&#x52A0;&#x6CB9;&#x5427;&#x9A9A;&#x5E74; &#x8FD9;&#x662F;POST&#x65B9;&#x6CD5;&#x63D0;&#x4EA4;&apos;</span>;</div><div class="line">} <span class="keyword">else</span> {</div><div class="line">    <span class="keyword">echo</span> <span class="string">&apos;POST&#x65B9;&#x6CD5;&#x9519;&#x8BEF;&apos;</span>;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="callback"><a href="#callback" class="headerlink" title="callback"></a>callback</h3><p>&#x5728;ajax&#x6570;&#x636E;&#x8F7D;&#x5165;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5C31;&#x80FD;&#x591F;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;callback<br>&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6709;&#x4E09;&#x4E2A;&#x53EF;&#x9009;&#x53C2;&#x6570;</p>
+<ul>
+<li>responseText(&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;)</li>
+<li>textStatus(&#x8BF7;&#x6C42;&#x72B6;&#x6001;)</li>
+<li>XMLHttpRequest(XMLHttpRequest&#x5BF9;&#x8C61;)</li>
+</ul>
+<p>textStatus&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x5219;&#x4E3A;success&#x5426;&#x5219;&#x4E3A;error</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$(&apos;input&apos;).click(function () {</div><div class="line">    $(&apos;#box&apos;).load(&apos;test.php&apos;,{</div><div class="line">        url:&apos;abc&apos;       //&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x52A0;</div><div class="line">    },function(responseText,stauts,xhr){</div><div class="line">        console.log(responseText);    //zkhzz--&#x52A0;&#x6CB9;&#x5427;&#x9A9A;&#x5E74; &#x8FD9;&#x662F;POST&#x65B9;&#x6CD5;&#x63D0;&#x4EA4;</div><div class="line">        console.log(stauts)           //success</div><div class="line">        console.log(xhr.responseText);//zkhzz--&#x52A0;&#x6CB9;&#x5427;&#x9A9A;&#x5E74; &#x8FD9;&#x662F;POST&#x65B9;&#x6CD5;&#x63D0;&#x4EA4;</div><div class="line">        console.log(xhr.responseXML); //undefined</div><div class="line">        console.log(xhr.status);      //200</div><div class="line">        console.log(xhr.statusText);  //OK</div><div class="line">    }); </div><div class="line">});</div></pre></td></tr></table></figure>
+<p>&#x9274;&#x4E8E;&#x4E0A;&#x6B21;&#x5728;md&#x6587;&#x4EF6;&#x63D2;&#x5165;&#x8868;&#x683C;&#x83AB;&#x540D;&#x591A;&#x51FA;&#x5F88;&#x591A;&#x7A7A;&#x683C;&#xFF0C;&#x8FD9;&#x6B21;&#x73B0;&#x5728;&#x5916;&#x8FB9;&#x81EA;&#x5236;&#x8868;&#x683C;<br>&#x5176;&#x4E2D;XMLHttpRequest&#x5C5E;&#x4E8E;JavaScript&#x8303;&#x7574;&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#x5982;&#x4E0B;<br><img src="/2016/07/27/jQ-ajax&#x57FA;&#x7840;/pic_001.png" alt="XMLHttpRequest&#x62E5;&#x6709;&#x7684;&#x53C2;&#x6570;" title="XMLHttpRequest&#x62E5;&#x6709;&#x7684;&#x53C2;&#x6570;"></p>
+<p>&#x5982;&#x679C;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x6570;&#x636E;xhr.statusText&#x5C5E;&#x6027;&#x8FD4;&#x56DE;&#x2019;OK&#x2019;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x9664;&#x4E86;&#x2019;OK&#x2019;,statusText&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x503C;<br><img src="/2016/07/27/jQ-ajax&#x57FA;&#x7840;/pic_001.png" alt="XMLHttpRequest&#x62E5;&#x6709;&#x7684;&#x53C2;&#x6570;" title="XMLHttpRequest&#x62E5;&#x6709;&#x7684;&#x53C2;&#x6570;"></p>
+<h2 id="get-&#x65B9;&#x6CD5;&#x548C;-post"><a href="#get-&#x65B9;&#x6CD5;&#x548C;-post" class="headerlink" title="$.get()&#x65B9;&#x6CD5;&#x548C;$.post()"></a>$.get()&#x65B9;&#x6CD5;&#x548C;$.post()</h2><p>.load()&#x662F;&#x5C40;&#x90E8;&#x65B9;&#x6CD5;&#xFF0C;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5305;&#x542B;jq&#x5143;&#x7D20;&#x5BF9;&#x8C61;&#x6700;&#x4E3A;&#x524D;&#x7F00;&#xFF0C;&#x9002;&#x5408;&#x7528;&#x4E8E;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x7684;&#x5F02;&#x6B65;&#x83B7;&#x53D6;&#x800C;$.get&#x548C;$.post&#x662F;&#x5168;&#x5C40;&#x65B9;&#x6CD5;&#x65E0;&#x9700;&#x6307;&#x5B9A;&#x5143;&#x7D20;&#x3002;&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x5230;&#x670D;&#x52A1;&#x5668;&#x9875;&#x9762;&#x7684;&#x60C5;&#x51B5; $.get&#x548C;$.post&#x65B9;&#x6CD5;&#x66F4;&#x4F73;&#x5408;&#x9002;,&#x4ED6;&#x4EEC;&#x6BD4;.load&#x65B9;&#x6CD5;&#x591A;&#x4E86;&#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#xFF1A; <strong>type</strong> </p>
+<h3 id="get"><a href="#get" class="headerlink" title="$.get()"></a>$.get()</h3><p>$.get()&#x6709;&#x4E09;&#x79CD;&#x4F20;&#x53C2;&#x65B9;&#x5F0F;</p>
+<h4 id="&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x63A5;&#x5728;&#x6587;&#x4EF6;&#x540D;&#x540E;&#x4F20;&#x53C2;"><a href="#&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x63A5;&#x5728;&#x6587;&#x4EF6;&#x540D;&#x540E;&#x4F20;&#x53C2;" class="headerlink" title="&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x63A5;&#x5728;&#x6587;&#x4EF6;&#x540D;&#x540E;&#x4F20;&#x53C2;"></a>&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x63A5;&#x5728;&#x6587;&#x4EF6;&#x540D;&#x540E;&#x4F20;&#x53C2;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//1.&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x63A5;&#x5728;&#x6587;&#x4EF6;&#x540D;&#x540E;&#x4F20;&#x53C2;</div><div class="line">$.get(&apos;test-get.php?url=abc&apos;,function(response,status,xhr){</div><div class="line">    $(&apos;#box&apos;).html(response);</div><div class="line">});</div></pre></td></tr></table></figure>
+<h4 id="&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5F62;&#x5F0F;&#x63A5;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;"><a href="#&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5F62;&#x5F0F;&#x63A5;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;" class="headerlink" title="&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5F62;&#x5F0F;&#x63A5;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;"></a>&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5F62;&#x5F0F;&#x63A5;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//2.&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x63A5;&#x5728;&#x6587;&#x4EF6;&#x540D;&#x540E;&#x4F20;&#x53C2;</div><div class="line">$.get(&apos;test-get.php&apos;,&apos;url=abc&apos;,function(response,status,xhr){</div><div class="line">    $(&apos;#box&apos;).html(response);</div><div class="line">});</div></pre></td></tr></table></figure>
+<h4 id="&#x4EE5;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x5F62;&#x5F0F;&#x63A5;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;"><a href="#&#x4EE5;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x5F62;&#x5F0F;&#x63A5;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;" class="headerlink" title="&#x4EE5;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x5F62;&#x5F0F;&#x63A5;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;"></a>&#x4EE5;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x5F62;&#x5F0F;&#x63A5;&#x5728;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//3.&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x63A5;&#x5728;&#x6587;&#x4EF6;&#x540D;&#x540E;&#x4F20;&#x53C2;</div><div class="line">$.get(&apos;test-get.php&apos;,{</div><div class="line">    url:&apos;abc&apos;</div><div class="line">},function(response,status,xhr){</div><div class="line">    $(&apos;#box&apos;).html(response);</div><div class="line">});</div></pre></td></tr></table></figure>
+<h3 id="post"><a href="#post" class="headerlink" title="$.post()"></a>$.post()</h3><p>$.post()&#x9664;&#x4E86;&#x6CA1;&#x6709;&#x4E0A;&#x8BC9;&#x7B2C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4ED6;&#x57FA;&#x672C;&#x9002;&#x7528;</p>
+<h3 id="get-&#x548C;-post-&#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;type"><a href="#get-&#x548C;-post-&#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;type" class="headerlink" title="$.get()&#x548C;$.post()&#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;type"></a>$.get()&#x548C;$.post()&#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;type</h3><p>&#x4E00;&#x822C;&#x4F1A;&#x81EA;&#x52A8;&#x8BC6;&#x522B;&#xFF0C;&#x5982;&#x679C;&#x8BFB;&#x53D6;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6587;&#x4EF6;&#x5E76;&#x5C06;&#x5176;&#x5F3A;&#x5236;&#x8F6C;&#x6362;&#xFF0C;&#x989D; &#x3002;&#x611F;&#x89C9;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x5C11;&#x8981;json &#x7684;&#x8BDD;&#x7528;$.getJSON()&#x80FD;&#x591F;&#x4FDD;&#x8BC1;&#x5B89;&#x5168;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x63A5;&#x53D7;$.getJSON()&#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;type</p>
+<h4 id="&#x83B7;&#x53D6;XML&#x6587;&#x4EF6;&#x6587;&#x672C;"><a href="#&#x83B7;&#x53D6;XML&#x6587;&#x4EF6;&#x6587;&#x672C;" class="headerlink" title="&#x83B7;&#x53D6;XML&#x6587;&#x4EF6;&#x6587;&#x672C;"></a>&#x83B7;&#x53D6;XML&#x6587;&#x4EF6;&#x6587;&#x672C;</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">&quot;1.0&quot;</span></span></div><div class="line">&lt;section&gt;</div><div class="line">    &lt;a&gt;<span class="number">11</span>&lt;/a&gt;</div><div class="line">&lt;/section</div><div class="line"><span class="meta">?&gt;</span></div><div class="line"></div><div class="line">$.post(&apos;test.xml&apos;,{</div><div class="line">    url:&apos;abc&apos;</div><div class="line">    },</div><div class="line">    function(response,status,xml){</div><div class="line">        alert($(response).find(&apos;section&apos;).eq(0).text())</div><div class="line">        },xml);</div></pre></td></tr></table></figure>
+<h4 id="&#x83B7;&#x53D6;JSON&#x6587;&#x4EF6;&#x6587;&#x672C;"><a href="#&#x83B7;&#x53D6;JSON&#x6587;&#x4EF6;&#x6587;&#x672C;" class="headerlink" title="&#x83B7;&#x53D6;JSON&#x6587;&#x4EF6;&#x6587;&#x672C;"></a>&#x83B7;&#x53D6;JSON&#x6587;&#x4EF6;&#x6587;&#x672C;</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    {</div><div class="line">        &quot;name&quot;:&quot;aaa&quot;</div><div class="line">    }</div><div class="line">]</div><div class="line"></div><div class="line">//&#x8BFB;&#x53D6;json&#x6587;&#x4EF6;</div><div class="line">$.post(&apos;test.json&apos;,{</div><div class="line">    url:&apos;abc&apos;</div><div class="line">    },</div><div class="line">    function(response,status,xhr){</div><div class="line">        alert(response[0].name);</div><div class="line">        });</div></pre></td></tr></table></figure>
+<h3 id="get&#x65B9;&#x6CD5;&#x4E0E;-post&#x65B9;&#x6CD5;&#x533A;&#x522B;"><a href="#get&#x65B9;&#x6CD5;&#x4E0E;-post&#x65B9;&#x6CD5;&#x533A;&#x522B;" class="headerlink" title="$.get&#x65B9;&#x6CD5;&#x4E0E;$.post&#x65B9;&#x6CD5;&#x533A;&#x522B;"></a>$.get&#x65B9;&#x6CD5;&#x4E0E;$.post&#x65B9;&#x6CD5;&#x533A;&#x522B;</h3><p>1.GET &#x8BF7;&#x6C42;&#x662F;&#x901A;&#x8FC7; URL &#x63D0;&#x4EA4;&#x7684;&#xFF0C;&#x800C; POST &#x8BF7;&#x6C42;&#x5219;&#x662F; HTTP &#x6D88;&#x606F;&#x5B9E;&#x4F53;&#x63D0;&#x4EA4;&#x7684;&#xFF1B;<br>2.GET &#x63D0;&#x4EA4;&#x6709;&#x5927;&#x5C0F;&#x9650;&#x5236;&#xFF08;2KB&#xFF09; &#xFF0C;&#x800C; POST &#x65B9;&#x5F0F;&#x4E0D;&#x53D7;&#x9650;&#x5236;&#xFF1B;<br>3.GET &#x65B9;&#x5F0F;&#x4F1A;&#x88AB;&#x7F13;&#x5B58;&#x4E0B;&#x6765;&#xFF0C;&#x53EF;&#x80FD;&#x6709;&#x5B89;&#x5168;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x800C; POST &#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF1B;<br>4.GET &#x65B9;&#x5F0F;&#x901A;&#x8FC7;$_GET[]&#x83B7;&#x53D6;&#xFF0C;POST &#x65B9;&#x5F0F;&#x901A;&#x8FC7;$_POST[]&#x83B7;&#x53D6;</p>
+<h2 id="getScript-&#x548C;-getJSON"><a href="#getScript-&#x548C;-getJSON" class="headerlink" title="$.getScript()&#x548C;$.getJSON()"></a>$.getScript()&#x548C;$.getJSON()</h2><p>&#x6709;&#x65F6;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x80FD;&#x591F;&#x7279;&#x5B9A;&#x7684;&#x60C5;&#x51B5;&#x518D;&#x52A0;&#x8F7D; JS &#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x5F00;&#x59CB;&#x628A;&#x6240;&#x6709; JS &#x6587;&#x4EF6;&#x90FD;&#x52A0;&#x8F7D;&#x4E86;&#xFF0C;<br>&#x8FD9;&#x65F6;&#x8BFE;&#x65F6;&#x4F7F;&#x7528;$.getScript()&#x65B9;&#x6CD5;&#x3002;</p>
+<p>$.getScript()<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x70B9;&#x51FB;&#x6309;&#x94AE;&#x540E;&#x518D;&#x52A0;&#x8F7D; JS &#x6587;&#x4EF6;</span></div><div class="line">$(<span class="string">&apos;input&apos;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">    $.getScript(<span class="string">&apos;test.js&apos;</span>);</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<p>$.getJSON()<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">&apos;input&apos;</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">    $.getJSON(<span class="string">&apos;test.json&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">response, status, xhr</span>) </span>{</div><div class="line">        alert(response[<span class="number">0</span>].url);</div><div class="line">    });</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<h2 id="ajax"><a href="#ajax" class="headerlink" title="$.ajax()"></a>$.ajax()</h2><p>$.ajax&#x662F;ajax&#x4E2D;&#x6700;&#x5E95;&#x5C42;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x90FD;&#x662F;&#x57FA;&#x4E8E;$.ajax()&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x81F3;&#x4E8E;&#x4E00;&#x4E2A;&#xFF0C;&#x5C31;&#x662F;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x5404;&#x4E2A;&#x529F;&#x80FD;&#x952E;&#x503C;&#x5BF9;&#x7684;&#x5BF9;&#x8C61;</p>
+<p></p><p style="text-align:center;">$.ajax()&#x65B9;&#x6CD5;&#x5BF9;&#x8C61;&#x53C2;&#x6570;&#x8868;</p><br><img src="/2016/07/27/jQ-ajax&#x57FA;&#x7840;/pic_003.png" alt=""><br><img src="/2016/07/27/jQ-ajax&#x57FA;&#x7840;/pic_004.png" alt=""><br><img src="/2016/07/27/jQ-ajax&#x57FA;&#x7840;/pic_005.png" alt=""><br><img src="/2016/07/27/jQ-ajax&#x57FA;&#x7840;/pic_006.png" alt=""><p></p>
+<p>&#x5E38;&#x7528;$.ajax&#x53C2;&#x6570;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$.ajax({</div><div class="line">    type:&apos;POST&apos;,</div><div class="line">    url:&apos;xxx.php&apos;,</div><div class="line">    data:{</div><div class="line">        url:&apos;abc&apos;,</div><div class="line">    }</div><div class="line">    success:function(response,status,xhr){</div><div class="line">        alert(&apos;$.ajax()&#x8C03;&#x7528;&#x6210;&#x529F;!&apos;);</div><div class="line">    }</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x5BF9;&#x4E8E; data &#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x662F; GET &#x6A21;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E09;&#x79CD;&#x4E4B;&#x524D;&#x8BF4;&#x6240;&#x7684;&#x4E09;&#x79CD;&#x5F62;&#x5F0F;&#x3002;&#x5982;&#x679C;&#x662F;<br>POST &#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#x7684;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#x3002;</p>
+<h2 id="&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;"><a href="#&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;" class="headerlink" title="&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;"></a>&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;</h2><p>Ajax&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x5730;&#x65B9;&#x662F;&#x8868;&#x5355;&#x64CD;&#x4F5C;&#xFF0C;&#x4F20;&#x7EDF;&#x7684;&#x8868;&#x5355;&#x64CD;&#x4F5C;&#x65F6;&#x901A;&#x8FC7;submit&#x63D0;&#x4EA4;&#x5C06;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x3002;&#x5982;&#x679C;&#x4F7F;&#x7528;ajax&#x5F02;&#x6B65;&#x5904;&#x7406;&#x7684;&#x8BDD;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;&#x6BCF;&#x4E2A;&#x8868;&#x5355;&#x5143;&#x7D20;&#x9010;&#x4E2A;&#x83B7;&#x53D6;&#x65B9;&#x80FD;&#x63D0;&#x4EA4;&#x3002;&#x8FD9;&#x6837;&#x5DE5;&#x4F5C;&#x6548;&#x7387;&#x5927;&#x5927;&#x964D;&#x4F4E;</p>
+<h3 id="&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;serialize"><a href="#&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;serialize" class="headerlink" title="&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;serialize()"></a>&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;serialize()</h3><p>&#x5E38;&#x89C4;&#x7684;&#x8868;&#x5355;&#x63D0;&#x4EA4;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//&#x5E38;&#x89C4;&#x7684;&#x8868;&#x5355;&#x63D0;&#x4EA4;</div><div class="line">$.ajax({</div><div class="line">    type:&apos;POST&apos;,</div><div class="line">    url:&apos;ajax-test.php&apos;,</div><div class="line">    data:{</div><div class="line">        user:$(&apos;form input[name=user]&apos;).val(),</div><div class="line">        email:$(&apos;form input[name=email]&apos;).val(),</div><div class="line">    },</div><div class="line">    success:function(response,status,xhr){</div><div class="line">        alert(response);    //AAA-AAA@QQ.COM</div><div class="line">    }</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<p>&#x670D;&#x52A1;&#x5668;&#x7AEF;PHP&#x4EE3;&#x7801;<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x670D;&#x52A1;&#x5668;&#x7AEF;PHP&#x4EE3;&#x7801;</span></div><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    <span class="keyword">echo</span> $_POST[<span class="string">&apos;user&apos;</span>].<span class="string">&apos;-&apos;</span> .$_POST[<span class="string">&apos;email&apos;</span>].<span class="string">&apos;-&apos;</span>.$_POST[<span class="string">&apos;sex&apos;</span>];</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<p>&#x4F7F;&#x7528;&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;serialize()&#xFF0C;&#x4F1A;&#x667A;&#x80FD;&#x7684;&#x83B7;&#x5F97;&#x6307;&#x5B9A;&#x8868;&#x5355;&#x5185;&#x6240;&#x6709;&#x5143;&#x7D20;&#xFF0C;&#x5728;&#x9762;&#x5BF9;&#x5927;&#x91CF;&#x8868;&#x5355;&#x65F6;&#xFF0C;&#x4F1A;&#x5148;&#x5C06;&#x8868;&#x5355;&#x5185;&#x5BB9;&#x5E8F;&#x5217;&#x5316;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x518D;&#x4F7F;&#x7528;Ajax&#x8BF7;&#x6C42;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;serialize()</div><div class="line">$.ajax({</div><div class="line">    type:&apos;POST&apos;,</div><div class="line">        url:&apos;ajax-test.php&apos;,</div><div class="line">        data:$(&apos;form&apos;).serialize(),</div><div class="line">        success:function(response,status,xhr){</div><div class="line">            alert(response);    //AAA-AAA@QQ.COM</div><div class="line">    }</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<p>serialize&#x65B9;&#x6CD5;&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x5E8F;&#x5217;&#x5316;&#x8868;&#x5355;&#x5185;&#x5143;&#x7D20;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x83B7;&#x5F97;&#x5355;&#x9009;&#x6846;&#xFF0C;&#x590D;&#x9009;&#x6846;&#x548C;&#x4E0B;&#x62C9;&#x5217;&#x8868;&#x6846;&#x7B49;&#x5185;&#x5BB9;<br>&#x8FD4;&#x56DE;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x7684;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x5E76;&#x4E14;&#x8FD8;&#x5BF9;URL&#x8FDB;&#x884C;&#x7684;&#x7F16;&#x7801;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//serialize()&#x6240;&#x6709;&#x5185;&#x5BB9;</div><div class="line">$(&apos;form input[name=sex]&apos;).click(function(){</div><div class="line">    //&#x7F16;&#x7801; </div><div class="line">    $(&apos;#box&apos;).html($(this).serialize());  </div><div class="line">});</div></pre></td></tr></table></figure></p>
+<h3 id="decodeURI&#x2013;&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;serialize&#x540E;&#x89E3;&#x7801;&#x65B9;&#x6CD5;"><a href="#decodeURI&#x2013;&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;serialize&#x540E;&#x89E3;&#x7801;&#x65B9;&#x6CD5;" class="headerlink" title="decodeURI&#x2013;&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;serialize&#x540E;&#x89E3;&#x7801;&#x65B9;&#x6CD5;"></a>decodeURI&#x2013;&#x8868;&#x5355;&#x5E8F;&#x5217;&#x5316;&#x65B9;&#x6CD5;serialize&#x540E;&#x89E3;&#x7801;&#x65B9;&#x6CD5;</h3><p>&#x5982;&#x679C;&#x9700;&#x8981;&#x89E3;&#x7801;&#xFF0C;&#x5219;&#x4F7F;&#x7528;js&#x7684;decodeURI&#x65B9;&#x6CD5;</p>
+<h3 id="serializeArray-&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x6574;&#x5408;&#x6210;&#x952E;&#x503C;&#x5BF9;&#x7684;JSON&#x5BF9;&#x8C61;"><a href="#serializeArray-&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x6574;&#x5408;&#x6210;&#x952E;&#x503C;&#x5BF9;&#x7684;JSON&#x5BF9;&#x8C61;" class="headerlink" title="serializeArray()&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x6574;&#x5408;&#x6210;&#x952E;&#x503C;&#x5BF9;&#x7684;JSON&#x5BF9;&#x8C61;"></a>serializeArray()&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x6574;&#x5408;&#x6210;&#x952E;&#x503C;&#x5BF9;&#x7684;JSON&#x5BF9;&#x8C61;</h3><p>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x628A;&#x6570;&#x636E;&#x6574;&#x5408;&#x6210;&#x952E;&#x503C;&#x5BF9;&#x7684;JSON&#x5BF9;&#x8C61;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//serializeArray()&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;JSON&#x6570;&#x636E;</div><div class="line">$(&apos;form input[name=sex]&apos;).click(function(){</div><div class="line">    var json = $(this).serializeArray();</div><div class="line">    console.log(json);      //&#x65E0;&#x6CD5;&#x76F4;&#x63A5;alert json</div><div class="line">    $(&apos;#box&apos;).html(json[0].value);</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<h3 id="ajaxSetup&#x5B9E;&#x73B0;&#x521D;&#x59CB;&#x5316;&#x53C2;&#x6570;"><a href="#ajaxSetup&#x5B9E;&#x73B0;&#x521D;&#x59CB;&#x5316;&#x53C2;&#x6570;" class="headerlink" title="ajaxSetup&#x5B9E;&#x73B0;&#x521D;&#x59CB;&#x5316;&#x53C2;&#x6570;"></a>ajaxSetup&#x5B9E;&#x73B0;&#x521D;&#x59CB;&#x5316;&#x53C2;&#x6570;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//ajaxSetup&#x5B9E;&#x73B0;&#x521D;&#x59CB;&#x5316;&#x53C2;&#x6570;</div><div class="line">$(&apos;form input[type=button]&apos;).click(function(){</div><div class="line">    //&#x521D;&#x59CB;&#x5316;&#x53C2;&#x6570;</div><div class="line">    $.ajaxSetup({</div><div class="line">        type:&apos;POST&apos;,</div><div class="line">        url:&apos;ajax-test.php&apos;,</div><div class="line">        data:{</div><div class="line">            user:$(&apos;form input[name=user]&apos;).val(),</div><div class="line">            email:$(&apos;form input[name=email]&apos;).val(),</div><div class="line">            sex:$(&apos;form input[name=sex]&apos;).val()</div><div class="line">        }</div><div class="line">    });</div><div class="line"></div><div class="line">    //</div><div class="line">    $.ajax({</div><div class="line">        success:function(response,status,xhr){</div><div class="line">            $(&apos;#box&apos;).html(response);</div><div class="line">        }</div><div class="line">    });</div><div class="line">});</div></pre></td></tr></table></figure>
+<h3 id="param-&#x5C06;&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x952E;&#x503C;&#x5BF9;&#x683C;&#x5F0F;"><a href="#param-&#x5C06;&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x952E;&#x503C;&#x5BF9;&#x683C;&#x5F0F;" class="headerlink" title="$.param()&#x5C06;&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x952E;&#x503C;&#x5BF9;&#x683C;&#x5F0F;"></a>$.param()&#x5C06;&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x952E;&#x503C;&#x5BF9;&#x683C;&#x5F0F;</h3><p>&#x5728;&#x4F7F;&#x7528; data &#x5C5E;&#x6027;&#x4F20;&#x9012;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x4EE5;&#x5BF9;&#x8C61;&#x5F62;&#x5F0F;&#x4F20;&#x9012;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;$.param()&#x65B9;&#x6CD5;<br>&#x5C06;&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x952E;&#x503C;&#x5BF9;&#x683C;&#x5F0F;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj = {a:1,b:2};</div><div class="line">var form = $.param(obj);    //a=1&amp;b=2</div><div class="line">alert(form);</div></pre></td></tr></table></figure></p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x4F7F;&#x7528;$.param()&#x5C06;&#x5BF9;&#x8C61;&#x5F62;&#x5F0F;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x8F6C;&#x4E3A; URL &#x5730;&#x5740;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x53EF;&#x4EE5;&#x66F4;&#x52A0;&#x7A33;&#x5B9A;&#x51C6;&#x786E;&#x7684;&#x4F20;&#x9012;&#x8868;&#x5355;&#x5185;&#x5BB9;&#x3002;&#x56E0;&#x4E3A;&#x6709;&#x65F6;&#x7A0B;&#x5E8F;&#x5BF9;&#x4E8E;&#x590D;&#x6742;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x89E3;&#x6790;&#x80FD;&#x529B;&#x6709;&#x9650;&#xFF0C;&#x6240;&#x4EE5;&#x76F4;&#x63A5;&#x4F20;&#x9012;obj&#x5BF9;&#x8C61;&#x8981;&#x8C28;&#x614E;&#x3002;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ajax/" rel="tag">#ajax</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/25/LESS-学习笔记/" rel="next" title="LESS-学习笔记">
+                <i class="fa fa-chevron-left"></i> LESS-学习笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/28/JQ-ajax进阶/" rel="prev" title="JQ-ajax进阶">
+                JQ-ajax进阶 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/27/jQ-ajax基础/"
+           data-title="JQ-ajax基础" data-url="http://zhangkaihongzkh.github.io/2016/07/27/jQ-ajax基础/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Zkhzz" />
+          <p class="site-author-name" itemprop="name">Zkhzz</p>
+          <p class="site-description motion-element" itemprop="description">Never Enough</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangkaihongzkh" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhang-kai-hong-50" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax的优缺点"><span class="nav-number">1.</span> <span class="nav-text">ajax的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#load-方法"><span class="nav-number">2.</span> <span class="nav-text">load()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#url"><span class="nav-number">2.1.</span> <span class="nav-text">url</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#data"><span class="nav-number">2.2.</span> <span class="nav-text">data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#callback"><span class="nav-number">2.3.</span> <span class="nav-text">callback</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-方法和-post"><span class="nav-number">3.</span> <span class="nav-text">$.get()方法和$.post()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">3.1.</span> <span class="nav-text">$.get()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过直接接在文件名后传参"><span class="nav-number">3.1.1.</span> <span class="nav-text">通过直接接在文件名后传参</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以字符串的形式接在第二个参数"><span class="nav-number">3.1.2.</span> <span class="nav-text">以字符串的形式接在第二个参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以字面量的形式接在第二个参数"><span class="nav-number">3.1.3.</span> <span class="nav-text">以字面量的形式接在第二个参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post"><span class="nav-number">3.2.</span> <span class="nav-text">$.post()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get-和-post-第四个参数type"><span class="nav-number">3.3.</span> <span class="nav-text">$.get()和$.post()第四个参数type</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取XML文件文本"><span class="nav-number">3.3.1.</span> <span class="nav-text">获取XML文件文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取JSON文件文本"><span class="nav-number">3.3.2.</span> <span class="nav-text">获取JSON文件文本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get方法与-post方法区别"><span class="nav-number">3.4.</span> <span class="nav-text">$.get方法与$.post方法区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getScript-和-getJSON"><span class="nav-number">4.</span> <span class="nav-text">$.getScript()和$.getJSON()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax"><span class="nav-number">5.</span> <span class="nav-text">$.ajax()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单序列化"><span class="nav-number">6.</span> <span class="nav-text">表单序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表单序列化方法serialize"><span class="nav-number">6.1.</span> <span class="nav-text">表单序列化方法serialize()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decodeURI–表单序列化方法serialize后解码方法"><span class="nav-number">6.2.</span> <span class="nav-text">decodeURI–表单序列化方法serialize后解码方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#serializeArray-实现数据整合成键值对的JSON对象"><span class="nav-number">6.3.</span> <span class="nav-text">serializeArray()实现数据整合成键值对的JSON对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajaxSetup实现初始化参数"><span class="nav-number">6.4.</span> <span class="nav-text">ajaxSetup实现初始化参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#param-将对象转换为字符串键值对格式"><span class="nav-number">6.5.</span> <span class="nav-text">$.param()将对象转换为字符串键值对格式</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zkhzz</span>
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zkhzz"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

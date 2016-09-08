@@ -1,0 +1,676 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Function,this,call,this," />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x51FD;&amp;#x6570;&amp;#x7684;&amp;#x58F0;&amp;#x660E;&amp;#x65B9;&amp;#x5F0F; 2.&amp;#x51FD;&amp;#x6570;&amp;#x7684;&amp;#x5185;&amp;#x90E8;&amp;#x5C5E;&amp;#x6027; 3.&amp;#x51FD;&amp;#x6570;&amp;#x7684;&amp;#x5C5E;&amp;#x6027;&amp;#x548C;&amp;#x65B9;&amp;#x6CD5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Function类型">
+<meta property="og:url" content="http://zhangkaihongzkh.github.io/2016/07/20/JavaScript-Function类型/index.html">
+<meta property="og:site_name" content="zkhzz 's blog">
+<meta property="og:description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x51FD;&amp;#x6570;&amp;#x7684;&amp;#x58F0;&amp;#x660E;&amp;#x65B9;&amp;#x5F0F; 2.&amp;#x51FD;&amp;#x6570;&amp;#x7684;&amp;#x5185;&amp;#x90E8;&amp;#x5C5E;&amp;#x6027; 3.&amp;#x51FD;&amp;#x6570;&amp;#x7684;&amp;#x5C5E;&amp;#x6027;&amp;#x548C;&amp;#x65B9;&amp;#x6CD5">
+<meta property="og:updated_time" content="2016-07-20T12:19:21.311Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript Function类型">
+<meta name="twitter:description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x51FD;&amp;#x6570;&amp;#x7684;&amp;#x58F0;&amp;#x660E;&amp;#x65B9;&amp;#x5F0F; 2.&amp;#x51FD;&amp;#x6570;&amp;#x7684;&amp;#x5185;&amp;#x90E8;&amp;#x5C5E;&amp;#x6027; 3.&amp;#x51FD;&amp;#x6570;&amp;#x7684;&amp;#x5C5E;&amp;#x6027;&amp;#x548C;&amp;#x65B9;&amp;#x6CD5">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaScript Function类型 | zkhzz 's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zkhzz 's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript Function类型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T19:23:06+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript基础篇/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript基础篇</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/20/JavaScript-Function类型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/JavaScript-Function类型/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          <span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+        
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x6458;&#x8981;:1.&#x51FD;&#x6570;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x5F0F; 2.&#x51FD;&#x6570;&#x7684;&#x5185;&#x90E8;&#x5C5E;&#x6027; 3.&#x51FD;&#x6570;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;<br><a id="more"></a></p>
+<h2 id="&#x51FD;&#x6570;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x5F0F;"><a href="#&#x51FD;&#x6570;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x5F0F;" class="headerlink" title="&#x51FD;&#x6570;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x5F0F;"></a>&#x51FD;&#x6570;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x5F0F;</h2><h3 id="&#x666E;&#x901A;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x5F0F;"><a href="#&#x666E;&#x901A;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x5F0F;" class="headerlink" title="&#x666E;&#x901A;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x5F0F;"></a>&#x666E;&#x901A;&#x7684;&#x58F0;&#x660E;&#x65B9;&#x5F0F;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">num1,num2</span>)</span>{</div><div class="line">    <span class="keyword">return</span> num1 + num2;</div><div class="line">}</div></pre></td></tr></table></figure>
+<h3 id="&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x6765;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;"><a href="#&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x6765;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;" class="headerlink" title="&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x6765;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;"></a>&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x6765;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="function"><span class="keyword">function</span>(<span class="params">num1,num2</span>)</span>{</div><div class="line">    <span class="keyword">return</span> num1 + num2;</div><div class="line">}</div></pre></td></tr></table></figure>
+<h3 id="&#x4F7F;&#x7528;Function&#x6765;&#x6784;&#x9020;&#x51FD;&#x6570;"><a href="#&#x4F7F;&#x7528;Function&#x6765;&#x6784;&#x9020;&#x51FD;&#x6570;" class="headerlink" title="&#x4F7F;&#x7528;Function&#x6765;&#x6784;&#x9020;&#x51FD;&#x6570;"></a>&#x4F7F;&#x7528;Function&#x6765;&#x6784;&#x9020;&#x51FD;&#x6570;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="built_in">Function</span>(<span class="string">&apos;num1&apos;</span>,<span class="string">&apos;num2&apos;</span>,<span class="string">&apos;return num1 + num2&apos;</span>);</div></pre></td></tr></table></figure>
+<p>PS&#xFF1A;&#x7B2C;&#x4E09;&#x79CD;&#x4F1A;&#x5BFC;&#x81F4;&#x89E3;&#x6790;&#x4E24;&#x6B21;&#x4EE3;&#x7801; &#x7B2C;&#x4E00;&#x6B21;&#x662F;&#x5E38;&#x89C4;ECMAScript&#x89E3;&#x6790; &#x7B2C;&#x4E8C;&#x6B21;&#x662F;&#x89E3;&#x6790;&#x4F20;&#x5165;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x5B57;&#x7B26;&#x4E32;<br>&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6709;&#x52A9;&#x4E8E;&#x7406;&#x89E3;&#x51FD;&#x6570;&#x662F;&#x5BF9;&#x8C61;&#xFF0C;&#x51FD;&#x6570;&#x540D;&#x662F;&#x6307;&#x9488;&#x7684;&#x6982;&#x5FF5;</p>
+<h2 id="&#x51FD;&#x6570;&#x7684;&#x5185;&#x90E8;&#x5C5E;&#x6027;"><a href="#&#x51FD;&#x6570;&#x7684;&#x5185;&#x90E8;&#x5C5E;&#x6027;" class="headerlink" title="&#x51FD;&#x6570;&#x7684;&#x5185;&#x90E8;&#x5C5E;&#x6027;"></a>&#x51FD;&#x6570;&#x7684;&#x5185;&#x90E8;&#x5C5E;&#x6027;</h2><p>&#x5728;&#x51FD;&#x6570;&#x5185;&#x90E8;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x5BF9;&#x8C61;&#xFF1A;<strong>arguments</strong> &#x548C; <strong>this</strong>&#x3002;</p>
+<ul>
+<li><strong>arguments</strong> &#x662F;&#x4E00;&#x4E2A;&#x7C7B;&#x6570;&#x7EC4;&#x5BF9;&#x8C61;&#xFF0C;&#x5305;&#x542B;&#x4F20;&#x5165;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x53C2;&#x6570;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x4FDD;&#x5B58;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x3002;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x8FD8;&#x6709;&#x4E00;&#x4E2A; <strong>callee</strong> &#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#xFF0C;&#x6307;&#x5411;&#x62E5;&#x6709;&#x8FD9;&#x4E2A;arguments&#x5BF9;&#x8C61;&#x7684;&#x51FD;&#x6570;<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">num</span>)</span>{</div><div class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>){</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    }<span class="keyword">else</span>{</div><div class="line">        <span class="keyword">return</span> num * box(num - <span class="number">1</span>);  <span class="comment">//&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x9012;&#x5F52;</span></div><div class="line">    }</div><div class="line">}</div><div class="line">alert(box(<span class="number">5</span>));                      <span class="comment">//120</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&#x5BF9;&#x4E8E;&#x9636;&#x4E58;&#x51FD;&#x6570;&#x4E00;&#x822C;&#x8981;&#x7528;&#x5230;&#x9012;&#x5F52;&#xFF0C;&#x5982;&#x679C;&#x51FD;&#x6570;&#x540D;&#x66F4;&#x6539;&#xFF0C;&#x51FD;&#x6570;&#x540D;&#x5185;&#x90E8;&#x4E5F;&#x8981;&#x66F4;&#x6539;&#xFF0C;&#x8FD9;&#x65F6;&#x5019; <strong>callee</strong> &#x5C5E;&#x6027;&#x5C31;&#x53D1;&#x6325;&#x4F5C;&#x7528;&#x4E86;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">num</span>)</span>{</div><div class="line">    <span class="keyword">if</span>(num &lt;= <span class="number">1</span>){</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    }<span class="keyword">else</span>{</div><div class="line">        <span class="keyword">return</span> num * <span class="built_in">arguments</span>.callee(num - <span class="number">1</span>);</div><div class="line">    }</div><div class="line">}</div><div class="line">alert(box(<span class="number">4</span>));          <span class="comment">//24</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x51FD;&#x6570;&#x5185;&#x90E8;&#x53E6;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7279;&#x6B8A;&#x5BF9;&#x8C61; <strong>this</strong><br>this&#x5F15;&#x7528;&#x7684;&#x662F;&#x51FD;&#x6570;&#x5177;&#x4F53;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5373;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x8BED;&#x53E5;&#x5177;&#x4F53;&#x7684;&#x4F5C;&#x7528;&#x57DF;<br>&#x5F53;&#x5728;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;&#x65F6;&#xFF0C;this&#x5BF9;&#x8C61;&#x5F15;&#x7528;&#x5C31;&#x662F;window<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.color = <span class="string">&apos;red&apos;</span>;</div><div class="line">alert(<span class="keyword">this</span>.color);          <span class="comment">//red</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> box = {</div><div class="line">    color:<span class="string">&apos;green&apos;</span>,</div><div class="line">    getColor:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{</div><div class="line">        alert(<span class="keyword">this</span>.color);  <span class="comment">//&#x6B64;&#x65F6;&#x7684;this&#x6307;&#x5411;&#x7684;&#x662F;box</span></div><div class="line">    }</div><div class="line">}</div><div class="line">box.getColor();             <span class="comment">//green</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.color = <span class="string">&apos;red&apos;</span>;</div><div class="line"><span class="keyword">var</span> box = {</div><div class="line">    color:<span class="string">&apos;green&apos;</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>)</span>{</div><div class="line">    alert(<span class="keyword">this</span>.color);      <span class="comment">//&#x7B2C;&#x4E00;&#x6B21;&#x5728;window &#x7B2C;&#x4E8C;&#x6B21;&#x5728;box&#x4E2D;</span></div><div class="line">}</div><div class="line">sayColor();                 <span class="comment">//red</span></div><div class="line"></div><div class="line">box.sayColor = sayColor;    <span class="comment">//&#x5C06;&#x51FD;&#x6570;&#x590D;&#x5236;&#x5230;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x53D8;&#x6210;&#x4E86;&#x65B9;&#x6CD5;</span></div><div class="line">box.sayColor();             <span class="comment">//green</span></div></pre></td></tr></table></figure>
+<h2 id="&#x51FD;&#x6570;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;"><a href="#&#x51FD;&#x6570;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;" class="headerlink" title="&#x51FD;&#x6570;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;"></a>&#x51FD;&#x6570;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;</h2><p>ECMAScript&#x4E2D;&#x51FD;&#x6570;&#x662F;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64;&#x51FD;&#x6570;&#x4E5F;&#x6709;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;&#x5176;&#x4E2D;&#x5C5E;&#x6027;&#x6709;&#x4E24;&#x4E2A;&#xFF0C;&#x5206;&#x522B;&#x4E3A; <strong>length</strong> &#x548C; <strong>prototype</strong> </p>
+<h3 id="length-&#x8868;&#x793A;&#x63A5;&#x53D7;&#x51FD;&#x6570;&#x5E0C;&#x671B;&#x63A5;&#x6536;&#x547D;&#x540D;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;"><a href="#length-&#x8868;&#x793A;&#x63A5;&#x53D7;&#x51FD;&#x6570;&#x5E0C;&#x671B;&#x63A5;&#x6536;&#x547D;&#x540D;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;" class="headerlink" title="length &#x8868;&#x793A;&#x63A5;&#x53D7;&#x51FD;&#x6570;&#x5E0C;&#x671B;&#x63A5;&#x6536;&#x547D;&#x540D;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;"></a><strong>length</strong> &#x8868;&#x793A;&#x63A5;&#x53D7;&#x51FD;&#x6570;&#x5E0C;&#x671B;&#x63A5;&#x6536;&#x547D;&#x540D;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">name,age</span>)</span>{</div><div class="line">    alert(name + age);</div><div class="line">}</div><div class="line">alert(box.length);          <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<h3 id="prototype-&#x662F;&#x7528;&#x4E8E;&#x6240;&#x6709;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x771F;&#x6B63;&#x7684;&#x6240;&#x5728;&#xFF0C;&#xFF08;&#x5C06;&#x5728;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x4E00;&#x8282;&#x7EC8;&#x70B9;&#x9610;&#x8FF0;&#xFF09;-&#x800C;&#x5176;&#x4E0B;&#x6709;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;apply-&#x548C;-call"><a href="#prototype-&#x662F;&#x7528;&#x4E8E;&#x6240;&#x6709;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x771F;&#x6B63;&#x7684;&#x6240;&#x5728;&#xFF0C;&#xFF08;&#x5C06;&#x5728;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x4E00;&#x8282;&#x7EC8;&#x70B9;&#x9610;&#x8FF0;&#xFF09;-&#x800C;&#x5176;&#x4E0B;&#x6709;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;apply-&#x548C;-call" class="headerlink" title="prototype &#x662F;&#x7528;&#x4E8E;&#x6240;&#x6709;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x771F;&#x6B63;&#x7684;&#x6240;&#x5728;&#xFF0C;&#xFF08;&#x5C06;&#x5728;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x4E00;&#x8282;&#x7EC8;&#x70B9;&#x9610;&#x8FF0;&#xFF09; &#x800C;&#x5176;&#x4E0B;&#x6709;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;apply() &#x548C; call()"></a><strong>prototype</strong> &#x662F;&#x7528;&#x4E8E;&#x6240;&#x6709;&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;&#x771F;&#x6B63;&#x7684;&#x6240;&#x5728;&#xFF0C;&#xFF08;&#x5C06;&#x5728;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x4E00;&#x8282;&#x7EC8;&#x70B9;&#x9610;&#x8FF0;&#xFF09; &#x800C;&#x5176;&#x4E0B;&#x6709;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;<strong>apply()</strong> &#x548C; <strong>call()</strong></h3><p>&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x90FD;&#x5305;&#x542B;&#x8FD9;&#x4E24;&#x4E2A;&#x975E;&#x7EE7;&#x627F;&#x800C;&#x6765;&#x7684;&#x65B9;&#x6CD5;&#x3002;<br>&#x7528;&#x9014;&#x662F;&#x5728;&#x7279;&#x5B9A;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x8C03;&#x7528;&#x51FD;&#x6570;&#xFF0C;&#x5373;&#x5728;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x8BBE;&#x7F6E;this&#x5BF9;&#x8C61;&#x7684;&#x503C;</p>
+<ul>
+<li>apply<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x539F;&#x51FD;&#x6570;</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">num1,num2</span>)</span>{</div><div class="line">    <span class="keyword">return</span> num1 + num2;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayBox1</span>(<span class="params">num1,num2</span>)</span>{</div><div class="line">    <span class="keyword">return</span> box.apply(<span class="keyword">this</span>,[num1,num2]); <span class="comment">//&#x63A5;&#x6536;&#x53C2;&#x6570;&#x6570;&#x7EC4;</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayBox2</span>(<span class="params">num1,num2</span>)</span>{</div><div class="line">    <span class="keyword">return</span> box.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">}</div><div class="line">alert(sayBox1(<span class="number">10</span>,<span class="number">10</span>));          <span class="comment">//20</span></div><div class="line">alert(sayBox2(<span class="number">20</span>,<span class="number">20</span>));          <span class="comment">//40</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&#x800C;apply&#x4E0E;call&#x7684;&#x4E0D;&#x540C;&#x5728;&#x4E8E;apply&#x63A5;&#x6536;&#x53EF;&#x4EE5;&#x662F;arguments&#x548C;&#x53C2;&#x6570;&#x6570;&#x7EC4; call&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#x53EA;&#x80FD;&#x9010;&#x4E2A;&#x5217;&#x4E3E;&#x51FA;&#x6765;</p>
+<ul>
+<li>call<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//&#x539F;&#x51FD;&#x6570;</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">num1,num2</span>)</span>{</div><div class="line">    <span class="keyword">return</span> num1 + num2;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">callBox1</span>(<span class="params">num1,num2</span>)</span>{</div><div class="line">    <span class="keyword">return</span> box.call(<span class="keyword">this</span>,num1,num2);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">callBox2</span>(<span class="params">num1,num2</span>)</span>{</div><div class="line">    <span class="keyword">return</span> box.call(<span class="keyword">this</span>,<span class="built_in">arguments</span>);</div><div class="line">}</div><div class="line">alert(callBox1(<span class="number">10</span>,<span class="number">10</span>));          <span class="comment">//20</span></div><div class="line">alert(callBox2(<span class="number">20</span>,<span class="number">20</span>));          <span class="comment">//[object Arguments]undefined</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;call&#x548C;apply&#x771F;&#x6B63;&#x5F3A;&#x5927;&#x7684;&#x5730;&#x65B9;&#x5728;&#x4E8E;&#x5176;&#x80FD;&#x6269;&#x5145;&#x51FD;&#x6570;&#x8D56;&#x4EE5;&#x8FD0;&#x884C;&#x7684;&#x4F5C;&#x7528;&#x57DF;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.color = <span class="string">&apos;red&apos;</span>;</div><div class="line"><span class="keyword">var</span> o = {</div><div class="line">    color:<span class="string">&apos;green&apos;</span></div><div class="line">}</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>)</span>{</div><div class="line">    alert(<span class="keyword">this</span>.color);</div><div class="line">}</div><div class="line"></div><div class="line">sayColor();             <span class="comment">//&#x4F5C;&#x7528;&#x57DF;&#x5728;window&#x4E0A;</span></div><div class="line">sayColor.call(<span class="built_in">window</span>);  <span class="comment">//&#x4F5C;&#x7528;&#x57DF;&#x5728;window&#x4E0A;</span></div><div class="line">sayColor.call(<span class="keyword">this</span>);    <span class="comment">//&#x4F5C;&#x7528;&#x57DF;&#x5728;window&#x4E0A;</span></div><div class="line">sayColor.call(o);       <span class="comment">//&#x5BF9;&#x8C61;&#x5192;&#x5145;&#xFF0C;&#x4F5C;&#x7528;&#x57DF;&#x5728;o</span></div></pre></td></tr></table></figure></p>
+<p>&#x4F7F;&#x7528;call()&#x6216;&#x8005;apply()&#x6765;&#x6269;&#x5145;&#x4F5C;&#x7528;&#x57DF;&#x6700;&#x5927;&#x7684;&#x597D;&#x5904;&#x5C31;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x4E0E;&#x65B9;&#x6CD5;&#x53D1;&#x751F;&#x4EFB;&#x4F55; <strong>&#x8026;&#x5408;&#x5173;&#x7CFB;</strong> (&#x5C31;&#x662F;&#x4E92;&#x76F8;&#x5173;&#x8054;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x6269;&#x5C55;&#x548C;&#x7EF4;&#x62A4;&#x4F1A;&#x53D1;&#x751F;&#x8FDE;&#x9501;&#x53CD;&#x5E94;)&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;o&#x5BF9;&#x8C61;&#x548C;sayColor&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x6709;&#x591A;&#x4F59;&#x7684;&#x5173;&#x8054;&#x64CD;&#x4F5C;<br>eg.o.sayColor = sayColor;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Function/" rel="tag">#Function</a>
+          
+            <a href="/tags/this/" rel="tag">#this</a>
+          
+            <a href="/tags/call-this/" rel="tag">#call,this</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/20/JavaScript-变量作用域-内存/" rel="next" title="JavaScript 变量 作用域 内存">
+                <i class="fa fa-chevron-left"></i> JavaScript 变量 作用域 内存
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/23/时间管理的七句话-from阮一峰老师/" rel="prev" title="时间管理的七句话--from阮一峰老师">
+                时间管理的七句话--from阮一峰老师 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/20/JavaScript-Function类型/"
+           data-title="JavaScript Function类型" data-url="http://zhangkaihongzkh.github.io/2016/07/20/JavaScript-Function类型/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Zkhzz" />
+          <p class="site-author-name" itemprop="name">Zkhzz</p>
+          <p class="site-description motion-element" itemprop="description">Never Enough</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangkaihongzkh" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhang-kai-hong-50" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的声明方式"><span class="nav-number">1.</span> <span class="nav-text">函数的声明方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通的声明方式"><span class="nav-number">1.1.</span> <span class="nav-text">普通的声明方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用变量来初始化函数"><span class="nav-number">1.2.</span> <span class="nav-text">使用变量来初始化函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Function来构造函数"><span class="nav-number">1.3.</span> <span class="nav-text">使用Function来构造函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的内部属性"><span class="nav-number">2.</span> <span class="nav-text">函数的内部属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数属性和方法"><span class="nav-number">3.</span> <span class="nav-text">函数属性和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#length-表示接受函数希望接收命名参数的个数"><span class="nav-number">3.1.</span> <span class="nav-text">length 表示接受函数希望接收命名参数的个数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prototype-是用于所有实例方法真正的所在，（将在面向对象一节终点阐述）-而其下有两个方法：apply-和-call"><span class="nav-number">3.2.</span> <span class="nav-text">prototype 是用于所有实例方法真正的所在，（将在面向对象一节终点阐述） 而其下有两个方法：apply() 和 call()</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zkhzz</span>
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zkhzz"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

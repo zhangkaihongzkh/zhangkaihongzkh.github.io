@@ -1,0 +1,711 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="变量,作用域,内存," />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x53D8;&amp;#x91CF;&amp;#x548C;&amp;#x4F5C;&amp;#x7528;&amp;#x57DF; 2.&amp;#x5185;&amp;#x5B58;&amp;#x95EE;&amp;#x9898;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 变量 作用域 内存">
+<meta property="og:url" content="http://zhangkaihongzkh.github.io/2016/07/20/JavaScript-变量作用域-内存/index.html">
+<meta property="og:site_name" content="zkhzz 's blog">
+<meta property="og:description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x53D8;&amp;#x91CF;&amp;#x548C;&amp;#x4F5C;&amp;#x7528;&amp;#x57DF; 2.&amp;#x5185;&amp;#x5B58;&amp;#x95EE;&amp;#x9898;">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/20/JavaScript-变量作用域-内存/pic_001.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/20/JavaScript-变量作用域-内存/pic_002.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/20/JavaScript-变量作用域-内存/pic_003.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/20/JavaScript-变量作用域-内存/pic_004.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/20/JavaScript-变量作用域-内存/pic_005.png">
+<meta property="og:updated_time" content="2016-09-04T13:35:35.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 变量 作用域 内存">
+<meta name="twitter:description" content="&amp;#x6458;&amp;#x8981;:1.&amp;#x53D8;&amp;#x91CF;&amp;#x548C;&amp;#x4F5C;&amp;#x7528;&amp;#x57DF; 2.&amp;#x5185;&amp;#x5B58;&amp;#x95EE;&amp;#x9898;">
+<meta name="twitter:image" content="http://zhangkaihongzkh.github.io/2016/07/20/JavaScript-变量作用域-内存/pic_001.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaScript 变量 作用域 内存 | zkhzz 's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zkhzz 's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript 变量 作用域 内存
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T15:23:06+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript基础篇/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript基础篇</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/20/JavaScript-变量作用域-内存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/JavaScript-变量作用域-内存/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          <span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+        
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x6458;&#x8981;:1.&#x53D8;&#x91CF;&#x548C;&#x4F5C;&#x7528;&#x57DF; 2.&#x5185;&#x5B58;&#x95EE;&#x9898;<br><a id="more"></a></p>
+<h2 id="&#x53D8;&#x91CF;&#x548C;&#x4F5C;&#x7528;&#x57DF;"><a href="#&#x53D8;&#x91CF;&#x548C;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="&#x53D8;&#x91CF;&#x548C;&#x4F5C;&#x7528;&#x57DF;"></a>&#x53D8;&#x91CF;&#x548C;&#x4F5C;&#x7528;&#x57DF;</h2><h3 id="&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;"><a href="#&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;" class="headerlink" title="&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;"></a>&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;</h3><h4 id="&#x57FA;&#x672C;&#x7C7B;&#x578B;"><a href="#&#x57FA;&#x672C;&#x7C7B;&#x578B;" class="headerlink" title="&#x57FA;&#x672C;&#x7C7B;&#x578B;"></a>&#x57FA;&#x672C;&#x7C7B;&#x578B;</h4><ul>
+<li>Undefined </li>
+<li>Null</li>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+</ul>
+<blockquote>
+<p>  &#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x4FDD;&#x5B58;&#x5728;&#x6808;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x6309;&#x503C;&#x6765;&#x67E5;&#x627E;</p>
+</blockquote>
+<h4 id="&#x5F15;&#x7528;&#x7C7B;&#x578B;"><a href="#&#x5F15;&#x7528;&#x7C7B;&#x578B;" class="headerlink" title="&#x5F15;&#x7528;&#x7C7B;&#x578B;"></a>&#x5F15;&#x7528;&#x7C7B;&#x578B;</h4><p>&#x5982;&#x679C;&#x8D4B;&#x503C;&#x4E3A;&#x5F15;&#x7528;&#x7C7B;&#x578B;,&#x5219;&#x9700;&#x4FDD;&#x5B58;&#x5728;&#x5806;&#x5185;&#x5B58;&#x4E2D;,&#x800C;&#x8D4B;&#x503C;&#x5927;&#x5C0F;&#x4E0D;&#x56FA;&#x5B9A;,&#x6240;&#x4EE5;&#x4FDD;&#x5B58;&#x5F15;&#x7528;&#x5730;&#x5740;&#x5728;&#x6808;&#x5185;&#x5B58;&#x4E2D;,&#x5F53;&#x67E5;&#x627E;&#x53D8;&#x91CF;&#x65F6;,&#x5148;&#x8BBF;&#x95EE;&#x6808;&#x5185;&#x5B58;&#x7684;&#x5F15;&#x7528;&#x5730;&#x5740;,&#x518D;&#x8BBF;&#x95EE;&#x5806;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x503C;,&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x79F0;&#x4E3A;&#x6309;&#x5F15;&#x7528;&#x8BBF;&#x95EE;<br><img src="/2016/07/20/JavaScript-&#x53D8;&#x91CF;&#x4F5C;&#x7528;&#x57DF;-&#x5185;&#x5B58;/pic_001.png" alt="&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x5806;&#x5185;&#x5B58;&#x4E0E;&#x6808;&#x5185;&#x5B58;&#x7684;&#x8054;&#x7CFB;" title="&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x5806;&#x5185;&#x5B58;"></p>
+<h3 id="&#x52A8;&#x6001;&#x5C5E;&#x6027;"><a href="#&#x52A8;&#x6001;&#x5C5E;&#x6027;" class="headerlink" title="&#x52A8;&#x6001;&#x5C5E;&#x6027;"></a>&#x52A8;&#x6001;&#x5C5E;&#x6027;</h3><p>&#x5B9A;&#x4E49;&#x57FA;&#x672C;&#x5C5E;&#x6027;&#x7C7B;&#x578B;&#x503C;&#x548C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x662F;&#x76F8;&#x4F3C;&#x7684;: &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x5E76;&#x4E3A;&#x8BE5;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#xFF0C;&#x4F46;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x503C;&#x64CD;&#x4F5C;&#x4F1A;&#x6709;&#x4E0D;&#x540C;</p>
+<ul>
+<li><p>&#x5F15;&#x7528;&#x7C7B;&#x578B;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">box.name = <span class="string">&apos;zkh&apos;</span>;</div><div class="line">alert(box.name);        <span class="comment">//zkh</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x57FA;&#x672C;&#x7C7B;&#x578B;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">27</span>;</div><div class="line">age.name = <span class="string">&apos;zkh&apos;</span>;</div><div class="line">alert(age.name);        <span class="comment">//undefined</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="&#x590D;&#x5236;&#x53D8;&#x91CF;&#x503C;"><a href="#&#x590D;&#x5236;&#x53D8;&#x91CF;&#x503C;" class="headerlink" title="&#x590D;&#x5236;&#x53D8;&#x91CF;&#x503C;"></a>&#x590D;&#x5236;&#x53D8;&#x91CF;&#x503C;</h3><p>&#x5728;&#x590D;&#x5236;&#x53D8;&#x91CF;&#x503C;&#x65B9;&#x9762; &#x57FA;&#x672C;&#x7C7B;&#x578B;&#x662F;&#x590D;&#x5236;&#x503C;&#x672C;&#x8EAB;,&#x800C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x662F;&#x590D;&#x5236;&#x5730;&#x5740;</p>
+<ul>
+<li>&#x57FA;&#x672C;&#x7C7B;&#x578B;<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="string">&apos;Lee&apos;</span>;    <span class="comment">//&#x5728;&#x6808;&#x5185;&#x5B58;&#x4E2D;&#x751F;&#x6210;&#x4E00;&#x4E2A;box &apos;Lee&apos;</span></div><div class="line">box2 = box          <span class="comment">//&#x5728;&#x6808;&#x5185;&#x5B58;&#x4E2D;&#x518D;&#x751F;&#x6210;&#x4E00;&#x4E2A;box &apos;Lee&apos;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2016/07/20/JavaScript-&#x53D8;&#x91CF;&#x4F5C;&#x7528;&#x57DF;-&#x5185;&#x5B58;/pic_002.png" alt="&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x590D;&#x5236;&#x53D8;&#x91CF;&#x65F6;&#x590D;&#x5236;&#x503C;&#x672C;&#x8EAB;" title="&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x590D;&#x5236;&#x53D8;&#x91CF;&#x65F6;&#x590D;&#x5236;&#x503C;&#x672C;&#x8EAB;"><br>box2&#x867D;&#x7136;&#x662F;box&#x7684;&#x4E00;&#x4E2A;&#x526F;&#x672C;&#xFF0C;&#x4F46;&#x662F;&#x4E24;&#x8005;&#x662F;&#x72EC;&#x7ACB;&#x5F00;&#x7684;&#xFF0C;&#x5BF9;&#x4E24;&#x8005;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x64CD;&#x4F5C;&#x4E0D;&#x5F71;&#x54CD;</p>
+<ul>
+<li>&#x5F15;&#x7528;&#x7C7B;&#x578B;<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="keyword">new</span> <span class="built_in">Object</span>();    </div><div class="line">box.name = <span class="string">&apos;Lee&apos;</span>          </div><div class="line">alert(box.name);        <span class="comment">//Lee</span></div><div class="line"><span class="keyword">var</span> box2 = box;</div><div class="line">box2.name = <span class="string">&apos;zkhzz&apos;</span>;</div><div class="line">alert(box.name);        <span class="comment">//box.name&#x88AB;&#x4FEE;&#x6539;&#x4E3A;zkhzz</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/2016/07/20/JavaScript-&#x53D8;&#x91CF;&#x4F5C;&#x7528;&#x57DF;-&#x5185;&#x5B58;/pic_003.png" alt="&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x590D;&#x5236;&#x53D8;&#x91CF;&#x65F6;&#x590D;&#x5236;&#x5730;&#x5740;" title="&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x590D;&#x5236;&#x53D8;&#x91CF;&#x65F6;&#x590D;&#x5236;&#x5730;&#x5740;"><br>&#x5728;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x4E2D;box2&#x5176;&#x5B9E;&#x5C31;&#x662F;box,&#x4ED6;&#x4EEC;&#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;Object &#x5982;&#x679C;Object&#x7684;name&#x5C5E;&#x6027;&#x88AB;&#x4FEE;&#x6539;&#x4E86;,&#x5BF9;&#x5E94;&#x7684;&#x8F93;&#x51FA;&#x503C;&#x4E5F;&#x4F1A;&#x88AB;&#x4FEE;&#x6539;</p>
+<h3 id="&#x4F20;&#x9012;&#x53C2;&#x6570;"><a href="#&#x4F20;&#x9012;&#x53C2;&#x6570;" class="headerlink" title="&#x4F20;&#x9012;&#x53C2;&#x6570;"></a>&#x4F20;&#x9012;&#x53C2;&#x6570;</h3><p>ECMAScript&#x4E2D;&#x6240;&#x6709;&#x51FD;&#x6570;&#x90FD;&#x662F;&#x6309;&#x503C;&#x4F20;&#x9012;&#x7684;,&#x867D;&#x7136;&#x53D8;&#x91CF;&#x6709;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x548C;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x4E4B;&#x5206;</p>
+<ul>
+<li><p>&#x6309;&#x503C;&#x4F20;&#x9012;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">num</span>)</span>{              <span class="comment">//&#x6309;&#x503C;&#x4F20;&#x9012;,&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#x4E3A;&#x57FA;&#x672C;&#x7C7B;&#x578B;</span></div><div class="line">    num += <span class="number">10</span>;                  <span class="comment">//&#x8FD9;&#x91CC;&#x7684;num&#x4E3A;&#x57FA;&#x672C;&#x7C7B;&#x578B;,&#x5168;&#x5C40;&#x65E0;&#x6548;</span></div><div class="line">    <span class="keyword">return</span> num;</div><div class="line">}</div><div class="line"><span class="keyword">var</span> num = <span class="number">50</span>;</div><div class="line"><span class="keyword">var</span> result = box(num);</div><div class="line">alert(result);                  <span class="comment">//60</span></div><div class="line">alert(num);                     <span class="comment">//50</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x6309;&#x5F15;&#x7528;&#x4F20;&#x9012;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">obj</span>)</span>{              </div><div class="line">    obj.name = <span class="string">&apos;zkhzz&apos;</span>;</div><div class="line">}</div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">box(p)</div><div class="line">alert(p.name);                  <span class="comment">//zkhzz</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>&#x5982;&#x679C;&#x5B58;&#x5728;&#x6309;&#x5F15;&#x7528;&#x4F20;&#x9012;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x51FD;&#x6570;&#x91CC;&#x7684;&#x90A3;&#x4E2A;&#x53D8;&#x91CF;&#x5C06;&#x4F1A;&#x662F;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x5728;&#x5916;&#x90E8;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">obj</span>)</span>{              </div><div class="line">    obj.name = <span class="string">&apos;zkhzz&apos;</span>;</div><div class="line">    <span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    obj.name = <span class="string">&apos;Lee&apos;</span>;           <span class="comment">//zkhzz&#x6CA1;&#x6709;&#x66FF;&#x6362;&#x539F;&#x6765;</span></div><div class="line">}</div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">box(p)</div><div class="line">alert(p.name);                  <span class="comment">//zkhzz</span></div></pre></td></tr></table></figure>
+<h3 id="&#x7C7B;&#x578B;&#x68C0;&#x6D4B;"><a href="#&#x7C7B;&#x578B;&#x68C0;&#x6D4B;" class="headerlink" title="&#x7C7B;&#x578B;&#x68C0;&#x6D4B;"></a>&#x7C7B;&#x578B;&#x68C0;&#x6D4B;</h3><p>&#x5F53;&#x6211;&#x4EEC;&#x8981;&#x68C0;&#x6D4B;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x65F6;,&#x53EF;&#x4EE5;&#x4F7F;&#x7528;typeof&#x8FD0;&#x7B97;&#x7B26;&#x6765;&#x5224;&#x65AD;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">&apos;zkh&apos;</span>;</div><div class="line">alert(<span class="keyword">typeof</span> name);     <span class="comment">//string</span></div></pre></td></tr></table></figure></p>
+<p>typeof&#x68C0;&#x6D4B;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x65F6;&#x6BD4;&#x8F83;&#x6709;&#x7528;,&#x4F46;&#x662F;&#x68C0;&#x6D4B;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x65F6;&#x4E0D;&#x65B9;&#x4FBF;,&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E0D;&#x60F3;&#x77E5;&#x9053;&#x4ED6; <strong>&#x662F;&#x4E0D;&#x662F;&#x5BF9;&#x8C61;</strong> ,&#x800C;&#x662F;&#x60F3;&#x77E5;&#x9053;&#x4ED6;&#x662F; <strong>&#x4EC0;&#x4E48;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;</strong> &#x56E0;&#x4E3A;&#x6570;&#x7EC4;&#x662F;Object&#xFF0C;null&#x4E5F;&#x662F;Object&#x3002; &#x8FD9;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x7528; <strong>instanceof</strong> &#x8FD0;&#x7B97;&#x7B26;&#x4E86;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];        </div><div class="line">alert(num <span class="keyword">instanceof</span> <span class="built_in">Array</span>);            <span class="comment">//&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x6570;&#x7EC4; true</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> o = {}</div><div class="line">alert(o <span class="keyword">instanceof</span> <span class="built_in">Object</span>);             <span class="comment">//&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x5BF9;&#x8C61; true</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> g = <span class="regexp">/g/</span>;</div><div class="line">alert(g <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>);             <span class="comment">//&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F; true </span></div><div class="line"></div><div class="line"><span class="keyword">var</span> name2 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&apos;zkhzz&apos;</span>);</div><div class="line">alert(name2 <span class="keyword">instanceof</span> <span class="built_in">String</span>);          <span class="comment">//&#x5224;&#x65AD;&#x662F;&#x5426;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#x5BF9;&#x8C61; true</span></div></pre></td></tr></table></figure></p>
+<p>&#x5F53;&#x7528;instanceof&#x68C0;&#x6D4B;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE; <strong>false</strong>&#x3002;</p>
+<h3 id="&#x6267;&#x884C;&#x73AF;&#x5883;&#x548C;&#x4F5C;&#x7528;&#x57DF;"><a href="#&#x6267;&#x884C;&#x73AF;&#x5883;&#x548C;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="&#x6267;&#x884C;&#x73AF;&#x5883;&#x548C;&#x4F5C;&#x7528;&#x57DF;"></a>&#x6267;&#x884C;&#x73AF;&#x5883;&#x548C;&#x4F5C;&#x7528;&#x57DF;</h3><p>JavaScript&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x6216;&#x8005;&#x51FD;&#x6570;&#x6709;&#x6743;&#x8BBF;&#x95EE;&#x7684;&#x5176;&#x4ED6;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x51B3;&#x5B9A;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x884C;&#x4E3A;<br>&#x5168;&#x5C40;&#x6267;&#x884C;&#x73AF;&#x5883;&#x662F;&#x6700;&#x5916;&#x56F4;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#xFF0C;&#x5728;Web&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x89C4;&#x5B9A;&#x5168;&#x5C40;&#x6267;&#x884C;&#x73AF;&#x5883;&#x4E3A; <strong>window&#x5BF9;&#x8C61;</strong> &#x3002;&#x6240;&#x6709; <strong>&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x548C;&#x51FD;&#x6570;</strong> &#x90FD;&#x662F;&#x4F5C;&#x4E3A;window&#x7684; <strong>&#x5C5E;&#x6027;&#x548C;&#x548C;&#x65B9;&#x6CD5;</strong> &#x521B;&#x5EFA;&#x7684;&#x3002;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">&apos;zkhzz&apos;</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>)</span>{</div><div class="line">    alert(name);        <span class="comment">//&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x8BBF;&#x95EE;</span></div><div class="line">}</div><div class="line">getName();</div></pre></td></tr></table></figure></p>
+<p>&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x548C;&#x51FD;&#x6570;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">&apos;zkhzz&apos;</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>)</span>{</div><div class="line">    alert(<span class="built_in">window</span>.name); <span class="comment">//&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5373;&#x4E3A;window&#x7684;&#x5C5E;&#x6027;</span></div><div class="line">}</div><div class="line"><span class="built_in">window</span>.getName();       <span class="comment">//&#x5168;&#x5C40;&#x51FD;&#x6570;&#x5373;&#x4E3A;window&#x7684;&#x65B9;&#x6CD5;</span></div></pre></td></tr></table></figure></p>
+<p>PS&#xFF1A;&#x5F53;&#x6267;&#x884C;&#x73AF;&#x5883;&#x4E2D;&#x6240;&#x6709;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x5B8C;&#x540E;&#x5C31;&#x88AB;&#x9500;&#x6BC1;&#xFF0C;&#x5982;&#x679C;&#x4E3A;&#x5168;&#x5C40;&#x6267;&#x884C;&#x73AF;&#x5883;&#xFF0C;&#x5219;&#x8981;&#x7B49;&#x5F85;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x6216;&#x8005;&#x7F51;&#x9875;&#x5173;&#x95ED;&#x624D;&#x4F1A;&#x9500;&#x6BC1;<br>PS&#xFF1A;&#x6BCF;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x73AF;&#x5883;&#x90FD;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x53D8;&#x91CF;&#x5BF9;&#x8C61;&#xFF0C;&#x5C31;&#x50CF;&#x5168;&#x5C40;&#x6267;&#x884C;&#x73AF;&#x5883;&#x6709;window&#x5BF9;&#x8C61;&#xFF0C;&#x5C40;&#x90E8;&#x4E5F;&#x6709;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#xFF08;&#x89E3;&#x6790;&#x5668;&#x5904;&#x7406;&#x6570;&#x636E;&#x65F6;&#x540E;&#x53F0;&#x4F7F;&#x7528;&#x5B83;&#xFF09;</p>
+<p>&#x51FD;&#x6570;&#x91CC;&#x7684;&#x5C40;&#x90E8;&#x4F5C;&#x7528;&#x57DF;&#x53D8;&#x91CF;&#x66FF;&#x6362;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x662F;&#x4F5C;&#x7528;&#x57DF;&#x4EC5;&#x5728;&#x8BE5;&#x5C40;&#x90E8;&#x73AF;&#x5883;&#x4E2D;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="string">&apos;blue&apos;</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getColor</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="keyword">var</span> box = <span class="string">&apos;red&apos;</span>;</div><div class="line">    alert(box);         <span class="comment">//&#x51FA;&#x53BB;&#x540E;&#x5C31;&#x8BA4;&#x4E0D;&#x51FA;red&#x4E86;</span></div><div class="line">}</div><div class="line">getColor();              <span class="comment">//red</span></div><div class="line">alert(box);             <span class="comment">//blue</span></div></pre></td></tr></table></figure></p>
+<p>&#x901A;&#x8FC7;&#x4F20;&#x53C2;&#x53EF;&#x4EE5;&#x66FF;&#x6362;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x4F5C;&#x7528;&#x57DF;&#x4EC5;&#x5728;&#x8BE5;&#x51FD;&#x6570;&#x4F53;&#x4E2D;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="string">&apos;blue&apos;</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setColor</span>(<span class="params">color</span>)</span>{</div><div class="line">    alert(color);         <span class="comment">//&#x901A;&#x8FC7;&#x4F20;&#x53C2;&#x4FEE;&#x6539;&#x4E86;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x51FA;&#x4F5C;&#x7528;&#x57DF;&#x5C31;&#x5931;&#x6548;&#x4E86;</span></div><div class="line">}</div><div class="line">setColor(<span class="string">&apos;red&apos;</span>);        <span class="comment">//red</span></div><div class="line">alert(box);             <span class="comment">//blue</span></div></pre></td></tr></table></figure></p>
+<p>&#x51FD;&#x6570;&#x4F53;&#x5185;&#x5305;&#x542B;&#x51FD;&#x6570;&#xFF0C;&#x53EA;&#x6709;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5185;&#x4E00;&#x5C42;&#x7684;&#x51FD;&#x6570;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="string">&apos;blue&apos;</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setBox</span>(<span class="params"></span>)</span>{</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">setColor</span>(<span class="params"></span>)</span>{</div><div class="line">        <span class="keyword">var</span> b = <span class="string">&apos;orange&apos;</span>;</div><div class="line">        alert(box);             <span class="comment">//blue</span></div><div class="line">        alert(b);               <span class="comment">//orange</span></div><div class="line">    }</div><div class="line">    setColor();                 <span class="comment">//setColor&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#x5728;setBox&#x5185;</span></div><div class="line">}</div><div class="line">setBox();                       <span class="comment">//blue orange</span></div></pre></td></tr></table></figure></p>
+<p>PS&#xFF1A;&#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x6267;&#x884C;&#x65F6;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#xFF0C;&#x5F53;&#x6267;&#x884C;&#x5230;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x51FD;&#x6570;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#x5C31;&#x4F1A;&#x63A8;&#x5230;&#x73AF;&#x5883;&#x6808;&#x4E2D;&#xFF0C;&#x5F53;&#x51FD;&#x6570;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;&#x4F1A;&#x9000;&#x51FA;&#x73AF;&#x5883;&#x6808;&#xFF0C;&#x540C;&#x65F6;&#x5C06;&#x63A7;&#x5236;&#x6743;&#x4EA4;&#x7ED9;&#x4E0A;&#x4E00;&#x7EA7;&#x6267;&#x884C;&#x73AF;&#x5883;<br>PS&#xFF1A;&#x5F53;&#x4EE3;&#x7801;&#x5728;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x73AF;&#x5883;&#x4E2D;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x5F62;&#x6210;&#x4E00;&#x79CD;&#x53EB; <strong>&#x4F5C;&#x7528;&#x57DF;&#x94FE;</strong> &#x7684;&#x4E1C;&#x897F;&#x3002;&#x4ED6;&#x7684;&#x7528;&#x9014;&#x662F; <strong>&#x4FDD;&#x8BC1;&#x5BF9;&#x6267;&#x884C;&#x73AF;&#x5883;&#x4E2D;&#x6709;&#x6743;&#x9650;&#x8BBF;&#x95EE;&#x7684;&#x53D8;&#x91CF;&#x548C;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x6709;&#x5E8F;&#x7684;&#x8BBF;&#x95EE;</strong> &#x3002;&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#x7684;&#x524D;&#x7AEF;&#xFF0C;&#x5C31;&#x662F;&#x6267;&#x884C;&#x73AF;&#x5883;&#x7684;&#x53D8;&#x91CF;&#x5BF9;&#x8C61;<br><img src="/2016/07/20/JavaScript-&#x53D8;&#x91CF;&#x4F5C;&#x7528;&#x57DF;-&#x5185;&#x5B58;/pic_004.png" alt="&#x4F5C;&#x7528;&#x57DF;&#x94FE;" title="&#x4F5C;&#x7528;&#x57DF;&#x94FE;"></p>
+<h3 id="&#x6CA1;&#x6709;&#x5757;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;"><a href="#&#x6CA1;&#x6709;&#x5757;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="&#x6CA1;&#x6709;&#x5757;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;"></a>&#x6CA1;&#x6709;&#x5757;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;</h3><p>&#x7EA7;&#x4F5C;&#x7528;&#x57DF;&#x8868;&#x793A;&#x8BF8;&#x5982; if&#x8BED;&#x53E5;&#x7B49;&#x6709;&#x82B1;&#x62EC;&#x53F7;&#x5C01;&#x95ED;&#x7684;&#x4EE3;&#x7801;&#x5757;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x652F;&#x6301;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x6765;&#x5B9A;&#x4E49;&#x53D8;<br>&#x91CF;&#x3002;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>){</div><div class="line">    <span class="keyword">var</span> box = <span class="string">&apos;zkhzz&apos;</span>;</div><div class="line">}</div><div class="line">alert(box);                 <span class="comment">//zkhzz &#x51FA;&#x4E86;if box&#x8FD8;&#x5B58;&#x5728;</span></div></pre></td></tr></table></figure></p>
+<p>for&#x4E5F;&#x662F;&#x7C7B;&#x4F3C;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i ++){</div><div class="line">    <span class="keyword">var</span> box = <span class="string">&apos;zkhzz&apos;</span></div><div class="line">}</div><div class="line">alert(i);                   <span class="comment">// 5 &#x51FA;&#x4E86;for i&#x8FD8;&#x5B58;&#x5728;</span></div><div class="line">alert(box);                 <span class="comment">//zkhzz &#x51FA;&#x4E86;for box&#x8FD8;&#x5B58;&#x5728;</span></div></pre></td></tr></table></figure></p>
+<p>var &#x5173;&#x952E;&#x5B57;&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x533A;&#x522B;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">box</span>(<span class="params">num1,num2</span>)</span>{</div><div class="line">    <span class="keyword">var</span> sum = num1 + num2;  <span class="comment">//&#x5982;&#x679C;&#x6CA1;&#x6709;var sum&#x5C31;&#x662F;&#x5168;&#x5C40;&#x53D8;&#x91CF;</span></div><div class="line">}</div><div class="line">box(<span class="number">1</span>,<span class="number">2</span>);</div><div class="line">alert(sum);                 <span class="comment">//&#x62A5;&#x9519; sum is undefined &#x6CA1;&#x6709;var&#x65F6; &#x4E3A;3</span></div></pre></td></tr></table></figure></p>
+<p>&#x4E00;&#x822C;&#x786E;&#x5B9A;&#x53D8;&#x91CF;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x641C;&#x7D22;&#x6765;&#x786E;&#x5B9A;&#x8BE5;&#x6807;&#x8BC6;&#x7B26;&#x5B9E;&#x9645;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> box = <span class="string">&apos;blue&apos;</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getBox</span>(<span class="params"></span>)</span>{   </div><div class="line">    <span class="keyword">return</span> box;             <span class="comment">//&#x5982;&#x679C;&#x52A0;&#x4E0A; var box = &apos;red&apos; &#x5219;&#x663E;&#x793A;red</span></div><div class="line">}</div><div class="line">alert(getBox());            <span class="comment">//blue;</span></div></pre></td></tr></table></figure></p>
+<p><img src="/2016/07/20/JavaScript-&#x53D8;&#x91CF;&#x4F5C;&#x7528;&#x57DF;-&#x5185;&#x5B58;/pic_005.png" alt="&#x53D8;&#x91CF;&#x67E5;&#x8BE2;&#x65F6;&#x7684;&#x987A;&#x5E8F;" title="&#x53D8;&#x91CF;&#x67E5;&#x8BE2;&#x65F6;&#x7684;&#x987A;&#x5E8F;"><br>PS&#xFF1A;&#x67E5;&#x8BE2;&#x53D8;&#x91CF;&#x4E2D;&#xFF0C;&#x8BBF;&#x95EE;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x6BD4;&#x8BBF;&#x95EE;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x8981;&#x5FEB;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x5411;&#x4E0A;&#x641C;&#x5BFB;&#x4F5C;&#x7528;&#x57DF;&#x94FE;&#x3002;</p>
+<h2 id="&#x5185;&#x5B58;&#x95EE;&#x9898;"><a href="#&#x5185;&#x5B58;&#x95EE;&#x9898;" class="headerlink" title="&#x5185;&#x5B58;&#x95EE;&#x9898;"></a>&#x5185;&#x5B58;&#x95EE;&#x9898;</h2><p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x786E;&#x4FDD;&#x5360;&#x7528;&#x6700;&#x5C11;&#x7684;&#x5185;&#x5B58;&#x53EF;&#x4EE5;&#x8BA9;&#x9875;&#x9762;&#x83B7;&#x5F97;&#x66F4;&#x597D;&#x7684;&#x6027;&#x80FD;&#x3002;&#x4F18;&#x5316;&#x5185;&#x5B58;&#x7684;&#x6700;&#x4F73;&#x65B9;&#x6848;&#xFF0C;<br>&#x5C31;&#x662F;&#x4E00;&#x65E6;&#x6570;&#x636E;&#x4E0D;&#x518D;&#x6709;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x5C06;&#x5176;&#x8BBE;&#x7F6E;&#x4E3A;null&#x6765;&#x91CA;&#x653E;&#x5F15;&#x7528;&#xFF0C;&#x8FD9;&#x4E2A;&#x505A;&#x6CD5;&#x53EB;&#x505A; <strong>&#x89E3;&#x9664;&#x5F15;&#x7528;</strong>&#x3002;&#x8FD9;&#x4E00;<br>&#x505A;&#x6CD5;&#x9002;&#x7528;&#x4E8E;&#x5927;&#x591A;&#x6570;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x548C;&#x5168;&#x5C40;&#x5BF9;&#x8C61;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = {</div><div class="line">    name:<span class="string">&apos;zkh&apos;</span></div><div class="line">};</div><div class="line">o = <span class="literal">null</span>;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/变量/" rel="tag">#变量</a>
+          
+            <a href="/tags/作用域/" rel="tag">#作用域</a>
+          
+            <a href="/tags/内存/" rel="tag">#内存</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/20/node-模块和包/" rel="next" title="node-模块和包">
+                <i class="fa fa-chevron-left"></i> node-模块和包
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/20/JavaScript-Function类型/" rel="prev" title="JavaScript Function类型">
+                JavaScript Function类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/20/JavaScript-变量作用域-内存/"
+           data-title="JavaScript 变量 作用域 内存" data-url="http://zhangkaihongzkh.github.io/2016/07/20/JavaScript-变量作用域-内存/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Zkhzz" />
+          <p class="site-author-name" itemprop="name">Zkhzz</p>
+          <p class="site-description motion-element" itemprop="description">Never Enough</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangkaihongzkh" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhang-kai-hong-50" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量和作用域"><span class="nav-number">1.</span> <span class="nav-text">变量和作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型和引用类型"><span class="nav-number">1.1.</span> <span class="nav-text">基本类型和引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">引用类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态属性"><span class="nav-number">1.2.</span> <span class="nav-text">动态属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制变量值"><span class="nav-number">1.3.</span> <span class="nav-text">复制变量值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传递参数"><span class="nav-number">1.4.</span> <span class="nav-text">传递参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型检测"><span class="nav-number">1.5.</span> <span class="nav-text">类型检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行环境和作用域"><span class="nav-number">1.6.</span> <span class="nav-text">执行环境和作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#没有块级作用域"><span class="nav-number">1.7.</span> <span class="nav-text">没有块级作用域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存问题"><span class="nav-number">2.</span> <span class="nav-text">内存问题</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zkhzz</span>
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zkhzz"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
