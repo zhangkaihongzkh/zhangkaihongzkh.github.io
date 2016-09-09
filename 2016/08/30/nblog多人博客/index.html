@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="blog,node,epress,mongodb," />
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;#x6458;&amp;#x8981;:express + node + mongodb &amp;#x591A;&amp;#x4EBA;&amp;#x535A;&amp;#x5BA2;&amp;#x7CFB;&amp;#x7EDF;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nblog多人博客">
+<meta property="og:url" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/index.html">
+<meta property="og:site_name" content="zkhzz 's blog">
+<meta property="og:description" content="&amp;#x6458;&amp;#x8981;:express + node + mongodb &amp;#x591A;&amp;#x4EBA;&amp;#x535A;&amp;#x5BA2;&amp;#x7CFB;&amp;#x7EDF;">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_001.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_002.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_003.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_004.png">
+<meta property="og:updated_time" content="2016-09-09T13:58:38.366Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nblog多人博客">
+<meta name="twitter:description" content="&amp;#x6458;&amp;#x8981;:express + node + mongodb &amp;#x591A;&amp;#x4EBA;&amp;#x535A;&amp;#x5BA2;&amp;#x7CFB;&amp;#x7EDF;">
+<meta name="twitter:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_001.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> nblog多人博客 | zkhzz 's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zkhzz 's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nblog多人博客
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T22:37:04+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/项目实战/" itemprop="url" rel="index">
+                    <span itemprop="name">项目实战</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/nblog多人博客/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/nblog多人博客/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          <span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+        
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x6458;&#x8981;:express + node + mongodb &#x591A;&#x4EBA;&#x535A;&#x5BA2;&#x7CFB;&#x7EDF;<br><a id="more"></a></p>
+<h2 id="&#x642D;&#x8F7D;&#x7B80;&#x5355;&#x7684;&#x535A;&#x5BA2;"><a href="#&#x642D;&#x8F7D;&#x7B80;&#x5355;&#x7684;&#x535A;&#x5BA2;" class="headerlink" title="&#x642D;&#x8F7D;&#x7B80;&#x5355;&#x7684;&#x535A;&#x5BA2;"></a>&#x642D;&#x8F7D;&#x7B80;&#x5355;&#x7684;&#x535A;&#x5BA2;</h2><h3 id="&#x73AF;&#x5883;&#x642D;&#x8F7D;"><a href="#&#x73AF;&#x5883;&#x642D;&#x8F7D;" class="headerlink" title="&#x73AF;&#x5883;&#x642D;&#x8F7D;"></a>&#x73AF;&#x5883;&#x642D;&#x8F7D;</h3><p>&#x201C;node&#x201D; &#xFF1A; &#x201C;4.4.4&#x201D;<br>&#x201C;mongodb&#x201D;: &#x201C;2.2.5&#x201D;<br>&#x201C;express&#x201D;: &#x201C;~4.13.4&#x201D;</p>
+<h3 id="&#x5B89;&#x88C5;express"><a href="#&#x5B89;&#x88C5;express" class="headerlink" title="&#x5B89;&#x88C5;express"></a>&#x5B89;&#x88C5;express</h3><p>&#x521D;&#x59CB;&#x5316;express&#x9879;&#x76EE; &#x540C;&#x65F6;&#x5B89;&#x88C5;&#x6240;&#x9700;&#x6A21;&#x5757;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ express -e blog</div><div class="line">$ cd blog &amp;&amp; npm install</div></pre></td></tr></table></figure></p>
+<p><img src="/2016/08/30/nblog&#x591A;&#x4EBA;&#x535A;&#x5BA2;/pic_001.png" alt="(express&#x751F;&#x6210;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;)" title="express&#x751F;&#x6210;&#x7684;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"></p>
+<p><strong>app.js:</strong> &#x542F;&#x52A8;&#x6587;&#x4EF6;&#xFF0C;&#x6216;&#x8005;&#x79F0;&#x4E3A;&#x5165;&#x53E3;&#x6587;&#x4EF6;<br><strong>package.json:</strong> &#x5B58;&#x50A8;&#x5DE5;&#x7A0B;&#x7684;&#x4FE1;&#x606F;&#x4EE5;&#x53CA;&#x6A21;&#x5757;&#x4F9D;&#x8D56;&#xFF0C; &#x5F53;&#x5728;dependencies&#x4E2D;&#x6DFB;&#x52A0;&#x4F9D;&#x8D56;&#x6A21;&#x5757;&#x65F6;&#xFF0C;&#x8FD0;&#x884C;npm install&#xFF0C;npm&#x4F1A;&#x68C0;&#x67E5;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#x7684;package.json&#xFF0C;&#x5E76;&#x81EA;&#x52A8;&#x5B89;&#x88C5;&#x6240;&#x9700;&#x7684;&#x6A21;&#x5757;<br><strong>node_module:</strong> &#x5B58;&#x653E;package.json&#x4E2D;&#x5B89;&#x88C5;&#x7684;&#x6A21;&#x5757;<br><strong>public:</strong> &#x5B58;&#x653E;image&#x3001;css&#x3001;js&#x7B49;&#x6587;&#x4EF6;<br><strong>routes:</strong> &#x5B58;&#x653E;&#x8DEF;&#x7531;&#x6587;&#x4EF6;<br><strong>views:</strong> &#x5B58;&#x653E;&#x89C6;&#x56FE;&#x6587;&#x4EF6;&#x6216;&#x8005;&#x6A21;&#x677F;&#x6587;&#x4EF6;<br><strong>bin:</strong> &#x5B58;&#x653E;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;</p>
+<h4 id="app-js&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x89E3;&#x6790;"><a href="#app-js&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x89E3;&#x6790;" class="headerlink" title="app.js&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x89E3;&#x6790;"></a>app.js&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x89E3;&#x6790;</h4><p>&#x6253;&#x5F00;app.js&#x53D1;&#x73B0;<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="keyword">require</span>(<span class="string">&apos;express&apos;</span>);</div><div class="line"><span class="keyword">var</span> path = <span class="keyword">require</span>(<span class="string">&apos;path&apos;</span>);</div><div class="line"><span class="keyword">var</span> favicon = <span class="keyword">require</span>(<span class="string">&apos;serve-favicon&apos;</span>);</div><div class="line"><span class="keyword">var</span> logger = <span class="keyword">require</span>(<span class="string">&apos;morgan&apos;</span>);</div><div class="line"><span class="keyword">var</span> cookieParser = <span class="keyword">require</span>(<span class="string">&apos;cookie-parser&apos;</span>);</div><div class="line"><span class="keyword">var</span> bodyParser = <span class="keyword">require</span>(<span class="string">&apos;body-parser&apos;</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> routes = <span class="keyword">require</span>(<span class="string">&apos;./routes/index&apos;</span>);</div><div class="line"><span class="keyword">var</span> users = <span class="keyword">require</span>(<span class="string">&apos;./routes/users&apos;</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line"><span class="comment">// view engine setup</span></div><div class="line">app.set(<span class="string">&apos;views&apos;</span>, path.join(__dirname, <span class="string">&apos;views&apos;</span>));</div><div class="line">app.set(<span class="string">&apos;view engine&apos;</span>, <span class="string">&apos;ejs&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">// uncomment after placing your favicon in /public</span></div><div class="line"><span class="comment">//app.use(favicon(__dirname + &apos;/public/favicon.ico&apos;));</span></div><div class="line">app.<span class="keyword">use</span>(logger(<span class="string">&apos;dev&apos;</span>));</div><div class="line">app.<span class="keyword">use</span>(bodyParser.json());</div><div class="line">app.<span class="keyword">use</span>(bodyParser.urlencoded({ extended: <span class="keyword">false</span> }));</div><div class="line">app.<span class="keyword">use</span>(cookieParser());</div><div class="line">app.<span class="keyword">use</span>(express.<span class="keyword">static</span>(path.join(__dirname, <span class="string">&apos;public&apos;</span>)));</div><div class="line"></div><div class="line">app.<span class="keyword">use</span>(<span class="string">&apos;/&apos;</span>, routes);</div><div class="line">app.<span class="keyword">use</span>(<span class="string">&apos;/users&apos;</span>, users);</div><div class="line"></div><div class="line"><span class="comment">// catch 404 and forward to error handler</span></div><div class="line">app.<span class="keyword">use</span>(<span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> </span>{</div><div class="line">    <span class="keyword">var</span> err = <span class="keyword">new</span> Error(<span class="string">&apos;Not Found&apos;</span>);</div><div class="line">    err.status = <span class="number">404</span>;</div><div class="line">    next(err);</div><div class="line">});</div><div class="line"></div><div class="line"><span class="comment">// error handlers</span></div><div class="line"></div><div class="line"><span class="comment">// development error handler</span></div><div class="line"><span class="comment">// will print stacktrace</span></div><div class="line"><span class="keyword">if</span> (app.get(<span class="string">&apos;env&apos;</span>) === <span class="string">&apos;development&apos;</span>) {</div><div class="line">    app.<span class="keyword">use</span>(<span class="function"><span class="keyword">function</span><span class="params">(err, req, res, next)</span> </span>{</div><div class="line">        res.status(err.status || <span class="number">500</span>);</div><div class="line">        res.render(<span class="string">&apos;error&apos;</span>, {</div><div class="line">            message: err.message,</div><div class="line">            error: err</div><div class="line">        });</div><div class="line">    });</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// production error handler</span></div><div class="line"><span class="comment">// no stacktraces leaked to user</span></div><div class="line">app.<span class="keyword">use</span>(<span class="function"><span class="keyword">function</span><span class="params">(err, req, res, next)</span> </span>{</div><div class="line">    res.status(err.status || <span class="number">500</span>);</div><div class="line">    res.render(<span class="string">&apos;error&apos;</span>, {</div><div class="line">        message: err.message,</div><div class="line">        error: {}</div><div class="line">    });</div><div class="line">});</div><div class="line"></div><div class="line"></div><div class="line">module.exports = app;</div></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x901A;&#x8FC7;require()&#x52A0;&#x8F7D;&#x4E86;express&#x3001;path &#x7B49;&#x6A21;&#x5757;,&#x4EE5;&#x53CA; routes &#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;index. js&#x548C; users.js &#x8DEF;&#x7531;&#x6587;&#x4EF6;&#x3002; &#x4E0B;&#x9762;&#x6765;&#x8BB2;&#x89E3;&#x6BCF;&#x884C;&#x4EE3;&#x7801;&#x7684;&#x542B;&#x4E49;&#x3002;<br>&#x4E0B;&#x9762;&#x89E3;&#x91CA;&#x6BCF;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x7684;&#x610F;&#x4E49;</p>
+<ul>
+<li>var app = express(); &#x751F;&#x6210;&#x4E00;&#x4E2A;express&#x7684;&#x5B9E;&#x4F8B;app</li>
+<li><p>app.set(&#x2018;views&#x2019;, path.join(<strong>dirname, &#x2018;views&#x2019;)); &#x8BBE;&#x7F6E; views &#x6587;&#x4EF6;&#x5939;&#x4E3A;&#x5B58;&#x653E;&#x89C6;&#x56FE;&#x6587;&#x4EF6;&#x7684;&#x76EE;&#x5F55;, &#x5373;&#x5B58;&#x653E;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x7684;&#x5730;&#x65B9;,</strong>dirname &#x4E3A;&#x5168;&#x5C40;&#x53D8;&#x91CF;,&#x5B58;&#x50A8;&#x5F53;&#x524D;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;&#x811A;&#x672C;&#x6240;&#x5728;&#x7684;&#x76EE;&#x5F55;&#xFF0E;</p>
+</li>
+<li><p>app.set(&#x2018;view engine&#x2019;, &#x2018;ejs&#x2019;)&#xFF1A; &#x8BBE;&#x7F6E;&#x89C6;&#x56FE;&#x5F15;&#x64CE;&#x4E3A;ejs</p>
+</li>
+<li>app.use(favicon(__dirname + &#x2018;/public/favicon.ico&#x2019;))&#xFF1A;&#x8BBE;&#x7F6E;/public/favicon.ico&#x4E3A;favicon&#x56FE;&#x6807;&#x3002;</li>
+<li>app.use(logger(&#x2018;dev&#x2019;))&#xFF1A;&#x52A0;&#x8F7D;&#x65E5;&#x5FD7;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;</li>
+<li>app.use(bodyParser.json())&#xFF1A;&#x52A0;&#x8F7D;&#x89E3;&#x6790;json&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;</li>
+<li>app.use(bodyParser.urlencoded({ extended: false }))&#xFF1A;&#x52A0;&#x8F7D;&#x89E3;&#x6790;urlencoded&#x8BF7;&#x6C42;&#x4F53;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;</li>
+<li>app.use(cookieParser())&#xFF1A;&#x52A0;&#x8F7D;&#x89E3;&#x6790;cookie&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x3002;</li>
+<li>app.use(express.static(path.join(__dirname, &#x2018;public&#x2019;)))&#xFF1A;&#x8BBE;&#x7F6E;public&#x6587;&#x4EF6;&#x5939;&#x4E3A;&#x5B58;&#x653E;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x7684;&#x76EE;&#x5F55;&#x3002;</li>
+<li>app.use(&#x2018;/&#x2018;, routes);&#x548C;app.use(&#x2018;/users&#x2019;, users)&#xFF1A;&#x8DEF;&#x7531;&#x63A7;&#x5236;&#x5668;&#x3002;</li>
+</ul>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="keyword">function</span>(req, res, <span class="keyword">next</span>) {</div><div class="line">      var <span class="built_in">err</span> = <span class="keyword">new</span> <span class="keyword">Error</span>(<span class="comment">&apos;Not Found&apos;);</span></div><div class="line">      <span class="built_in">err</span>.status = <span class="number">404</span>;</div><div class="line">      <span class="keyword">next</span>(<span class="built_in">err</span>);</div><div class="line">  });</div><div class="line">`</div></pre></td></tr></table></figure>
+<p>&#x6355;&#x83B7;404&#x9519;&#x8BEF;&#xFF0C;&#x5E76;&#x8F6C;&#x53D1;&#x5230;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x5668;&#x3002;<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">if</span> (app.get(<span class="string">&apos;env&apos;</span>) === <span class="string">&apos;development&apos;</span>) {</div><div class="line">      <span class="selector-tag">app</span><span class="selector-class">.use</span>(function(err, req, res, next) {</div><div class="line">          res<span class="selector-class">.status</span>(err.status || <span class="number">500</span>);</div><div class="line">          <span class="selector-tag">res</span><span class="selector-class">.render</span>(<span class="string">&apos;error&apos;</span>, {</div><div class="line">              <span class="attribute">message</span>: err.message,</div><div class="line">              <span class="attribute">error</span>: err</div><div class="line">          });</div><div class="line">      });</div><div class="line">  }</div></pre></td></tr></table></figure></p>
+<p>&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4E0B;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x5C06;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x6E32;&#x67D3;error&#x6A21;&#x7248;&#x5E76;&#x663E;&#x793A;&#x5230;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x3002;<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">app</span><span class="selector-class">.use</span>(function(err, req, res, next) {</div><div class="line">     res<span class="selector-class">.status</span>(err.status || <span class="number">500</span>);</div><div class="line">     <span class="selector-tag">res</span><span class="selector-class">.render</span>(<span class="string">&apos;error&apos;</span>, {</div><div class="line">         <span class="attribute">message</span>: err.message,</div><div class="line">         <span class="attribute">error</span>: {}</div><div class="line">     });</div><div class="line"> });</div></pre></td></tr></table></figure></p>
+<p>&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E0B;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x4E0D;&#x4F1A;&#x5C06;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x6CC4;&#x9732;&#x7ED9;&#x7528;&#x6237;&#x3002;</p>
+<ul>
+<li>module.exports = app &#xFF1A;&#x5BFC;&#x51FA;app&#x5B9E;&#x4F8B;&#x4F9B;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x8C03;&#x7528;&#x3002;</li>
+</ul>
+<h4 id="bin-www&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x89E3;&#x6790;"><a href="#bin-www&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x89E3;&#x6790;" class="headerlink" title="bin/www&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x89E3;&#x6790;"></a>bin/www&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x89E3;&#x6790;</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env node</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Module dependencies.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">&apos;../app&apos;</span>);</div><div class="line"><span class="keyword">var</span> debug = <span class="built_in">require</span>(<span class="string">&apos;debug&apos;</span>)(<span class="string">&apos;nblog:server&apos;</span>);</div><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&apos;http&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Get port from environment and store in Express.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">var</span> port = normalizePort(process.env.PORT || <span class="string">&apos;3000&apos;</span>);</div><div class="line">app.set(<span class="string">&apos;port&apos;</span>, port);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Create HTTP server.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">var</span> server = http.createServer(app);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Listen on provided port, on all network interfaces.</div><div class="line"> */</div><div class="line"></div><div class="line">server.listen(port);</div><div class="line">server.on(<span class="string">&apos;error&apos;</span>, onError);</div><div class="line">server.on(<span class="string">&apos;listening&apos;</span>, onListening);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Normalize a port into a number, string, or false.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">normalizePort</span>(<span class="params">val</span>) </span>{</div><div class="line">  <span class="keyword">var</span> port = <span class="built_in">parseInt</span>(val, <span class="number">10</span>);</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (<span class="built_in">isNaN</span>(port)) {</div><div class="line">    <span class="comment">// named pipe</span></div><div class="line">    <span class="keyword">return</span> val;</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (port &gt;= <span class="number">0</span>) {</div><div class="line">    <span class="comment">// port number</span></div><div class="line">    <span class="keyword">return</span> port;</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Event listener for HTTP server &quot;error&quot; event.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">onError</span>(<span class="params">error</span>) </span>{</div><div class="line">  <span class="keyword">if</span> (error.syscall !== <span class="string">&apos;listen&apos;</span>) {</div><div class="line">    <span class="keyword">throw</span> error;</div><div class="line">  }</div><div class="line"></div><div class="line">  <span class="keyword">var</span> bind = <span class="keyword">typeof</span> port === <span class="string">&apos;string&apos;</span></div><div class="line">    ? <span class="string">&apos;Pipe &apos;</span> + port</div><div class="line">    : <span class="string">&apos;Port &apos;</span> + port;</div><div class="line"></div><div class="line">  <span class="comment">// handle specific listen errors with friendly messages</span></div><div class="line">  <span class="keyword">switch</span> (error.code) {</div><div class="line">    <span class="keyword">case</span> <span class="string">&apos;EACCES&apos;</span>:</div><div class="line">      <span class="built_in">console</span>.error(bind + <span class="string">&apos; requires elevated privileges&apos;</span>);</div><div class="line">      process.exit(<span class="number">1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="string">&apos;EADDRINUSE&apos;</span>:</div><div class="line">      <span class="built_in">console</span>.error(bind + <span class="string">&apos; is already in use&apos;</span>);</div><div class="line">      process.exit(<span class="number">1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      <span class="keyword">throw</span> error;</div><div class="line">  }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Event listener for HTTP server &quot;listening&quot; event.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">onListening</span>(<span class="params"></span>) </span>{</div><div class="line">  <span class="keyword">var</span> addr = server.address();</div><div class="line">  <span class="keyword">var</span> bind = <span class="keyword">typeof</span> addr === <span class="string">&apos;string&apos;</span></div><div class="line">    ? <span class="string">&apos;pipe &apos;</span> + addr</div><div class="line">    : <span class="string">&apos;port &apos;</span> + addr.port;</div><div class="line">  debug(<span class="string">&apos;Listening on &apos;</span> + bind);</div><div class="line">}</div></pre></td></tr></table></figure>
+<ul>
+<li>var app = require(&#x2018;../app&#x2019;); &#x5F15;&#x5165;app&#x5B9E;&#x4F8B;</li>
+<li>var port = normalizePort(process.env.PORT || &#x2018;3000&#x2019;);<br>app.set(&#x2018;port&#x2019;, port); &#x8BBE;&#x7F6E;&#x7AEF;&#x53E3;&#x53F7;</li>
+<li>var debug = require(&#x2018;debug&#x2019;)(&#x2018;nblog:server&#x2019;); &#x6253;&#x5370;debug&#x65E5;&#x5FD7;</li>
+<li>var server = http.createServer(app);<br>server.listen(port);<br>server.on(&#x2018;error&#x2019;, onError);<br>server.on(&#x2018;listening&#x2019;, onListening); &#x542F;&#x52A8;&#x5DE5;&#x7A0B; &#x540C;&#x65F6;&#x76D1;&#x542C;3000&#x7AEF;&#x53E3;&#x53F7;</li>
+</ul>
+<h4 id="routes-index-js&#x6587;&#x4EF6;&#x89E3;&#x6790;"><a href="#routes-index-js&#x6587;&#x4EF6;&#x89E3;&#x6790;" class="headerlink" title="routes/index.js&#x6587;&#x4EF6;&#x89E3;&#x6790;"></a>routes/index.js&#x6587;&#x4EF6;&#x89E3;&#x6790;</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&apos;express&apos;</span>);</div><div class="line"><span class="keyword">var</span> router = express.Router();</div><div class="line"></div><div class="line"><span class="comment">/* GET home page. */</span></div><div class="line">router.get(<span class="string">&apos;/&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>{</div><div class="line">  res.render(<span class="string">&apos;index&apos;</span>, { title: <span class="string">&apos;Express&apos;</span> });</div><div class="line">});</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = router;</div></pre></td></tr></table></figure>
+<p>&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5B9E;&#x4F8B;&#x7528;&#x6765;&#x6355;&#x83B7;&#x8BBF;&#x95EE;&#x4E3B;&#x9875;&#x7684;GET&#x8BF7;&#x6C42;&#xFF0C;&#x5BFC;&#x51FA;&#x8DEF;&#x7531;&#x540C;&#x65F6;&#x5728;app.js&#x4E2D;&#x901A;&#x8FC7;app.use(&#x2018;/&#x2018;, routes); &#x52A0;&#x8F7D;&#x52A0;&#x8F7D;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5F53;&#x8BBF;&#x95EE;&#x4E3B;&#x9875;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x8C03;&#x7528;res.render(&#x2018;index&#x2019;, { title: &#x2018;Express&#x2019; });&#x6E32;&#x67D3;views/index.ejs&#x6A21;&#x7248;&#x5E76;&#x663E;&#x793A;&#x5230;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x3002;</p>
+<h4 id="views-index-ejs-&#x6587;&#x4EF6;&#x89E3;&#x6790;"><a href="#views-index-ejs-&#x6587;&#x4EF6;&#x89E3;&#x6790;" class="headerlink" title="views/index.ejs &#x6587;&#x4EF6;&#x89E3;&#x6790;"></a>views/index.ejs &#x6587;&#x4EF6;&#x89E3;&#x6790;</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</div><div class="line">    &lt;link rel=&apos;stylesheet&apos; href=&apos;/stylesheets/style.css&apos; /&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</div><div class="line">    &lt;p&gt;Welcome to &lt;%= title %&gt;&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>&#x5728;&#x6E32;&#x67D3;&#x6A21;&#x677F;&#x65F6;&#x6211;&#x4EEC;&#x4F20;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x53D8;&#x91CF; title &#x503C;&#x4E3A; express &#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x4F1A;&#x5C06;&#x6240;&#x6709; &lt;%= title %&gt; &#x66FF;&#x6362;&#x4E3A; express &#xFF0C;&#x7136;&#x540E;&#x5C06;&#x6E32;&#x67D3;&#x540E;&#x751F;&#x6210;&#x7684;html&#x663E;&#x793A;&#x5230;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;</p>
+<h3 id="&#x8DEF;&#x7531;&#x63A7;&#x5236;"><a href="#&#x8DEF;&#x7531;&#x63A7;&#x5236;" class="headerlink" title="&#x8DEF;&#x7531;&#x63A7;&#x5236;"></a>&#x8DEF;&#x7531;&#x63A7;&#x5236;</h3><h4 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;"><a href="#&#x5DE5;&#x4F5C;&#x539F;&#x7406;" class="headerlink" title="&#x5DE5;&#x4F5C;&#x539F;&#x7406;"></a>&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h4><p>routes/index.js &#x4E2D;&#x6709;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">router.get(<span class="string">&apos;/&apos;</span>, <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span></span>{</div><div class="line">  res.render(<span class="string">&apos;index&apos;</span>, { title: <span class="string">&apos;Express&apos;</span> });</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x7684;&#x610F;&#x601D;&#x662F;&#x5F53;&#x6211;&#x4EEC;&#x8BBF;&#x95EE;&#x4E3B;&#x9875;&#x65F6;&#xFF0C;&#x8C03;&#x7528;ejs&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x6765;&#x6E32;&#x67D3;index.ejs&#x6A21;&#x677F;&#x6587;&#x4EF6;&#xFF08;&#x5C06;index.ejs&#x4E2D;&#x7684;titl&#x5168;&#x90E8;&#x66FF;&#x6362;&#x4E3A;express&#xFF09;</p>
+<p>&#x4EE5;&#x4E0A;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x4E86;&#x8DEF;&#x7531;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6211;&#x4EEC;&#x5F53;&#x7136;&#x53EF;&#x4EE5;&#x4E0D;&#x8981; routes/index.js &#x6587;&#x4EF6;&#xFF0C;&#x628A;&#x5B9E;&#x73B0;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#x90FD;&#x653E;&#x5728; app.js &#x91CC;&#xFF0C;&#x4F46;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x7684;&#x63A8;&#x79FB; app.js &#x4F1A;&#x53D8;&#x5F97;&#x81C3;&#x80BF;&#x96BE;&#x4EE5;&#x7EF4;&#x62A4;&#xFF0C;&#x8FD9;&#x4E5F;&#x8FDD;&#x80CC;&#x4E86;&#x4EE3;&#x7801;&#x6A21;&#x5757;&#x5316;&#x7684;&#x601D;&#x60F3;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x628A;&#x5B9E;&#x73B0;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#x7684;&#x4EE3;&#x7801;&#x90FD;&#x653E;&#x5728; routes/index.js &#x91CC;&#x3002;&#x5B98;&#x65B9;&#x7ED9;&#x51FA;&#x7684;&#x5199;&#x6CD5;&#x662F;&#x5728; app.js &#x4E2D;&#x5B9E;&#x73B0;&#x4E86;&#x7B80;&#x5355;&#x7684;&#x8DEF;&#x7531;&#x5206;&#x914D;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x53BB; index.js &#x4E2D;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x8DEF;&#x7531;&#x51FD;&#x6570;&#xFF0C;&#x6700;&#x7EC8;&#x5B9E;&#x73B0;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#x3002;&#x6211;&#x4EEC;&#x4E0D;&#x59A8;&#x628A;&#x8DEF;&#x7531;&#x63A7;&#x5236;&#x5668;&#x548C;&#x5B9E;&#x73B0;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#x7684;&#x51FD;&#x6570;&#x90FD;&#x653E;&#x5230; index.js &#x91CC;&#xFF0C;app.js &#x4E2D;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x603B;&#x7684;&#x8DEF;&#x7531;&#x63A5;&#x53E3;&#x3002;<br>&#x6700;&#x7EC8;app.js&#x4FEE;&#x6539;&#x4E3A;<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="keyword">require</span>(<span class="string">&apos;express&apos;</span>);</div><div class="line"><span class="keyword">var</span> path = <span class="keyword">require</span>(<span class="string">&apos;path&apos;</span>);</div><div class="line"><span class="keyword">var</span> favicon = <span class="keyword">require</span>(<span class="string">&apos;serve-favicon&apos;</span>);</div><div class="line"><span class="keyword">var</span> logger = <span class="keyword">require</span>(<span class="string">&apos;morgan&apos;</span>);</div><div class="line"><span class="keyword">var</span> cookieParser = <span class="keyword">require</span>(<span class="string">&apos;cookie-parser&apos;</span>);</div><div class="line"><span class="keyword">var</span> bodyParser = <span class="keyword">require</span>(<span class="string">&apos;body-parser&apos;</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> routes = <span class="keyword">require</span>(<span class="string">&apos;./routes/index&apos;</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"></div><div class="line">app.set(<span class="string">&apos;port&apos;</span>, process.env.PORT || <span class="number">3000</span>);</div><div class="line">app.set(<span class="string">&apos;views&apos;</span>, path.join(__dirname, <span class="string">&apos;views&apos;</span>));</div><div class="line">app.set(<span class="string">&apos;view engine&apos;</span>, <span class="string">&apos;ejs&apos;</span>);</div><div class="line"></div><div class="line"><span class="comment">//app.use(favicon(__dirname + &apos;/public/favicon.ico&apos;));</span></div><div class="line">app.<span class="keyword">use</span>(logger(<span class="string">&apos;dev&apos;</span>));</div><div class="line">app.<span class="keyword">use</span>(bodyParser.json());</div><div class="line">app.<span class="keyword">use</span>(bodyParser.urlencoded({ extended: <span class="keyword">true</span> }));</div><div class="line">app.<span class="keyword">use</span>(cookieParser());</div><div class="line">app.<span class="keyword">use</span>(express.<span class="keyword">static</span>(path.join(__dirname, <span class="string">&apos;public&apos;</span>)));</div><div class="line"></div><div class="line">routes(app);</div><div class="line"></div><div class="line">app.listen(app.get(<span class="string">&apos;port&apos;</span>), <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{</div><div class="line">  console.log(<span class="string">&apos;Express server listening on port &apos;</span> + app.get(<span class="string">&apos;port&apos;</span>));</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<p>&#x4FEE;&#x6539;index.js&#x4E3A;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">app</span>) </span>{</div><div class="line">  app.get(<span class="string">&apos;/&apos;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>{</div><div class="line">    res.render(<span class="string">&apos;index&apos;</span>, { title: <span class="string">&apos;Express&apos;</span> });</div><div class="line">  });</div><div class="line">};</div></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x901A;&#x8FC7;routes/index&#x7684;module.exports&#x5BFC;&#x51FA;&#x4E86;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x63A5;&#x53E3;&#xFF0C;&#x5728;app.js&#x4E2D;&#x901A;&#x8FC7;require&#x52A0;&#x8F7D;&#x4E86;index.js&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;routes(app)&#x8C03;&#x7528;&#x4E86;index.js&#x4E2D;&#x5BFC;&#x51FA;&#x7684;&#x51FD;&#x6570;</p>
+<h4 id="&#x8DEF;&#x7531;&#x89C4;&#x5219;"><a href="#&#x8DEF;&#x7531;&#x89C4;&#x5219;" class="headerlink" title="&#x8DEF;&#x7531;&#x89C4;&#x5219;"></a>&#x8DEF;&#x7531;&#x89C4;&#x5219;</h4><p>express&#x4E2D;&#x5C01;&#x88C5;&#x4E86;&#x591A;&#x79CD;http&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x4E3B;&#x8981;&#x4F7F;&#x7528;get&#x548C;post&#xFF0C;&#x5373;app.get&#x548C;app.post</p>
+<p>app.get&#x548C;app.post&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x8BF7;&#x6C42;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;&#x8BF7;&#x6C42;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5206;&#x522B;&#x4E3A;req&#x548C;res&#xFF0C;&#x610F;&#x601D;&#x5206;&#x522B;&#x662F;&#x8BF7;&#x6C42;&#x4FE1;&#x606F;&#x548C;&#x54CD;&#x5E94;&#x4FE1;&#x606F;&#x3002;&#x8DEF;&#x7531;&#x8BF7;&#x6C42;&#x4EE5;&#x53CA;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x8DEF;&#x5F84;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x65B9;&#x5F0F;</p>
+<p><strong>req.query</strong><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// GET /search?q=tobi+ferret  </span></div><div class="line">req<span class="selector-class">.query</span><span class="selector-class">.q</span>  </div><div class="line"><span class="comment">// =&gt; &quot;tobi ferret&quot;  </span></div><div class="line"></div><div class="line"><span class="comment">// GET /shoes?order=desc&amp;shoe[color]=blue&amp;shoe[type]=converse  </span></div><div class="line">req<span class="selector-class">.query</span><span class="selector-class">.order</span>  </div><div class="line"><span class="comment">// =&gt; &quot;desc&quot;  </span></div><div class="line"></div><div class="line">req<span class="selector-class">.query</span><span class="selector-class">.shoe</span><span class="selector-class">.color</span>  </div><div class="line"><span class="comment">// =&gt; &quot;blue&quot;  </span></div><div class="line"></div><div class="line">req<span class="selector-class">.query</span><span class="selector-class">.shoe</span><span class="selector-class">.type</span>  </div><div class="line"><span class="comment">// =&gt; &quot;converse&quot;</span></div></pre></td></tr></table></figure></p>
+<p><strong>req.body</strong><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// POST user[name]=tobi&amp;user[email]=tobi@learnboost.com  </span></div><div class="line">req<span class="selector-class">.body</span><span class="selector-class">.user</span><span class="selector-class">.name</span>  </div><div class="line"><span class="comment">// =&gt; &quot;tobi&quot;  </span></div><div class="line"></div><div class="line">req<span class="selector-class">.body</span><span class="selector-class">.user</span><span class="selector-class">.email</span>  </div><div class="line"><span class="comment">// =&gt; &quot;tobi@learnboost.com&quot;  </span></div><div class="line"></div><div class="line"><span class="comment">// POST { &quot;name&quot;: &quot;tobi&quot; }  </span></div><div class="line">req<span class="selector-class">.body</span><span class="selector-class">.name</span>  </div><div class="line"><span class="comment">// =&gt; &quot;tobi&quot;</span></div></pre></td></tr></table></figure></p>
+<p><strong>req.params</strong><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// GET /user/tj  </span></div><div class="line">req<span class="selector-class">.params</span><span class="selector-class">.name</span>  </div><div class="line"><span class="comment">// =&gt; &quot;tj&quot;  </span></div><div class="line"></div><div class="line"><span class="comment">// GET /file/javascripts/jquery.js  </span></div><div class="line">req<span class="selector-class">.params</span>[<span class="number">0</span>]  </div><div class="line"><span class="comment">// =&gt; &quot;javascripts/jquery.js&quot;</span></div></pre></td></tr></table></figure></p>
+<p><strong>req.param(name)</strong><br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span> ?name=tobi  </div><div class="line">req.param(<span class="string">&apos;name&apos;</span>)  </div><div class="line"><span class="regexp">//</span> =&gt; <span class="string">&quot;tobi&quot;</span>  </div><div class="line"></div><div class="line"><span class="regexp">//</span> POST name=tobi  </div><div class="line">req.param(<span class="string">&apos;name&apos;</span>)  </div><div class="line"><span class="regexp">//</span> =&gt; <span class="string">&quot;tobi&quot;</span>  </div><div class="line"></div><div class="line"><span class="regexp">//</span> <span class="regexp">/user/</span>tobi <span class="keyword">for</span> <span class="regexp">/user/</span>:name   </div><div class="line">req.param(<span class="string">&apos;name&apos;</span>)  </div><div class="line"><span class="regexp">//</span> =&gt; <span class="string">&quot;tobi&quot;</span></div></pre></td></tr></table></figure></p>
+<p>&#x4E0D;&#x96BE;&#x53D1;&#x73B0;</p>
+<ul>
+<li>req.query: &#x5904;&#x7406;get&#x8BF7;&#x6C42;&#xFF0C;&#x83B7;&#x53D6;get&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+<li>req.body: &#x5904;&#x7406;post&#x8BF7;&#x6C42;&#xFF0C;&#x83B7;&#x53D6;post&#x8BF7;&#x6C42;&#x4F53;</li>
+<li>req.params: &#x5904;&#x7406;/:xxx&#x8BF7;&#x6C42;&#x7684;get&#x6216;post&#x8BF7;&#x6C42;&#xFF0C;&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x53C2;&#x6570;</li>
+<li>req.param(): &#x5904;&#x7406;get&#x548C;post&#x8BF7;&#x6C42;&#xFF0C;&#x67E5;&#x627E;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x7531;&#x9AD8;&#x5230;&#x4F4E;&#x4E3A;req.params&#x2192;req.body&#x2192;req.query</li>
+</ul>
+<h4 id="&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#x89C4;&#x5219;"><a href="#&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#x89C4;&#x5219;" class="headerlink" title="&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#x89C4;&#x5219;"></a>&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#x89C4;&#x5219;</h4><p>&#x5F53;&#x6211;&#x4EEC;&#x8BBF;&#x95EE;<a href="http://localhost:3000/&#x65F6;&#xFF0C;&#x7F51;&#x9875;&#x663E;&#x793A;" target="_blank" rel="external">http://localhost:3000/&#x65F6;&#xFF0C;&#x7F51;&#x9875;&#x663E;&#x793A;</a><br><img src="/2016/08/30/nblog&#x591A;&#x4EBA;&#x535A;&#x5BA2;/pic_002.png" alt=""><br>&#x800C;&#x5F53;&#x6211;&#x4EEC;&#x8BBF;&#x95EE;<br><a href="http://localhost:3000/zkhzz" target="_blank" rel="external">http://localhost:3000/zkhzz</a><br><img src="/2016/08/30/nblog&#x591A;&#x4EBA;&#x535A;&#x5BA2;/pic_003.png" alt=""><br>&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x4E0D;&#x5B58;&#x5728;zkhzz&#x7684;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#xFF0C;&#x800C;&#x4E14;&#x4ED6;&#x4E5F;&#x4E0D;&#x662F;public&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x6240;&#x4EE5;express&#x8FD4;&#x56DE;&#x4E86;404 NOT FOUND&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4EBA;&#x4E3A;&#x7684;&#x6DFB;&#x52A0;&#x8FD9;&#x4E2A;&#x8DEF;&#x7531;&#x89C4;&#x5219;,&#x5728;index.js&#x4E0B;&#x6DFB;&#x52A0;<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">app.get(<span class="string">&apos;/zkhzz&apos;</span>,<span class="function"><span class="keyword">function</span> <span class="params">(req, res)</span> </span>{</div><div class="line">  res.render(<span class="string">&apos;zkhzz&apos;</span>, {</div><div class="line">    title:<span class="string">&apos;zkhzz&apos;</span></div><div class="line">  });</div><div class="line">});</div></pre></td></tr></table></figure></p>
+<p>&#x91CD;&#x542F;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x6B21;&#x8BF7;&#x6C42;zkhzz&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x663E;&#x793A;&#x51FA;hello world<br><img src="/2016/08/30/nblog&#x591A;&#x4EBA;&#x535A;&#x5BA2;/pic_004.png" alt=""></p>
+<h3 id="&#x6A21;&#x677F;&#x5F15;&#x64CE;"><a href="#&#x6A21;&#x677F;&#x5F15;&#x64CE;" class="headerlink" title="&#x6A21;&#x677F;&#x5F15;&#x64CE;"></a>&#x6A21;&#x677F;&#x5F15;&#x64CE;</h3><h4 id="&#x4EC0;&#x4E48;&#x662F;&#x6A21;&#x677F;&#x5F15;&#x64CE;"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x6A21;&#x677F;&#x5F15;&#x64CE;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x6A21;&#x677F;&#x5F15;&#x64CE;"></a>&#x4EC0;&#x4E48;&#x662F;&#x6A21;&#x677F;&#x5F15;&#x64CE;</h4><p>&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x662F;&#x5C06;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x6A21;&#x677F;&#x548C;&#x8981;&#x663E;&#x793A;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#x751F;&#x6210;HTML&#x9875;&#x9762;&#x7684;&#x5DE5;&#x5177;&#x3002;&#x5982;&#x679C;&#x8BF4;&#x4E0A;&#x9762;&#x7684;&#x8DEF;&#x7531;&#x63A7;&#x5236;&#x662F;MVC&#x4E2D;&#x63A7;&#x5236;&#x5668;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x76F8;&#x5F53;&#x4E8E;&#x662F;MVC&#x4E2D;&#x7684;&#x89C6;&#x56FE;</p>
+<blockquote><br>&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7684;&#x529F;&#x80FD;&#x662F;&#x5C06;&#x9875;&#x9762;&#x6A21;&#x677F;&#x548C;&#x8981;&#x663E;&#x793A;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#x751F;&#x6210; HTML &#x9875;&#x9762;&#x3002;&#x5B83;&#x65E2;&#x53EF;&#x4EE5;&#x8FD0; &#x884C;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x53C8;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x65F6;&#x5019;&#x5B83;&#x90FD;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x76F4;&#x63A5;&#x88AB;&#x89E3;&#x6790;&#x4E3A; HTML&#xFF0C;&#x89E3;&#x6790;&#x5B8C;&#x6210;&#x540E;&#x518D;&#x4F20;&#x8F93;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x56E0;&#x6B64;&#x5BA2;&#x6237;&#x7AEF;&#x751A;&#x81F3;&#x65E0;&#x6CD5;&#x5224;&#x65AD;&#x9875;&#x9762;&#x662F;&#x5426;&#x662F;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x751F;&#x6210;&#x7684;&#x3002;&#x6709;&#x65F6;&#x5019;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x5373;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#xFF0C;&#x5178;&#x578B;&#x7684;&#x4EE3;&#x8868;&#x5C31;&#x662F; XSLT&#xFF0C;&#x5B83;&#x4EE5; XML &#x4E3A;&#x8F93;&#x5165;&#xFF0C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x751F;&#x6210; HTML &#x9875;&#x9762;&#x3002;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x6D4F;&#x89C8;&#x5668;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#xFF0C;XSLT &#x5E76;&#x4E0D;&#x662F;&#x5F88;&#x6D41;&#x884C;&#x3002;&#x76EE;&#x524D;&#x7684;&#x4E3B;&#x6D41;&#x8FD8;&#x662F;&#x7531;&#x670D;&#x52A1;&#x5668;&#x8FD0;&#x884C;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x3002;<br><br>&#x5728; MVC &#x67B6;&#x6784;&#x4E2D;&#xFF0C;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x5305;&#x542B;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x3002;&#x63A7;&#x5236;&#x5668;&#x5F97;&#x5230;&#x7528;&#x6237;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x4ECE;&#x6A21;&#x578B;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x8C03;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x3002;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x4EE5;&#x6570;&#x636E;&#x548C;&#x9875;&#x9762;&#x6A21;&#x677F;&#x4E3A;&#x8F93;&#x5165;&#xFF0C;&#x751F;&#x6210; HTML &#x9875;&#x9762;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x7ED9;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x7531;&#x63A7;&#x5236;&#x5668;&#x4EA4;&#x56DE;&#x5BA2;&#x6237;&#x7AEF;&#x3002;<br><br>&#x2014;&#x2014;&#x300A;Node.js&#x5F00;&#x53D1;&#x6307;&#x5357;&#x300B;<br></blockquote>
+
+<p><strong>&#x4EC0;&#x4E48;&#x662F;ejs?</strong><br>ejs &#x662F;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7684;&#x4E00;&#x79CD;,&#x5B83;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x5341;&#x5206;&#x7B80;&#x5355;&#xFF0C;&#x800C;&#x4E14;&#x4E0E; express &#x96C6;&#x6210;&#x826F;&#x597D;&#x3002;</p>
+<h4 id="&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;"><a href="#&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;" class="headerlink" title="&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;"></a>&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;</h4><p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4E24;&#x884C;&#x4EE3;&#x7801;&#x8BBE;&#x7F6E;&#x6A21;&#x677F;&#x6587;&#x4EF6;&#x7684;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#x548C;&#x4F7F;&#x7528;&#x6A21;&#x677F;&#x5F15;&#x64CE;<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">app<span class="selector-class">.set</span>(<span class="string">&apos;views&apos;</span>, __dirname + <span class="string">&apos;/views&apos;</span>);</div><div class="line">app<span class="selector-class">.set</span>(<span class="string">&apos;view engine&apos;</span>, <span class="string">&apos;ejs&apos;</span>);</div></pre></td></tr></table></figure></p>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;</strong> &#x6211;&#x4EEC;&#x4F7F;&#x7528;express -e blog&#x521D;&#x59CB;&#x5316;&#x4E86;ejs&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7684;&#x5DE5;&#x7A0B;&#x800C;&#x5DF2;&#xFF0C;&#x6BD4;&#x5982;node_modules&#x4E0B;&#x6DFB;&#x52A0;&#x4E86;ejs&#x6A21;&#x5757;&#xFF0C;views&#x4E0B;&#x6709;ejs&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x8BF4;&#x5F3A;&#x5236;&#x8BE5;&#x5DE5;&#x7A0B;&#x53EA;&#x80FD;&#x7528;ejs&#xFF0C;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x6A21;&#x677F;jade&#xFF0C;&#x771F;&#x6B63;&#x6307;&#x5B9A;&#x4F7F;&#x7528;&#x90A3;&#x548C;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x7684;&#x662F;app.set(&#x2018;view engine&#x2019;, &#x2018;ejs&#x2019;); &#x3002;<br>&#x5728;routes/index.js&#x901A;&#x8FC7;&#x8C03;&#x7528;res.render()&#x6E32;&#x67D3;&#x6A21;&#x677F;&#xFF0C;&#x63A5;&#x6536;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;<strong>&#x6A21;&#x677F;&#x7684;&#x540D;&#x79F0;</strong>&#xFF0C;&#x5373;views&#x76EE;&#x5F55;&#x4E0B;&#x6A21;&#x677F;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x6269;&#x5C55;&#x540D;.ejs&#x53EF;&#x9009;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;<strong>&#x4F20;&#x9012;&#x7ED9;&#x6A21;&#x677F;&#x7684;&#x6570;&#x636E;&#x5BF9;&#x8C61;</strong>&#xFF0C;&#x7528;&#x4E8E;&#x6A21;&#x677F;&#x7684;&#x7FFB;&#x8BD1;</p>
+<p>&#x6253;&#x5F00;views/index.ejs<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</div><div class="line">    &lt;link rel=&apos;stylesheet&apos; href=&apos;/stylesheets/style.css&apos; /&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;</div><div class="line">    &lt;p&gt;Welcome to &lt;%= title %&gt;&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>&#x5F53;&#x6211;&#x4EEC;res.render(&#x2018;index&#x2019;,{title:&#x2019;Express&#x2019;});&#x65F6;&#xFF0C;&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x4F1A;&#x628A;&lt;%= title%&gt;&#x81EA;&#x52A8;&#x66FF;&#x6362;&#x6210;Express&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x6E32;&#x67D3;&#x5B8C;&#x6210;&#x7684;&#x754C;&#x9762; &#x5448;&#x73B0;&#x7ED9;&#x7528;&#x6237;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;Express&lt;/title&gt;</div><div class="line">    &lt;link rel=&apos;stylesheet&apos; href=&apos;/stylesheets/style.css&apos; /&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;h1&gt;Express&lt;/h1&gt;</div><div class="line">    &lt;p&gt;Welcome to Express&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;</strong> &#x6211;&#x4EEC;&#x901A;&#x8FC7; app.use(express.static(path.join(__dirname, &#x2018;public&#x2019;))) &#x8BBE;&#x7F6E;&#x4E86;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x7684;&#x76EE;&#x5F55;&#x4E3A;public&#x6587;&#x4EF6;&#x5939;&#xFF0C;<br>&#x6240;&#x4EE5;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801; </p>
+<p>href=&#x2019;/stylesheets/style.css&#x2019;</p>
+<p>&#x76F8;&#x5F53;&#x4E8E;</p>
+<p>href=&#x2019;public/stylesheets/style.css&#x2019;</p>
+<p>ejs&#x7684;&#x7CFB;&#x7EDF;&#x6807;&#x7B7E;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x53EA;&#x6709;&#x4E09;&#x79CD;</p>
+<ul>
+<li>&lt;% code %&gt;:JavaScript&#x4EE3;&#x7801;</li>
+<li>&lt;%- code%&gt; &#x663E;&#x793A;&#x539F;&#x59CB;&#x7684;HTML&#x5185;&#x5BB9;</li>
+<li>&lt;%= code%&gt; &#x663E;&#x793A;&#x66FF;&#x6362;&#x8FC7; HTML &#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x7684;&#x5185;&#x5BB9;</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&lt;% %&gt;&#x4E2D;&#x4F7F;&#x7528;JavaScript&#x4EE3;&#x7801;&#x3002;&#x4E0B;&#x9762;&#x662F;ejs&#x7684;&#x5B98;&#x65B9;&#x793A;&#x4F8B;</p>
+<p><strong>The Data</strong></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">supplies:</span> [<span class="string">&apos;mop&apos;</span>, <span class="string">&apos;broom&apos;</span>, <span class="string">&apos;duster&apos;</span>]</div></pre></td></tr></table></figure>
+<p><strong>The Template</strong><br><figure class="highlight erb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">%</span></span><span class="ruby"> <span class="keyword">for</span>(var i = <span class="number">0</span>; i &lt; supplies.length; i ++) {</span><span class="xml"><span class="tag">%&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span></span><span class="ruby">  supplies[i] </span><span class="xml"><span class="tag">%&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">%</span></span><span class="ruby"> } </span><span class="xml"><span class="tag">%&gt;</span></span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>The result</strong> </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>mop<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>broom<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>duster<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;&#x4E0A;&#x8FF0;&#x4E09;&#x79CD;&#x6807;&#x7B7E;&#x5B9E;&#x73B0;&#x9875;&#x9762;&#x6A21;&#x677F;&#x7CFB;&#x7EDF;&#x80FD;&#x5B9E;&#x73B0;&#x7684;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;&#x3002;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/blog/" rel="tag">#blog</a>
+          
+            <a href="/tags/node/" rel="tag">#node</a>
+          
+            <a href="/tags/epress/" rel="tag">#epress</a>
+          
+            <a href="/tags/mongodb/" rel="tag">#mongodb</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/12/node实战-搭载微博客/" rel="next" title="node实战--搭载微博客">
+                <i class="fa fa-chevron-left"></i> node实战--搭载微博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/08/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/30/nblog多人博客/"
+           data-title="nblog多人博客" data-url="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="Zkhzz" />
+          <p class="site-author-name" itemprop="name">Zkhzz</p>
+          <p class="site-description motion-element" itemprop="description">Never Enough</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangkaihongzkh" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zhang-kai-hong-50" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭载简单的博客"><span class="nav-number">1.</span> <span class="nav-text">搭载简单的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境搭载"><span class="nav-number">1.1.</span> <span class="nav-text">环境搭载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装express"><span class="nav-number">1.2.</span> <span class="nav-text">安装express</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#app-js文件代码解析"><span class="nav-number">1.2.1.</span> <span class="nav-text">app.js文件代码解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bin-www文件代码解析"><span class="nav-number">1.2.2.</span> <span class="nav-text">bin/www文件代码解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#routes-index-js文件解析"><span class="nav-number">1.2.3.</span> <span class="nav-text">routes/index.js文件解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#views-index-ejs-文件解析"><span class="nav-number">1.2.4.</span> <span class="nav-text">views/index.ejs 文件解析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由控制"><span class="nav-number">1.3.</span> <span class="nav-text">路由控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工作原理"><span class="nav-number">1.3.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由规则"><span class="nav-number">1.3.2.</span> <span class="nav-text">路由规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加路由规则"><span class="nav-number">1.3.3.</span> <span class="nav-text">添加路由规则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板引擎"><span class="nav-number">1.4.</span> <span class="nav-text">模板引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是模板引擎"><span class="nav-number">1.4.1.</span> <span class="nav-text">什么是模板引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用模板引擎"><span class="nav-number">1.4.2.</span> <span class="nav-text">使用模板引擎</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zkhzz</span>
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zkhzz"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
