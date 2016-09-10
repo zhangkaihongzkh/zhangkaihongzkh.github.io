@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="BOM基础," />
 
 
 
@@ -82,15 +82,20 @@
 
 
 
-<meta name="description" content="Never Enough">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zkhzz 's blog">
-<meta property="og:url" content="http://zhangkaihongzkh.github.io/tags/blog/index.html">
+<meta name="description" content="&amp;#x6458;&amp;#x8981;:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript-BOM">
+<meta property="og:url" content="http://zhangkaihongzkh.github.io/2016/07/24/JavaScript-BOM/index.html">
 <meta property="og:site_name" content="zkhzz 's blog">
-<meta property="og:description" content="Never Enough">
+<meta property="og:description" content="&amp;#x6458;&amp;#x8981;:">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/24/JavaScript-BOM/pic_001.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/24/JavaScript-BOM/pic_002.png">
+<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/07/24/JavaScript-BOM/pic_002.png">
+<meta property="og:updated_time" content="2016-09-10T11:42:43.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zkhzz 's blog">
-<meta name="twitter:description" content="Never Enough">
+<meta name="twitter:title" content="JavaScript-BOM">
+<meta name="twitter:description" content="&amp;#x6458;&amp;#x8981;:">
+<meta name="twitter:image" content="http://zhangkaihongzkh.github.io/2016/07/24/JavaScript-BOM/pic_001.png">
 
 
 
@@ -108,7 +113,7 @@
   };
 </script>
 
-  <title> 标签: blog | zkhzz 's blog </title>
+  <title> JavaScript-BOM | zkhzz 's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -129,7 +134,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,46 +222,159 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        blog
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript-BOM
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-24T19:33:52+08:00" content="2016-07-24">
+              2016-07-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript基础篇/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript基础篇</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/24/JavaScript-BOM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/JavaScript-BOM/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          <span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+        
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>&#x6458;&#x8981;:<br><a id="more"></a></p>
+<h2 id="window&#x5BF9;&#x8C61;"><a href="#window&#x5BF9;&#x8C61;" class="headerlink" title="window&#x5BF9;&#x8C61;"></a>window&#x5BF9;&#x8C61;</h2><p>BOM&#x7684;&#x6838;&#x5FC3;&#x5BF9;&#x8C61;&#x662F;window&#xFF0C;&#x4ED6;&#x8868;&#x793A;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;window&#x5BF9;&#x8C61;&#x5904;&#x4E8E;JavaScript&#x7ED3;&#x6784;&#x7684;&#x6700;&#x9876;&#x5C42;&#xFF0C;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x6253;&#x5F00;&#x7684;&#x7A97;&#x53E3;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x81EA;&#x52A8;&#x5B9A;&#x4E49;window&#x5BF9;&#x8C61;</p>
+<p><img src="/2016/07/24/JavaScript-BOM/pic_001.png" alt="window&#x5BF9;&#x8C61;" title="window&#x5BF9;&#x8C61;"></p>
+<h3 id="&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;"><a href="#&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;"></a>&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;</h3><p>window&#x5BF9;&#x8C61;&#x6709;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x672C;&#x8EAB;&#x4E5F;&#x662F;&#x5BF9;&#x8C61;</p>
+<p><img src="/2016/07/24/JavaScript-BOM/pic_002.png" alt="window&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;" title="window&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;"></p>
+<p><img src="/2016/07/24/JavaScript-BOM/pic_002.png" alt=""></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/08/30/nblog多人博客/" itemprop="url">
-              
-                <span itemprop="name">nblog多人博客</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-30T22:37:04+08:00"
-              content="2016-08-30" >
-          08-30
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BOM基础/" rel="tag">#BOM基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/23/JavaScript-DOM基础/" rel="next" title="JavaScript-DOM基础">
+                <i class="fa fa-chevron-left"></i> JavaScript-DOM基础
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/25/LESS-学习笔记/" rel="prev" title="LESS-学习笔记">
+                LESS-学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -264,6 +382,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/24/JavaScript-BOM/"
+           data-title="JavaScript-BOM" data-url="http://zhangkaihongzkh.github.io/2016/07/24/JavaScript-BOM/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -283,8 +409,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -354,6 +489,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#window对象"><span class="nav-number">1.</span> <span class="nav-text">window对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的属性和方法"><span class="nav-number">1.1.</span> <span class="nav-text">对象的属性和方法</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -455,6 +601,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
