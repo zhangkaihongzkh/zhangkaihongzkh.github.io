@@ -85,21 +85,21 @@
 <meta name="description" content="&amp;#x6458;&amp;#x8981;:express + node + mongodb &amp;#x591A;&amp;#x4EBA;&amp;#x535A;&amp;#x5BA2;&amp;#x7CFB;&amp;#x7EDF;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nblog多人博客">
-<meta property="og:url" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/index.html">
+<meta property="og:url" content="https://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/index.html">
 <meta property="og:site_name" content="zkhzz 's blog">
 <meta property="og:description" content="&amp;#x6458;&amp;#x8981;:express + node + mongodb &amp;#x591A;&amp;#x4EBA;&amp;#x535A;&amp;#x5BA2;&amp;#x7CFB;&amp;#x7EDF;">
-<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_001.png">
-<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_002.png">
-<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_003.png">
-<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_004.png">
-<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_005.png">
-<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_006.png">
-<meta property="og:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_007.png">
+<meta property="og:image" content="https://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_001.png">
+<meta property="og:image" content="https://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_002.png">
+<meta property="og:image" content="https://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_003.png">
+<meta property="og:image" content="https://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_004.png">
+<meta property="og:image" content="https://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_005.png">
+<meta property="og:image" content="https://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_006.png">
+<meta property="og:image" content="https://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_007.png">
 <meta property="og:updated_time" content="2016-09-10T05:49:53.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nblog多人博客">
 <meta name="twitter:description" content="&amp;#x6458;&amp;#x8981;:express + node + mongodb &amp;#x591A;&amp;#x4EBA;&amp;#x535A;&amp;#x5BA2;&amp;#x7CFB;&amp;#x7EDF;">
-<meta name="twitter:image" content="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_001.png">
+<meta name="twitter:image" content="https://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/pic_001.png">
 
 
 
@@ -396,7 +396,7 @@
 </ul>
 <p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&lt;% %&gt;&#x4E2D;&#x4F7F;&#x7528;JavaScript&#x4EE3;&#x7801;&#x3002;&#x4E0B;&#x9762;&#x662F;ejs&#x7684;&#x5B98;&#x65B9;&#x793A;&#x4F8B;</p>
 <p><strong>The Data</strong></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">supplies:</span> [<span class="string">&apos;mop&apos;</span>, <span class="string">&apos;broom&apos;</span>, <span class="string">&apos;duster&apos;</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">supplies</span>: [<span class="string">&apos;mop&apos;</span>, <span class="string">&apos;broom&apos;</span>, <span class="string">&apos;duster&apos;</span>]</div></pre></td></tr></table></figure>
 <p><strong>The Template</strong><br><figure class="highlight erb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">%</span></span><span class="ruby"> <span class="keyword">for</span>(var i = <span class="number">0</span>; i &lt; supplies.length; i ++) {</span><span class="xml"><span class="tag">%&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span></span><span class="ruby">  supplies[i] </span><span class="xml"><span class="tag">%&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">%</span></span><span class="ruby"> } </span><span class="xml"><span class="tag">%&gt;</span></span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p><strong>The result</strong> </p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>mop<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>broom<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>duster<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -551,7 +551,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/08/30/nblog多人博客/"
-           data-title="nblog多人博客" data-url="http://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/">
+           data-title="nblog多人博客" data-url="https://zhangkaihongzkh.github.io/2016/08/30/nblog多人博客/">
       </div>
     
   </div>
@@ -596,7 +596,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -613,7 +613,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -674,7 +674,7 @@
 <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
