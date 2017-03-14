@@ -88,7 +88,7 @@
 <meta property="og:url" content="https://zhangkaihongzkh.github.io/2017/03/13/JavaScript-数组/index.html">
 <meta property="og:site_name" content="zkhzz 's blog">
 <meta property="og:description" content="&amp;#x6458;&amp;#x8981;:JavaScript-&amp;#x6570;&amp;#x7EC4;&amp;#x8BE6;&amp;#x89E3;">
-<meta property="og:updated_time" content="2017-03-13T13:13:48.904Z">
+<meta property="og:updated_time" content="2017-03-14T07:36:25.804Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript-数组">
 <meta name="twitter:description" content="&amp;#x6458;&amp;#x8981;:JavaScript-&amp;#x6570;&amp;#x7EC4;&amp;#x8BE6;&amp;#x89E3;">
@@ -337,11 +337,12 @@
 <p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x53D8;&#x91CF;obj&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x867D;&#x7136;&#x770B;&#x4E0A;&#x53BB;&#x50CF;&#x6570;&#x7EC4;&#xFF0C;&#x4F46;&#x662F;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x6570;&#x7EC4;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x7C7B;&#x4F3C;&#x6570;&#x7EC4;&#x5BF9;&#x8C61;</p>
 <p>&#x7C7B;&#x4F3C;&#x6570;&#x7EC4;&#x5BF9;&#x8C61;&#x6709;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#xFF0C;&#x5C31;&#x662F;&#x6709;<code>length</code>&#x5C5E;&#x6027;</p>
 <p>&#x7C7B;&#x4F3C;&#x7684;&#x5BF9;&#x8C61;&#x8FD8;&#x6709;</p>
-<pre><code>- `arguments`&#x5BF9;&#x8C61;
-- DOM&#x5143;&#x7D20;
-- &#x5B57;&#x7B26;&#x4E32;
-- 
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">args</span>(<span class="params"></span>) </span>{ <span class="keyword">return</span> <span class="built_in">arguments</span> }</div><div class="line"><span class="keyword">var</span> arrayLike = args(<span class="string">&apos;a&apos;</span>, <span class="string">&apos;b&apos;</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(arrayLike[<span class="number">0</span>]) </div><div class="line"><span class="comment">// &apos;a&apos;</span></div><div class="line"><span class="built_in">console</span>.log(arrayLike.length) </div><div class="line"><span class="comment">// 2</span></div><div class="line">arrayLike <span class="keyword">instanceof</span> <span class="built_in">Array</span> </div><div class="line"><span class="comment">// false</span></div></pre></td></tr></table></figure>
+<ul>
+<li><code>arguments</code>&#x5BF9;&#x8C61;</li>
+<li>DOM&#x5143;&#x7D20;</li>
+<li>&#x5B57;&#x7B26;&#x4E32;</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">args</span>(<span class="params"></span>) </span>{ <span class="keyword">return</span> <span class="built_in">arguments</span> }</div><div class="line"><span class="keyword">var</span> arrayLike = args(<span class="string">&apos;a&apos;</span>, <span class="string">&apos;b&apos;</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(arrayLike[<span class="number">0</span>]) </div><div class="line"><span class="comment">// &apos;a&apos;</span></div><div class="line"><span class="built_in">console</span>.log(arrayLike.length) </div><div class="line"><span class="comment">// 2</span></div><div class="line">arrayLike <span class="keyword">instanceof</span> <span class="built_in">Array</span> </div><div class="line"><span class="comment">// false</span></div></pre></td></tr></table></figure>
 <p>&#x800C;&#x6570;&#x7EC4;&#x7684;<code>slice</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5C06;&#x7C7B;&#x4F3C;&#x6570;&#x7EC4;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x53D8;&#x6210;&#x771F;&#x6B63;&#x7684;&#x6570;&#x7EC4;</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">args</span>(<span class="params"></span>) </span>{ <span class="keyword">return</span> <span class="built_in">arguments</span> }</div><div class="line"><span class="keyword">var</span> arrayLike = args(<span class="string">&apos;a&apos;</span>, <span class="string">&apos;b&apos;</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = <span class="built_in">Array</span>.prototype.slice.call(arrayLike);</div><div class="line"><span class="built_in">console</span>.log(arr);</div><div class="line"><span class="comment">//[&quot;a&quot;,&quot;b&quot;]</span></div></pre></td></tr></table></figure>
 <p>&#x904D;&#x5386;&#x7C7B;&#x4F3C;&#x6570;&#x7EC4;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;<code>for</code>&#x5FAA;&#x73AF;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x6570;&#x7EC4;&#x7684;<code>forEach</code>&#x65B9;&#x6CD5;</p>
@@ -442,6 +443,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[<span class="number">10111</span>,<span class="number">1101</span>,<span class="number">111</span>].sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>{</div><div class="line">    <span class="keyword">return</span> a - b;</div><div class="line">});</div><div class="line"><span class="comment">//[111, 1101, 10111]</span></div></pre></td></tr></table></figure>
 <h4 id="reverse"><a href="#reverse" class="headerlink" title="reverse()"></a>reverse()</h4><p><code>reverse</code>&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x98A0;&#x5012;&#x6570;&#x7EC4;&#x4E2D;&#x5143;&#x7D20;&#x7684;&#x987A;&#x5E8F;&#xFF0C;&#x8FD4;&#x56DE;&#x6539;&#x53D8;&#x540E;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x4F1A;&#x6539;&#x53D8;&#x539F;&#x6570;&#x7EC4;</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">&apos;a&apos;</span>,<span class="string">&apos;d&apos;</span>,<span class="string">&apos;c&apos;</span>,<span class="string">&apos;b&apos;</span>];</div><div class="line"><span class="comment">//[&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;a&quot;]</span></div><div class="line"></div><div class="line">arr.reverse()</div><div class="line"><span class="comment">//[&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;a&quot;]</span></div><div class="line"></div><div class="line">arr</div><div class="line"><span class="comment">//[&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;a&quot;]</span></div></pre></td></tr></table></figure>
+<p>&#x7B14;&#x8BB0;&#x6458;&#x81EA;<a href="http://javascript.ruanyifeng.com/grammar/array.html" target="_blank" rel="external">&#x962E;&#x4E00;&#x5CF0;&#x8001;&#x5E08;&#x7684;&#x6559;&#x7A0B;</a>&#xFF0C;&#x5F53;&#x4F5C;&#x590D;&#x4E60;&#x7EC6;&#x8282;&#x4EE5;&#x8BB0;&#x4E4B;</p>
 
       
     </div>
@@ -479,6 +481,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/14/JavaScript-Object对象/" rel="prev" title="JavaScript-Object对象">
+                JavaScript-Object对象 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -550,7 +556,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -567,7 +573,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
